@@ -1,10 +1,9 @@
-alias startx="startx $HOME/.xinitrc"
-alias vi="nvim"
-alias vim="nvim"
-alias ls="exa -F"
-alias l="exa -FGhl --git"
-alias ltree="exa -FThl --git"
-alias tree="exa -FT"
-alias rls="exa -FR"
-
-PS1="\u@\h \W \$ "
+alias startx="startx ~/.xinitrc"
+alias vi=nvim
+alias vim=nvim
+alias ls='exa -F'
+alias l='exa -FGhl --git'
+alias ltree='exa -FThl --git'
+alias tree='exa -FT'
+alias rls='exa -FR'
+PS1='\u@\h \W \$ '

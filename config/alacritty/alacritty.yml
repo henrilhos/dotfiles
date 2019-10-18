@@ -9,12 +9,12 @@
 #  https://github.com/jwilm/alacritty
 #
 
-env:
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+#env:
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
+#TERM: xterm-256color
 
 window:
   # Specified in number of columns/lines, not pixels.
@@ -250,7 +250,7 @@ mouse:
     #   - (Linux) xdg-open
     #   - (Windows) explorer
     launcher:
-      program: brave
+      program: firefox
     #  args: []
 
     # These are the modifiers that need to be held down for opening URLs when clicking
