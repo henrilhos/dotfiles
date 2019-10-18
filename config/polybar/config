@@ -1,3 +1,4 @@
+
 ;
 ;  ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
 ;  ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
@@ -11,27 +12,33 @@
 ;
 
 [colors]
-background = #aa0d111c
-background-alt = #1f222b
+;background = ${xrdb:color0:#222}
+background = #0A0E14
+background-alt = #444
+;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #3441c9
-secondary = #e60053
-alert = #bd2c40
+primary = #F9AF4F
+secondary = #91B362
+alert = #EA6C73
 
 [bar/bspwm]
+;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 25
-radius = 0.0
+;offset-x = 1%
+;offset-y = 1%
+;radius = 6.0
 fixed-center = false
 
-background = ${colors.background}
+background = #cc0A0E14
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 3
 line-color = #f00
 
 border-size = 0
+border-color = #00000000
 
 padding-left = 0
 padding-right = 2
@@ -42,13 +49,13 @@ module-margin-right = 2
 font-0 = Noto Sans:pixelsize=11:antialias=true;2
 font-1 = Noto Sans CJK JP:pixelsize=11:antialias=true;2
 
-;modules-right = filesystem pulseaudio xkeyboard memory cpu temperature battery date
-modules-left = bspwm mpd
-modules-center = date
-modules-right = pulseaudio memory cpu eth wlan battery
+modules-left = bspwm 
+; modules-center = date
+modules-right = filesystem pulseaudio xkeyboard memory cpu temperature date 
 
 tray-position = right
 tray-padding = 2
+;tray-background = #0063ff
 
 wm-restack = bspwm
 
@@ -60,10 +67,54 @@ scroll-down = bspwm-deskprev
 cursor-click = pointer
 cursor-scroll = ns-resize
 
+[bar/i3]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 25 
+;offset-x = 1%
+;offset-y = 1%
+;radius = 6.0
+fixed-center = false
+
+background = #cc0A0E14
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Noto Sans:pixelsize=11:antialias=true;2
+font-1 = Noto Sans CJK JP:pixelsize=11:antialias=true;2
+
+modules-left = i3
+modules-center = mpd
+modules-right = filesystem pulseaudio xkeyboard memory cpu temperature date 
+
+tray-position = right
+tray-padding = 2
+;tray-background = #0063ff
+
+wm-restack = i3
+
+override-redirect = true
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-label-underline = #ffb52a
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -95,7 +146,7 @@ label-unmounted-foreground = ${colors.foreground-alt}
 type = internal/bspwm
 
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused-background = #cc0A0E14
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
@@ -103,7 +154,7 @@ label-occupied = %index%
 label-occupied-padding = 2
 
 label-urgent = %index%
-label-urgent-background = ${colors.alert}
+label-urgent-background = #cc0A0E14
 label-urgent-padding = 2
 
 label-empty = %index%
@@ -113,12 +164,56 @@ label-empty-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = #cc0A0E14
+label-focused-underline= ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = #cc0A0E14
+label-urgent-padding = 2
+
+; Separator in between workspaces
+; label-separator = |
+
+
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>
-format-online-underline = ${colors.primary}
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+host = ::1
 
-label-song-maxlen = 40
+icon-prev = < /
+icon-stop = S /
+icon-play = # /
+icon-pause = # /
+icon-next = >
+
+label-song-maxlen = 25
 label-song-ellipsis = true
 
 [module/xbacklight]
@@ -161,7 +256,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = net1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -183,7 +278,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp2s0
+interface = eno1
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -201,11 +296,15 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date = "%a"
-date-alt = " %d/%m/%Y"
+date =
+date-alt = " %Y-%m-%d"
 
-time = %I:%M %p
+time = %I:%M
 time-alt = %H:%M:%S
+
+format-prefix = TIM 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #53BDFA
 
 label = %date% %time%
 
@@ -215,7 +314,6 @@ type = internal/pulseaudio
 format-volume = <label-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
-label-volume-underline = #0a6cf5
 
 label-muted = muted
 label-muted-foreground = #666
@@ -240,13 +338,13 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 [module/alsa]
 type = internal/alsa
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+format-volume = <label-volume>
+label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix =
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = muted
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -315,8 +413,8 @@ label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = TMP
-ramp-1 = TMP
-ramp-2 = TMP
+ramp-1 = TMP 
+ramp-2 = TMP 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
@@ -326,7 +424,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = Power
+label-open = Power 
 label-open-foreground = ${colors.primary}
 label-close = Cancel
 label-close-foreground = ${colors.primary}
@@ -338,14 +436,14 @@ menu-0-0-exec = menu-open-1
 menu-0-1 = poweroff
 menu-0-1-exec = menu-open-2
 
-menu-1-0 = go back
+menu-1-0 = go back 
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
 
 menu-2-0 = poweroff
 menu-2-0-exec = sudo poweroff
-menu-2-1 = go back
+menu-2-1 = go back 
 menu-2-1-exec = menu-open-0
 
 [settings]
