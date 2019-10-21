@@ -8,7 +8,7 @@ alias ltree="exa -FThl --git"
 alias tree="exa -FT"
 alias rls="exa -FR"
 alias copy="xclip -se c"
-alias neofetch="echo "\n\n" && neofetch && echo "\n""
+alias neofetch='echo "\n\n" && neofetch && echo "\n"'
 
 alias mlabs="cd $HOME/Workspace/MLabs"
 alias university="cd $HOME/Workspace/University"
