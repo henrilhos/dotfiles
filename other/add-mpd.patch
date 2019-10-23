@@ -6,6 +6,6 @@
 
 +[ ! -s ~/.config/mpd/pid] && mpd &
 +
- [ $XDG_VTNR = 1 ] && exec bspwm
- [ $XDG_VTNR = 2 ] && exec i3
+ [ $XDG_VTNR = 1 ] && exec i3
+ [ $XDG_VTNR = 2 ] && exec bspwm
  exec $1
