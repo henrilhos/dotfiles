@@ -15,7 +15,7 @@
 margin-top = 10
 margin-bottom = 0
 
-; I3 bar settinfs
+; I3 bar settings
 [bar/i3]
 
 monitor = eDP-1
@@ -27,7 +27,7 @@ bottom = false
 fixed-center = true
 
 width = 100%
-height = 27
+height = 30
 ; offset-x = 2%
 ; offset-y = 4%:-5
 
