@@ -87,6 +87,8 @@ double-click-right =
 cursor-click =
 cursor-scroll =
 
+wm-restack = i3
+
 ; Application settings
 [settings]
 
@@ -245,7 +247,7 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${color.purple}
+label-urgent-background = ${color.deep-purple}
 label-urgent-padding = 1
 
 ; Separator in between workspaces
@@ -301,5 +303,13 @@ label-maxlen = 25
 type = custom/script
 exec = ~/.config/polybar/scripts/updates-arch.sh
 interval = 600
+
+; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/typing-speed]
+
+type = custom/script
+exec = ~/.config/polybar/scripts/typing-speed.sh
+tail = true
 
 ; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
