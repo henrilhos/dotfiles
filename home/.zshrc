@@ -10,6 +10,7 @@ plugins=(
     cp
     sudo
     fancy-ctrl-z
+    navi
 )
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
@@ -31,3 +32,5 @@ fi
 
 [[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
     source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
