@@ -10,7 +10,7 @@ sudo pacman -S ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
     feh sxhkd bspwm i3-gaps dunst zathura-pdf-mupdf libnotify \
     diff-so-fancy zsh-autosuggestions zsh-syntax-highlighting \
     xorg-server xorg-xinit xorg-xprop pulseaudio-alsa exa fzf \
-    xclip openssh
+    xclip openssh dbeaver docker docker-compose
 
 read -p "-- For music, use mpd + ncmpcpp instead of cmus? [y/N] " yna
 case $yna in
@@ -34,7 +34,7 @@ esac
 
 # Install AUR packages
 yay -S oh-my-zsh-git polybar-git brave-bin slack-desktop \
-    visual-studio-code-bin nvm
+    visual-studio-code-bin nvm spotify pipes.sh
 
 # Link dash to /bin/sh for performance boost.
 # Then link several font config files for better font display.
