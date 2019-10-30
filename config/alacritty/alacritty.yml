@@ -250,7 +250,7 @@ mouse:
     #   - (Linux) xdg-open
     #   - (Windows) explorer
     launcher:
-      program: firefox
+      program: brave
     #  args: []
 
     # These are the modifiers that need to be held down for opening URLs when clicking
