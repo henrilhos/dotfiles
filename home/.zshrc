@@ -10,7 +10,6 @@ plugins=(
     cp
     sudo
     fancy-ctrl-z
-    navi
 )
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
