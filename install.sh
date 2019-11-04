@@ -10,7 +10,8 @@ sudo pacman -S ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
     feh sxhkd bspwm i3-gaps dunst zathura-pdf-mupdf libnotify \
     diff-so-fancy zsh-autosuggestions zsh-syntax-highlighting \
     xorg-server xorg-xinit xorg-xprop pulseaudio-alsa exa fzf \
-    xclip openssh dbeaver docker docker-compose polkit-gnome
+    xclip openssh dbeaver docker docker-compose polkit-gnome \
+    blurlock
 
 read -p "-- For music, use mpd + ncmpcpp instead of cmus? [y/N] " yna
 case $yna in
