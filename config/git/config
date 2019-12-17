@@ -18,11 +18,10 @@
     new = green bold
     whitespace = red reverse
 [user]
-	name = Henrique de Castilhos
-	email = henriquedecastilhos@gmail.com
+    name = Henrique de Castilhos
+    email = henriquedecastilhos@gmail.com
 
 [alias]
-    # one-line log
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 
     a = add
@@ -40,8 +39,7 @@
     s = status -s
     co = checkout
     cob = checkout -b
-    # list branches sorted by last modified
-    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+    b = git branch
 
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
