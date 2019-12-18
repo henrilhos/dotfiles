@@ -24,7 +24,7 @@ yay -S rofi maim alacritty alacritty-terminfo picom neofetch neovim \
     httpie docker docker-compose visual-studio-code-bin zsh arandr \
     pipes.sh slack-desktop spotify oh-my-zsh-git polybar-git ranger \
     nvm-git chromium gotop-bin qbittorrent dust eva mdcat onefetch \
-    openresty postman pfetch-git studio-3t insomnia
+    openresty postman pfetch-git studio-3t insomnia pyenv
 
 # Miscellaneous, but important
 sudo install -Dm 644 miscellaneous/freetype2.sh /etc/profile.d/
