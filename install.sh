@@ -26,6 +26,9 @@ yay -S rofi maim alacritty alacritty-terminfo picom neofetch neovim \
     nvm-git chromium gotop-bin qbittorrent dust eva mdcat onefetch \
     openresty postman pfetch-git studio-3t insomnia pyenv
 
+# Remove programs
+yay -R variety atom firefox geany sublime-text-dev termite vim
+
 # Miscellaneous, but important
 sudo install -Dm 644 miscellaneous/freetype2.sh /etc/profile.d/
 sudo install -Dm 644 miscellaneous/local.conf /etc/fonts/
