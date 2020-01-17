@@ -4,8 +4,9 @@
 export DOTFILES_PATH=$PWD
 
 # Install fonts
-yay -S ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
-    ttf-fantasque-sans-mono ttf-linux-libertine ttf-fira-code
+yay -Sy ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
+    ttf-fantasque-sans-mono ttf-linux-libertine ttf-fira-code \
+    ttf-typicons
 
 # Link font config files for better font display
 sudo ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
@@ -13,21 +14,19 @@ sudo ln -sf /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d/
 sudo ln -sf /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/
 sudo ln -sf /etc/fonts/conf.avail/75-joypixels.conf /etc/fonts/conf.d/
 
-# Install Dash, then link dash to /bin/sh for a performance boost
-yay -S dash
-sudo ln -sfT dash /usr/bin/sh
-
 # Install programs
-yay -S rofi maim alacritty alacritty-terminfo picom neofetch neovim \
-    feh sxhkd dunst diff-so-fancy exa fzf xclip openssh dbeaver bat \
-    zsh-autosuggestions zsh-syntax-highlighting fd ripgrep navi sxiv \
-    httpie docker docker-compose visual-studio-code-bin zsh arandr \
-    pipes.sh slack-desktop spotify oh-my-zsh-git polybar-git ranger \
-    nvm-git chromium gotop-bin qbittorrent dust eva mdcat onefetch \
-    openresty postman pfetch-git studio-3t insomnia pyenv
+yay -Sy arandr bat chromium dbeaver diff-so-fancy docker docker-compose dunst dust \
+    eva exa fd feh fzf gotop-bin httpie i3lock insomnia kitty kitty-terminfo maim \
+    navi neofetch neovim nvm-git oh-my-zsh-git onefetch openfortivpn openresty \
+    openssh pfetch-git picom pipes.sh polybar-git postman pyenv qbittorrent ranger \
+    ripgrep rocketchat-desktop slack-desktop spotify studio-3t sxhkd sxiv \
+    visual-studio-code-bin whatsapp-nativefier-dark xclip zsh zsh-autosuggestions \
+    zsh-syntax-highlighting
 
 # Remove programs
-yay -R variety atom firefox geany sublime-text-dev termite vim
+yay -R arcolinux-conky-collection-git atom conky-lua-archers firefox geany \
+    gmrun pragha sublime-text-dev termite termite-terminfo variety vi vim \
+    vivaldi vivaldi-codecs-ffmpeg-extra-bin
 
 # Miscellaneous, but important
 sudo install -Dm 644 miscellaneous/freetype2.sh /etc/profile.d/
