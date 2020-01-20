@@ -1,5 +1,5 @@
 ZSH="/usr/share/oh-my-zsh/"
-ZSH_CUSTOM="~/.config/zsh/"
+ZSH_CUSTOM="$HOME/.config/zsh/"
 ZSH_THEME="lambda"
 DISABLE_AUTO_UPDATE="false"
 FZF_BASE="/usr/share/fzf"
