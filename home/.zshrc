@@ -1,7 +1,7 @@
 ZSH="/usr/share/oh-my-zsh/"
 ZSH_CUSTOM="~/.config/zsh/"
 ZSH_THEME="lambda"
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="false"
 FZF_BASE="/usr/share/fzf"
 
 plugins=(
@@ -34,3 +34,6 @@ fi
     source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[[ -f "$HOME/.config/broot/launcher/bash/br" ]] &&
+    source "$HOME/.config/broot/launcher/bash/br"
