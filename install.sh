@@ -6,7 +6,7 @@ export DOTFILES_PATH=$PWD
 # Install fonts
 yay -Sy ttf-joypixels ttf-croscore noto-fonts-cjk noto-fonts \
     ttf-fantasque-sans-mono ttf-linux-libertine ttf-fira-code \
-    ttf-typicons
+    ttf-typicons nerd-fonts-iosevka
 
 # Link font config files for better font display
 sudo ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
@@ -26,7 +26,9 @@ yay -Sy arandr bat chromium dbeaver diff-so-fancy docker docker-compose dunst du
 # Remove programs
 yay -R arcolinux-conky-collection-git atom conky-lua-archers firefox geany \
     gmrun pragha sublime-text-dev termite termite-terminfo variety vi vim \
-    vivaldi vivaldi-codecs-ffmpeg-extra-bin
+    vivaldi vivaldi-codecs-ffmpeg-extra-bin trizen urxvt-resize-font-git \
+    urxvt-perls rxvt-unicode-terminfo rxvt-unicode xfce4-terminal xfce4-taskmanager \
+    meld evolution
 
 # Miscellaneous, but important
 sudo install -Dm 644 miscellaneous/freetype2.sh /etc/profile.d/
@@ -42,8 +44,8 @@ cd $HOME/Pictures/Wallpapers
 ln -sf $DOTFILES_PATH/wallpapers/* .
 
 # Link all dotfiles into their appropriate locations
-# cd $HOME
-# ln -sf $DOTFILES_PATH/home/.* .
+cd $HOME
+ln -sf $DOTFILES_PATH/home/.* .
 
 # cd $HOME/.config
 # ln -sf $DOTFILES_PATH/config/* .
