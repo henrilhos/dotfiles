@@ -6,55 +6,102 @@
 #  ██║██████╔╝
 #  ╚═╝╚═════╝
 #
-# https://github.com/Airblader/i3
+#  https://github.com/Airblader/i3
+#  https://i3wm.org/docs/userguide.html
 #
 
+# Define the mod key
 set $mod Mod4
 
-font pango:Noto Sans 8
+# Define the movements keys - variables
+set $up l
+set $down k
+set $left j
+set $right ccedilla
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Font for window titles
+font pango:DejaVu Sans 11
 
+# NetworkManager
 exec --no-startup-id nm-applet
 
+# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# Kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+# Change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
+# Alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# Move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
+# Alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+semicolon split h
+# Orientation for new workspaces
+default_orientation horizontal
 
+# Split in horizontal orientation
+bindsym $mod+h split h
+
+# Split in vertical orientation
 bindsym $mod+v split v
 
+# Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
 bindsym $mod+e layout toggle split
 
+# Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-bindsym $mod+c focus mode_toggle
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
 
+# Focus the parent container
 bindsym $mod+a focus parent
 
+# Focus the child container
+bindsym $mod+c focus child
+
+# Next/previous workspace
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym $mod+Tab workspace back_and_forth
+
+# Navigate workspaces next / previous
+bindsym Mod1+Ctrl+Right workspace next
+bindsym Mod1+Ctrl+Left workspace prev
+
+# Single and dual screen
+exec --no-startup-id xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x840 --rotate normal --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate left
+
+# Current monitor setup
+set $primaryMonitor eDP1
+set $secondaryMonitor HDMI1
+
+# Define names for default workspaces
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -66,6 +113,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -77,6 +125,7 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -88,34 +137,293 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-bindsym $mod+Shift+c reload
+# Move focused container to workspace and switch to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1 workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2 workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3 workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4 workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5 workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6 workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7 workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8 workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9 workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10 workspace $ws10
+
+# Workspace default monitors
+workspace $ws1 output $secondaryMonitor
+workspace $ws2 output $primaryMonitor
+workspace $ws3 output $secondaryMonitor
+workspace $ws4 output $primaryMonitor
+workspace $ws5 output $secondaryMonitor
+workspace $ws6 output $primaryMonitor
+workspace $ws7 output $secondaryMonitor
+workspace $ws8 output $primaryMonitor
+workspace $ws9 output $secondaryMonitor
+workspace $ws10 output $primaryMonitor
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec i3-msg exit
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym j resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+# Press $mod (super) and X to exit - check toolbar for next choices
+bindsym $mod+X mode "$mode_system"
 
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+mode "$mode_system" {
+    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
 }
 
+# Application menus
+# Start dmenu
+bindsym $mod+shift+d exec --no-startup-id dmenu_run -b -nb '#1e1e1e' -nf '#F2F2F2' -sb '#F2F2F2' -sf '#1e1e1e' -fn 'NotoMonoRegular:bold:pixelsize=16'
+
+# Start rofi
+bindsym $mod+D exec --no-startup-id rofi -show drun
+
+# Switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
+# Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 
-for_window [class=".*"] border pixel 0
-gaps inner 12
-gaps top 30
+mode "resize" {
+    bindsym $left       resize shrink width 10 px or 10 ppt
+    bindsym $down       resize grow height 10 px or 10 ppt
+    bindsym $up         resize shrink height 10 px or 10 ppt
+    bindsym $right      resize grow width 10 px or 10 ppt
 
-exec --no-startup-id compton --config ~/.config/compton/i3compton.conf
-exec --no-startup-id polybar i3
-exec --no-startup-id sxhkd
-exec_always --no-startup-id setxkbmap -layout br
-exec_always --no-startup-id feh --no-fehbg --bg-fill ~/Images/Wallpapers/tardis.jpg
+    bindsym Left        resize shrink width 10 px or 10 ppt
+    bindsym Down        resize grow height 10 px or 10 ppt
+    bindsym Up          resize shrink height 10 px or 10 ppt
+    bindsym Right       resize grow width 10 px or 10 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Assign application to start on a specific workspace
+# you can find the class with the program xprop
+
+# Workspace 1 text editor related
+assign [class="Code"] → 1
+
+# Workspace 2 browser related
+assign [class="Chromium|Brave-browser|Google-chrome|Firefox"] → 2
+
+# Workspace 4 business chat
+assign [class="Ferdi|Slack|Rocket.Chat"] → 4
+
+# Workspace 6 personal chat
+assign [class="Tweetdeck|whats-app-nativefier-d52542"] → 6
+
+# Workspace 8 music related
+assign [class="Spotify|spotify"] → 8
+# Fix for spotify not moving to workspace 8
+for_window [class="Spotify"] move to workspace 8
+
+# Applications keyboard shortcuts
+# Not workspace related
+
+# Terminal
+bindsym $mod+Return exec --no-startup-id kitty;focus
+bindsym $mod+KP_Enter exec --no-startup-id kitty;focus
+bindsym control+mod1+t exec --no-startup-id kitty; focus
+
+# Settings
+bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
+
+# Catfish
+bindsym control+mod1+c exec --no-startup-id catfish;focus
+
+# Pavucontrol
+bindsym control+mod1+u exec --no-startup-id pavucontrol
+
+# Start xfce-appfinder
+bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
+
+# Pamac-manager
+bindsym control+mod1+p exec --no-startup-id pamac-manager
+
+# Xkill
+bindsym --release $mod+Escape exec xkill
+
+# Nitrogren
+bindsym control+mod1+i exec --no-startup-id nitrogen;focus
+
+# Workspace related
+# Workspace 1 related
+bindsym $mod+F1 exec --no-startup-id code;focus
+
+# Workspace 2 related
+bindsym $mod+F2 exec --no-startup-id chromium;focus
+
+# Workspace 4 related
+bindsym $mod+F4 exec --no-startup-id slack;focus
+# TODO: Rocket.chat
+
+# Workspace 6 related
+bindsym $mod+F6 exec --no-startup-id whatsapp-nativefier-dark;focus
+# TODO: Tweetdeck
+
+# Workspace 8 related
+bindsym $mod+F8 exec --no-startup-id spotify;focus
+
+# Screenshots
+bindsym Print exec --no-startup-id maim -u ~/Pictures/Captures/$(date +%s).png && dunstify "Cheese!" "Screenshot saved to ~/Images/Captures"
+bindsym $mod+Print exec --no-startup-id maim -su ~/Pictures/Captures/$(date +%s).png && dunstify "Cheese!" "Screenshot saved to ~/Images/Captures"
+
+# Floating or tiled
+# Floating enabled from some programs - find with xprop
+for_window [class="Blueberry.py"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Gnome-disks"] floating enable
+for_window [class="^Gnome-font-viewer$"] floating enable
+for_window [class="^Gpick$"] floating enable
+for_window [class="Hexchat"] floating disable
+for_window [class="Imagewriter"] floating enable
+for_window [class="Font-manager"] floating enable
+for_window [class="qt5ct|Lxappearance"] floating enable
+for_window [class="Nitrogen"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Peek"] floating enable
+for_window [class="^Skype$"] floating disable
+for_window [class="^Spotify$"] floating disable
+for_window [class="System-config-printer.py"] floating enable
+for_window [class="Unetbootin.elf"] floating enable
+for_window [class="Usb-creator-gtk"] floating enable
+for_window [class="^Vlc$"] floating disable
+for_window [class="Wine"] floating disable
+for_window [class="Xfburn"] floating disable
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-settings-manager"] floating disable
+for_window [class="Xfce4-taskmanager"] floating enable
+
+for_window [instance="gimp"] floating disable
+for_window [instance="script-fu"] border normal
+for_window [instance="variety"] floating disable
+
+for_window [title="Copying"] floating enable
+for_window [title="Deleting"] floating enable
+for_window [title="Moving"] floating enable
+for_window [title="^Terminator Preferences$"] floating enable
+
+for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="^Preferences$"] floating enable
+for_window [window_role="setup"] floating enable
+
+# Give focus to applications
+for_window [class="kitty"] focus
+
+# Audio settings
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse sset Master toggle"
+# https://github.com/acrisci/playerctl/
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+
+# Xbacklight
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+
+# Border control
+hide_edge_borders both
+bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
+
+# Changing border style
+bindsym $mod+t border normal
+bindsym $mod+y border pixel 4
+bindsym $mod+u border none
+
+new_window normal
+new_float normal
+
+# Popups during fullscreen mode
+popup_during_fullscreen smart
+
+# I3 gaps next
+# https://github.com/Airblader/i3/tree/gaps-next
+for_window [class="^.*"] border pixel 4
+gaps inner 20
+gaps outer 0
+
+# I3 gaps change
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     gaps inner current set 0
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     gaps inner all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     gaps outer current set 0
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     gaps outer all set 0
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Windows decoration colors
+# class                 border  backgr. text    indicator
+client.placeholder      #cfcfcf #cfcfcf #666666
+client.background       #cfcfcf #cfcfcf #666666
+client.focused          #f2f2f2 #f2f2f2 #000000 #f2f2f2
+client.unfocused        #cfcfcf #cfcfcf #666666 #cfcfcf
+client.focused_inactive #cfcfcf #cfcfcf #666666 #cfcfcf
+client.urgent           #f2f2f2 #f2f2f2 #666666 #f2f2f2
+
+# Updater
+exec --no-startup-id pamac-tray
+exec_always --no-startup-id picom --config ~/.config/picom/i3picom.conf
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id $HOME/.fehbg
+#exec --no-startup-id sxhkd
+exec --no-startup-id chromium
+exec --no-startup-id spotify
+# Authentication dialog
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+# Num lock activated
+exec_always --no-startup-id numlockx on
+# System applications
+exec --no-startup-id xfce4-power-manager &
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+# Volume
+exec --no-startup-id volumeicon
