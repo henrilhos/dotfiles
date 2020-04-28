@@ -185,3 +185,5 @@ bar {
 # I3 Gaps
 for_window [class="^.*"] border none
 gaps inner 12
+
+exec_always --no-startup-id compton
