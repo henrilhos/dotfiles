@@ -22,7 +22,7 @@ XF86AudioMute
 
 # Terminal Emulator
 super + Return
-    alacritty
+    kitty
 
 # Program Launcher
 super + space
@@ -34,7 +34,7 @@ super + Escape
 
 # Reload wallpaper
 super + alt + w
-    feh --bg-fill --no-fehbg --randomize ~/Images/Wallpapers
+    feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers
 
 # Capture Screenshot
 Print
@@ -53,7 +53,7 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # focus the node in the given direction

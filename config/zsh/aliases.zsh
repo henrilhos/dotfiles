@@ -14,3 +14,6 @@ alias copy="xclip -se c"
 alias mlabs="cd $HOME/Workspace/MLabs"
 alias university="cd $HOME/Workspace/University"
 alias personal="cd $HOME/Workspace/Personal"
+
+export CORP="$HOME/Workspace/MLabs/CORP"
+export TOPLAST="$HOME/Workspace/Personal/toplast"

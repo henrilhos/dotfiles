@@ -1,1 +1,8 @@
 toggl_key
+config/mpd/database
+config/mpd/log
+config/mpd/state
+config/mpd/sticker.sql
+
+**/error.log
+**/nohup.out

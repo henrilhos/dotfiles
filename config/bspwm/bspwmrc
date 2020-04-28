@@ -14,7 +14,7 @@
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width 0
-bspc config top_padding 25
+bspc config top_padding 0
 bspc config bottom_padding 0
 bspc config left_padding 0
 bspc config right_padding 0
@@ -24,14 +24,15 @@ bspc config borderless_monocle true
 bspc config gapless_monocle false
 bspc config focus_follows_pointer true
 
+# bspc rule -a Chromium desktop='^2'
 bspc rule -a feh state=floating
-bspc rule -a sxiv state=pseudo_tiled
-bspc rule -a mpv state=pseudo_tiled
+# bspc rule -a sxiv state=pseudo_tiled
+# bspc rule -a mpv state=pseudo_tiled
 
 killall -w sxhkd polybar compton &
 sleep 0.1
-compton --config ~/.config/compton/bspcompton.conf &
+# compton --config ~/.config/compton/bspcompton.conf &
 sxhkd -c ~/.config/sxhkd/bspsxhkdrc &
-feh --no-fehbg --bg-fill ~/Images/Wallpapers/tardis.jpg
+~/.fehbg
 setxkbmap -layout br &
-polybar bspwm
+~/.config/polybar/launch.sh
