@@ -19,6 +19,11 @@ main() {
     start_date=$(echo $result | jq -r '.data.start')
     description=$(echo $result | jq -r '.data.description')
 
+    # if [[ ! -z $result ]]; then
+    #     echo ""
+    #     exit
+    # fi
+
     diff=$(($(date "+%s") - $(date -d $start_date "+%s")))
 
     duration=$(printf '%dh:%dm\n' $(($diff / 3600)) $(($diff % 3600 / 60)))
