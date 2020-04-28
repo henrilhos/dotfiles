@@ -26,7 +26,7 @@ autoreconf --force --install
 rm -rf build
 mkdir build && cd build
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
+make -j8
 sudo make install
 
 # Install Polybar
@@ -41,9 +41,8 @@ git clone https://github.com/polybar/polybar.git
 cd polybar
 sudo ./build.sh
 
-
 # Install DE programs
-sudo apt install -y i3-gaps-wm i3xrocks i3-snapshot i3ipc-python i3status rofi dmenu feh
+sudo apt install -y i3xrocks i3ipc-python i3status rofi dmenu feh compton
 
 # Install interface programs
 # Visual Studio Code
@@ -76,3 +75,8 @@ sudo snap install rocketchat-desktop
 
 # Runs autoremove
 sudo apt autoremove -y
+
+# Oh My Zsh
+sudo apt install -y Zsh
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
