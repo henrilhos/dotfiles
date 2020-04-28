@@ -29,6 +29,19 @@ mkdir build && cd build
 make
 sudo make install
 
+# Install Polybar
+sudo apt install -y cmake cmake-data libcairo2-dev libxcb1-dev libxcb-ewmh-dev \
+	libxcb-icccm4-dev libxcb-image0-dev libxcb-randr0-dev libxcb-util0-dev \
+	libxcb-xkb-dev pkg-config python3-xcbgen xcb-proto libxcb-xrm-dev libasound2-dev \
+	libmpdclient-dev libiw-dev libcurl4-openssl-dev libpulse-dev \
+	libxcb-composite0-dev xcb libxcb-ewmh2 libjsoncpp-dev
+
+cd /tmp
+git clone https://github.com/polybar/polybar.git
+cd polybar
+sudo ./build.sh
+
+
 # Install DE programs
 sudo apt install -y i3-gaps-wm i3xrocks i3-snapshot i3ipc-python i3status rofi dmenu feh
 
