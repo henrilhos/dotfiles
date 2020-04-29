@@ -41,8 +41,14 @@ git clone https://github.com/polybar/polybar.git
 cd polybar
 sudo ./build.sh
 
+# Pywal
+
+sudo apt install -y imagemagick python3-pip
+sudo pip3 install pywal
+
 # Install DE programs
-sudo apt install -y i3xrocks i3ipc-python i3status rofi dmenu feh compton
+sudo apt install -y i3xrocks i3ipc-python i3status rofi dmenu feh compton i3lock \
+	playerctl arandr
 
 # Install interface programs
 # Visual Studio Code
@@ -69,7 +75,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79
 
 sudo apt update
 sudo apt install -y kitty code vivaldi-stable firefox brave-browser slack-desktop \
-	snapd telegram spotify-client
+	snapd telegram spotify-client neofetch
 
 sudo snap install rocketchat-desktop
 
