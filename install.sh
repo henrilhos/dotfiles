@@ -75,7 +75,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 931FF8E79
 
 sudo apt update
 sudo apt install -y kitty code vivaldi-stable firefox brave-browser slack-desktop \
-	snapd telegram spotify-client neofetch
+	snapd telegram spotify-client neofetch fontforge
 
 sudo snap install rocketchat-desktop
 
