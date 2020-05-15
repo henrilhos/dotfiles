@@ -79,8 +79,16 @@ sudo apt install -y kitty code vivaldi-stable firefox brave-browser slack-deskto
 
 sudo snap install rocketchat-desktop
 
+# Install docker and docker compose
+sudo apt install -y docker.io docker-compose
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+
 # Runs autoremove
 sudo apt autoremove -y
+
+# NVM
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 # Oh My Zsh
 sudo apt install -y Zsh
