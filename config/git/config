@@ -30,7 +30,7 @@
     whitespace = red reverse
 [user]
     name = Henrique de Castilhos
-    email = henriquedecastilhos@gmail.com
+    email = henrique@castilhos.dev
 [alias]
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
 
