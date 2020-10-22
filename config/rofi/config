@@ -9,4 +9,4 @@
 !  https://github.com/davatorium/rofi
 !
 
-rofi.theme: ~/.config/rofi/theme.rasi
+rofi.theme: theme.rasi
