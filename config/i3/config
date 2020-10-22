@@ -31,6 +31,13 @@ set $down k
 set $left j
 set $right semicolon
 
+# Single and dual screen
+exec --no-startup-id xrandr --output DP-0 --off --output DP-1 --off --output HDMI-0 --mode 2560x1080 --pos 0x0 --rotate normal --output DP-2 --off --output DP-3 --off --output DP-4 --mode 1920x1080 --pos 2560x0 --rotate left --output DP-5 --off --output USB-C-0 --off
+
+# Current monitor setup
+set $primaryMonitor HDMI-0
+set $secondaryMonitor DP-4
+
 # Switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -54,6 +61,18 @@ bindsym $mod+Shift+7 move container to workspace 7; workspace 7
 bindsym $mod+Shift+8 move container to workspace 8; workspace 8
 bindsym $mod+Shift+9 move container to workspace 9; workspace 9
 bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+
+# Workspace default monitors
+workspace 1 output $primaryMonitor
+workspace 2 output $primaryMonitor
+workspace 3 output $primaryMonitor
+workspace 4 output $primaryMonitor
+workspace 5 output $primaryMonitor
+workspace 6 output $secondaryMonitor
+workspace 7 output $secondaryMonitor
+workspace 8 output $secondaryMonitor
+workspace 9 output $secondaryMonitor
+workspace 10 output $secondaryMonitor
 
 # Application menus
 # Start dmenu
@@ -147,7 +166,8 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+c focus child
+#bindsym $mod+c focus child
+bindsym $mod+c exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 250px;move position 10px 10px;'"
 
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
@@ -178,15 +198,17 @@ font pango:Noto Mono Regular 13
 
 # Workspace 1 | Text editor related
 assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]       → 1
-assign [class="Xed|xed|Brackets|Atom|Code|Geany"]          → 1
+assign [class="Xed|xed|Brackets|Atom|Code|Geany"]                                   → 1
 
 # Workspace 2 | Browser related
 assign [class="Firefox|Vivaldi-stable|Vivaldi-snapshot|Opera"]                      → 2
-assign [class="Chromium|Google-chrome"]                    → 2
+assign [class="Chromium|Google-chrome"]                                             → 2
 
 # Workspace 4 | Business chat related
-assign [class="Slack|slack|rocket.chat|Rocket.Chat"]       → 4
-assign [class="telegram-desktop|TelegramDesktop"]          → 4
+assign [class="Slack|slack|rocket.chat|Rocket.Chat"]                                → 4
+
+# Workspace 5 | Personal chat related
+assign [class="telegram-desktop|TelegramDesktop|discord"]                           → 5
 
 # Workspace 10 | Music related
 assign [class="Spotify|spotify"]  → 10
@@ -238,7 +260,7 @@ exec_always --no-startup-id numlockx on
 exec --no-startup-id volumeicon
 
 # Feh sets wallpaper
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/abstract-warm-heart-4560x2160.jpg &
+exec --no-startup-id feh --bg-fill "/home/henrique/Pictures/Wallpapers/BLACK_II.jpg" &
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
@@ -297,10 +319,8 @@ bindsym $mod+F2 exec --no-startup-id exo-open --launch webbrowser;focus
 bindsym $mod+F10 exec --no-startup-id spotify;focus
 
 # Screenshots
-bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
-bindsym Control+Print exec --no-startup-id xfce4-screenshooter
-bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
-bindsym shift+Print exec --no-startup-id shutter
+bindsym Print exec --no-startup-id maim -u ~/Pictures/Captures/$(date +%s).png && dunstify "Cheese!" "Screenshot saved to ~/Images/Captures"
+bindsym $mod+Print exec --no-startup-id maim -su ~/Pictures/Captures/$(date +%s).png && dunstify "Cheese!" "Screenshot saved to ~/Images/Captures"
 
 # Floating or tiled
 # Floating enabled from some programs - Find with xprop
@@ -355,11 +375,19 @@ for_window [class="Terminator"] focus
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
 bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
+# For keyboard with no media controls
+bindsym $mod+m exec --no-startup-id "amixer -D pulse sset Master '5%+'"
+bindsym $mod+n exec --no-startup-id "amixer -D pulse sset Master '5%-'"
+
 # https://github.com/acrisci/playerctl/
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 bindsym XF86AudioStop exec --no-startup-id playerctl stop
+# For keyboard with no media controls
+bindsym $mod+period exec --no-startup-id playerctl play-pause
+bindsym $mod+slash exec --no-startup-id playerctl next
+bindsym $mod+comma exec --no-startup-id playerctl previous
 
 #  Xbacklight
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
@@ -392,8 +420,8 @@ popup_during_fullscreen smart
 # https://github.com/Airblader/i3/tree/gaps-next
 # Delete or uncomment the following lines if you do not have it or do not want it
 
-for_window [class="^.*"] border pixel 2
-gaps inner 12
+for_window [class="^.*"] border pixel 1
+gaps inner 24
 gaps outer 0
 #smart_gaps on
 #smart_borders on
@@ -439,16 +467,16 @@ mode "$mode_gaps_outer" {
 
 # Picom of i3wm
 # If you want transparency on non-focused windows, ...
-exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+#exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 
 bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
 
 # Window color settings
 # class                 border  backgr. text    indicator
-client.focused          #ffcfaf #ffcfaf #222222 #ffcfaf
-client.unfocused        #222222 #222222 #aaaaaa #222222
-client.focused_inactive #222222 #222222 #a9a9a9 #222222
-client.placeholder      #222222 #222222 #aaaaaa #222222
-client.urgent           #d42121 #d42121 #f7f7f7 #d42121
+client.placeholder      #D8DEE9 #D8DEE9 #666666 #ECEFF4
+client.focused          #ECEFF4 #ECEFF4 #000000 #ECEFF4
+client.unfocused        #D8DEE9 #D8DEE9 #666666 #D8DEE9
+client.focused_inactive #D8DEE9 #D8DEE9 #666666 #D8DEE9
+client.urgent           #ECEFF4 #ECEFF4 #666666 #ECEFF4
 
-client.background       #242424
+client.background       #D8DEE9
