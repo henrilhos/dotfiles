@@ -20,13 +20,13 @@ i3)
         polybar --reload mainbar-i3 -c ~/.config/polybar/config-main.ini &
     fi
     # second polybar at bottom
-    if type "xrandr" >/dev/null; then
-        for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-            MONITOR=$m polybar --reload mainbar-extra -c ~/.config/polybar/config-extra.ini &
-        done
-    else
-        polybar --reload mainbar-extra -c ~/.config/polybar/config-extra.ini &
-    fi
+    # if type "xrandr" >/dev/null; then
+    #     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    #         MONITOR=$m polybar --reload mainbar-extra -c ~/.config/polybar/config-extra.ini &
+    #     done
+    # else
+    #     polybar --reload mainbar-extra -c ~/.config/polybar/config-extra.ini &
+    # fi
     ;;
 
 bspwm)

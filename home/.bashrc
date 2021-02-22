@@ -1,5 +1,12 @@
 # ~/.bashrc
 
+#Ibus settings if you need them
+#type ibus-setup in terminal to change settings and start the daemon
+#delete the hashtags of the next lines and restart
+#export GTK_IM_MODULE=ibus
+#export XMODIFIERS=@im=dbus
+#export QT_IM_MODULE=ibus
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -7,51 +14,51 @@ export HISTCONTROL=ignoreboth:erasedups
 
 PS1='[\u@\h \W]\$ '
 
-if [ -d "$HOME/.bin" ]; then
-    PATH="$HOME/.bin:$PATH"
+if [ -d "$HOME/.bin" ] ;
+  then PATH="$HOME/.bin:$PATH"
 fi
 
-# List
-alias ls='exa -F'
-alias l='exa -FGhl --git'
-alias la='exa -FGa'
-alias lla='exa -FGhla'
-alias ll='l'
-alias l.="lla | grep '^\.'"
-alias ltree='exa -FThl --git'
-alias tree='exa -FT'
-alias rls='exa -FR'
+if [ -d "$HOME/.local/bin" ] ;
+  then PATH="$HOME/.local/bin:$PATH"
+fi
 
-# Fix obvious typo's
+# list
+alias ls='ls --color=auto'
+alias la='ls -a'
+alias ll='ls -la'
+alias l='ls'
+alias l.="ls -A | egrep '^\.'"
+
+# fix obvious typo's
 alias cd..='cd ..'
-alias pdw='pwd'
+alias pdw="pwd"
 alias udpate='sudo pacman -Syyu'
 alias upate='sudo pacman -Syyu'
 
-# Colorize the grep command output for ease of use (good for log files)
+# Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# Readable output
+# readable output
 alias df='df -h'
 
-# Pacman unlock
+# pacman unlock
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 
-# Free
+# free
 alias free="free -mt"
 
-# Use all cores
+# use all cores
 alias uac="sh ~/.bin/main/000*"
 
-# Continue download
+# continue download
 alias wget="wget -c"
 
-# Userlist
+# userlist
 alias userlist="cut -d: -f1 /etc/passwd"
 
-# Merge new settings
+# merge new settings
 alias merge="xrdb -merge ~/.Xresources"
 
 # Aliases for software managment
@@ -60,53 +67,62 @@ alias pacman='sudo pacman --color auto'
 alias update='sudo pacman -Syyu'
 
 # yay as aur helper - updates everything
-alias yay="yay -S --mflags --skipinteg"
-alias pksyua="yay -Syu --noconfirm --mflags --skipinteg"
-alias upall="yay -Syu --noconfirm --mflags --skipinteg"
+alias pksyua="yay -Syu --noconfirm"
+alias upall="yay -Syu --noconfirm"
 
 # ps
-alias ps="ps auxf"
+alias psa="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 
-# Grub update
+# grub update
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 
-# Improve png
-alias fixpng="find . -type f -name "*.png" -exec convert {} -strip {} \;"
+# add new fonts
+alias update-fc='sudo fc-cache -fv'
 
-# Add new fonts
-alias fc='sudo fc-cache -fv'
-
-# Copy/paste all content of /etc/skel over to home folder - Beware
-alias skel='cp -rf /etc/skel/* ~'
-# Backup contents of /etc/skel to hidden backup folder in home/user
+# copy/paste all content of /etc/skel over to home folder - backup of config created - beware
+alias skel='cp -Rf ~/.config ~/.config-backup-$(date +%Y.%m.%d-%H.%M.%S) && cp -rf /etc/skel/* ~'
+# backup contents of /etc/skel to hidden backup folder in home/user
 alias bupskel='cp -Rf /etc/skel ~/.skel-backup-$(date +%Y.%m.%d-%H.%M.%S)'
 
-# Copy bashrc-latest over on bashrc - cb= copy bashrc
-alias cb="cp ~/.bashrc-latest ~/.bashrc && source ~/.bashrc && sudo cp /etc/skel/.bashrc-latest /etc/skel/.bashrc"
+#copy bashrc-latest over on bashrc - cb= copy bashrc
+alias cb='sudo cp /etc/skel/.bashrc ~/.bashrc && source ~/.bashrc'
+#copy /etc/skel/.zshrc over on ~/.zshrc - cb= copy zshrc
+#alias cz='sudo cp /etc/skel/.zshrc ~/.zshrc && source ~/.zshrc'
 
-# Hardware info --short
+# switch between bash and zsh
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+
+# quickly kill conkies
+alias kc='killall conky'
+
+# hardware info --short
 alias hw="hwinfo --short"
 
-# Check vulnerabilities microcode
+# skip integrity check
+alias yayskip='yay -S --mflags --skipinteg'
+alias trizenskip='trizen -S --skipinteg'
+
+# check vulnerabilities microcode
 alias microcode='grep . /sys/devices/system/cpu/vulnerabilities/*'
 
-# Get fastest mirrors in your neighborhood
+# get fastest mirrors in your neighborhood
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
 alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
 alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
 alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
 
-# Mounting the folder Public for exchange between host and guest on virtualbox
+# mounting the folder Public for exchange between host and guest on virtualbox
 alias vbm="sudo mount -t vboxsf -o rw,uid=1000,gid=1000 Public /home/$USER/Public"
 
 # shopt
-shopt -s autocd         # change to named directory
-shopt -s cdspell        # autocorrects cd misspellings
-shopt -s cmdhist        # save multi-line commands in history as single line
-shopt -s histappend     # do not overwrite history
-shopt -s expand_aliases # expand aliases
+shopt -s autocd # change to named directory
+shopt -s cdspell # autocorrects cd misspellings
+shopt -s cmdhist # save multi-line commands in history as single line
 shopt -s dotglob
+shopt -s histappend # do not overwrite history
+shopt -s expand_aliases # expand aliases
 
 # youtube-dl
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
@@ -121,7 +137,8 @@ alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
 # Recent Installed Packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -100"
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
 
 # Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
@@ -129,19 +146,56 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 # get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 
-# nano
+# nano for important configuration files
+# know what you do in these files
 alias nlightdm="sudo nano /etc/lightdm/lightdm.conf"
 alias npacman="sudo nano /etc/pacman.conf"
 alias ngrub="sudo nano /etc/default/grub"
 alias nmkinitcpio="sudo nano /etc/mkinitcpio.conf"
 alias nslim="sudo nano /etc/slim.conf"
 alias noblogout="sudo nano /etc/oblogout.conf"
+alias nmirrorlist="sudo nano /etc/pacman.d/mirrorlist"
+alias nconfgrub="sudo nano /boot/grub/grub.cfg"
+alias bls="betterlockscreen -u /usr/share/backgrounds/arcolinux/"
 
-# shutdown or reboot
+#gpg
+#verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+#receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+#shutdown or reboot
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 
-[[ -f ~/.profile ]] && . ~/.profile
+# # ex = EXtractor for all kinds of archives
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;      
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+#create a file called .bashrc-personal and put all your personal aliases
+#in there. They will not be overwritten by skel.
+
+[[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
