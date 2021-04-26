@@ -52,5 +52,8 @@
     b = branch
     bd = branch -D
 
+    p = push
+    pf = push --force
+
     # list aliases
     la = "!git config -l | grep alias | cut -c 7-"
