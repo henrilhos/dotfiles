@@ -1,0 +1,7 @@
+github.copilot
+github.copilot-chat
+github.vscode-github-actions
+ms-toolsai.jupyter
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+tsandall.opa
