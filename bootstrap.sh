@@ -1,29 +1,29 @@
 #!/usr/bin/env bash
-#um
-#dois
+### ------------ bootstrap.sh - set up development environment ------------ ###
+# https://github.com/MikeMcQuaid/strap, https://github.com/Homebrew/install
 
 set -e
 
 OS=$(uname -s)
 case $OS in
 Darwin)
-    export LINUX=0 MACOS=1 UNIX=1
-    if [[ $(uname -m) == "arm64" ]]; then
-        DEFAULT_HOMEBREW_PREFIX="/opt/homebrew"
-    else
-        DEFAULT_HOMEBREW_PREFIX="/usr/local"
-    fi
-    ;;
+  export LINUX=0 MACOS=1 UNIX=1
+  if [[ $(uname -m) == "arm64" ]]; then
+    DEFAULT_HOMEBREW_PREFIX="/opt/homebrew"
+  else
+    DEFAULT_HOMEBREW_PREFIX="/usr/local"
+  fi
+  ;;
 Linux)
-    export LINUX=1 MACOS=0 UNIX=1
-    if [[ -d $HOME/.linuxbrew ]]; then
-        DEFAULT_HOMEBREW_PREFIX="$HOME/.linuxbrew"
-    else
-        DEFAULT_HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
-    fi
-    [[ $(id -un) == "codespace" ]] && export CODESPACE=1
-    ;;
-*) echo "Unsupported operating system $OS" & exit 1 ;;
+  export LINUX=1 MACOS=0 UNIX=1
+  if [[ -d $HOME/.linuxbrew ]]; then
+    DEFAULT_HOMEBREW_PREFIX="$HOME/.linuxbrew"
+  else
+    DEFAULT_HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+  fi
+  [[ $(id -un) == "codespace" ]] && export CODESPACE=1
+  ;;
+*) echo "Unsupported operating system $OS" && exit 1 ;;
 esac
 [[ -z $HOMEBREW_PREFIX ]] && HOMEBREW_PREFIX="$DEFAULT_HOMEBREW_PREFIX"
 
@@ -36,8 +36,8 @@ STRAP_DEBUG=${STRAP_DEBUG:-0}
 STRAP_INTERACTIVE=${STRAP_INTERACTIVE:-0}
 STDIN_FILE_DESCRIPTOR=0
 [ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE=1
-STRAP_GIT_NAME=${STRAP_GIT_NAME:="Henrique de Castilhos"}
-STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:?"hello@henrique.zip"}
+STRAP_GIT_NAME=${STRAP_GIT_NAME:?Variable not set}
+STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:?Variable not set}
 STRAP_GITHUB_USER=${STRAP_GITHUB_USER:="henrilhos"}
 DEFAULT_DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
 STRAP_DOTFILES_URL=${STRAP_DOTFILES_URL:="$DEFAULT_DOTFILES_URL"}
