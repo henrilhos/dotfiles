@@ -63,7 +63,7 @@ format = ssh
 
 [gpg "ssh"]
 allowedsignersfile = ~/.ssh/allowed_signers
-program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [init]
 defaultbranch = main
@@ -97,5 +97,4 @@ sort = -taggerdate:iso
 [user]
 name = Henrique de Castilhos
 email = hello@henrique.zip
-# TODO: checar como setar
-# signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMCwzZoq3tQx2P4PRgtaxhq/pqxJCdxQvel7MqBSs5ui
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDGIa977/ftf7GB5CJq0K/nP9aDgdKOPJeHMwjY0GHYN
