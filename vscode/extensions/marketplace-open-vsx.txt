@@ -1,5 +1,6 @@
 bradlc.vscode-tailwindcss
 charliermarsh.ruff
+dbaeumer.vscode-eslint
 dracula-theme.theme-dracula
 eamodio.gitlens
 editorconfig.editorconfig
