@@ -1,5 +1,0 @@
-# Wallpapers
-
-## Solid
-
-## Pictures

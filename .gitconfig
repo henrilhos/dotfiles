@@ -1,0 +1,101 @@
+[alias]
+aa = add --all
+br = branch
+bra = branch --all
+brd = branch -d
+brD = branch -D
+brm = branch -m
+ci = commit
+cia = commit --amend
+cis = commit --squash
+co = checkout
+cob = checkout -b
+cod = checkout develop
+com = checkout main
+f = fetch
+first = rev-list --max-parents=0 HEAD
+l = pull
+last = log --graph --show-signature --pretty=short --max-count=10
+logd = log --pretty='format:- %s (%h)' --reverse develop..HEAD
+logdpr = log --pretty='format:- %s (%h)%n  %b' --reverse develop..HEAD --grep 'pull request'
+logm = log --pretty='format:- %s (%h)' --reverse main..HEAD
+logmpr = log --pretty='format:- %s (%h)%n  %b' --reverse main..HEAD --grep 'pull request'
+p = push
+pf = push --force-with-lease
+pt = push --tags
+pso = push --set-upstream origin
+ra = remote add
+re = rebase -i
+rv = remote -v
+sdiff = !git diff && git submodule foreach 'git diff'
+spush = push --recurse-submodules=on-demand
+st = status
+stal = stash pop
+stap = stash push
+supdate = submodule update --init --recursive
+tag = tag -a -s
+
+[branch]
+autosetuprebase = always
+
+[commit]
+gpgsign = true
+status = false
+
+[core]
+commentchar = ";"
+editor = code --wait
+
+[credential]
+helper = osxkeychain
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
+
+[github]
+user = henrilhos
+
+[gpg]
+format = ssh
+
+[gpg "ssh"]
+allowedsignersfile = ~/.ssh/allowed_signers
+program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[init]
+defaultbranch = main
+
+[pull]
+autostash = true
+rebase = true
+
+[push]
+autosetupremote = true
+default = simple
+recursesubmodules = check
+
+[rebase]
+autosquash = true
+autostash = true
+
+# TODO: checar como usar
+# [sendemail]
+# confirm = auto
+# from = Brendon Smith <gitsmith@protonmail.com>
+# smtpserver = 127.0.0.1
+# smtpserverport = 1025
+# smtpuser = gitsmith@protonmail.com
+# suppresscc = author
+
+[tag]
+gpgsign = true
+sort = -taggerdate:iso
+
+[user]
+name = Henrique de Castilhos
+email = hello@henrique.zip
+# TODO: checar como setar
+# signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMCwzZoq3tQx2P4PRgtaxhq/pqxJCdxQvel7MqBSs5ui
