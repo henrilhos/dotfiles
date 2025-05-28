@@ -12,7 +12,6 @@
   "editor.insertSpaces": true,
   "editor.fontFamily": "'Rec Mono Linear', 'Dank Mono', 'Fira Code', monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
@@ -24,7 +23,7 @@
   "editor.suggestSelection": "first",
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
-  "editor.unicodeHighlight.nonBasicASCII": true,
+  "editor.unicodeHighlight.nonBasicASCII": false,
   "editor.wordWrap": "off",
   "emmet.triggerExpansionOnTab": true,
   "explorer.confirmDelete": false,
@@ -145,16 +144,17 @@
   "merge-conflict.autoNavigateNextConflict.enabled": true,
   // Editor-specific settings
   "cursor.cpp.disabledLanguages": [
-    "git-commit",
-    "markdown",
+    "yaml",
     "plaintext",
-    "ruby",
-    "yaml"
+    "markdown",
+    "git-commit",
+    "ruby"
   ],
   // Language-specific settings
   "aws.onDefaultRegionMissing": "add",
   "aws.profile": "profile:default",
   "aws.telemetry": false,
+  "cSpell.language": "en,pt-BR",
   "cSpell.autoFormatConfigFile": false,
   "cSpell.diagnosticLevel": "Information",
   "cSpell.import": ["~/.dotfiles/vscode/User/cspell.json"],
