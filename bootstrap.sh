@@ -508,6 +508,14 @@ run_brew_installs() {
   fi
 }
 
+install_oh_my_zsh() {
+  logn_no_sudo "Installing oh-my-zsh:"
+  # Install oh-my-zsh without changing the default shell or running zsh
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  logk
+}
+
 # Install Homebrew
 # https://docs.brew.sh/Installation
 # https://docs.brew.sh/Homebrew-on-Linux
@@ -538,6 +546,7 @@ if [ "$STRAP_SUDO" -gt 0 ]; then
   brew cleanup
 fi
 
+install_oh_my_zsh
 run_dotfile_scripts scripts/strap-after-setup.sh
 
 STRAP_SUCCESS=1

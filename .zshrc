@@ -2,6 +2,11 @@
 ### Zsh configuration
 # usage: ln -fns $(pwd)/.zshrc ~/.zshrc
 
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
+plugins=(git)
+
 ### options
 # initial setup configured by zsh-newuser-install
 # To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
@@ -98,13 +103,18 @@ export \
   GPG_TTY=$TTY \
   HOMEBREW_NO_ANALYTICS=1 \
   LDFLAGS=$CURL_LDFLAGS \
-  PATH=${(j.:.)path_array} \
+  PATH="$(
+    IFS=:
+    echo "${path_array[*]}"
+  )" \
   PIPX_BIN_DIR=$LOCAL_BIN_DIR \
   PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH
 
 ### aliases
 alias python='python3'
 alias tg='terragrunt'
+
+source $ZSH/oh-my-zsh.sh
 
 ### prompt: https://starship.rs
 source <(starship init zsh)
@@ -122,9 +132,6 @@ autoload -Uz $HOME/.zfunc/*(:tX)
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
   fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
 fi
-zstyle :compinstall filename $HOME/.zshrc
-autoload -Uz compinit
-compinit
 
 ### syntax highlighting
 if [[ -d $HOMEBREW_PREFIX/share/zsh-syntax-highlighting ]]; then
