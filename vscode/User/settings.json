@@ -24,7 +24,7 @@
   "editor.tabCompletion": "on",
   "editor.tabSize": 2,
   "editor.unicodeHighlight.nonBasicASCII": false,
-  "editor.wordWrap": "off",
+  "editor.wordWrap": "on",
   "emmet.triggerExpansionOnTab": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -100,7 +100,7 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": true,
   "diffEditor.renderSideBySideInlineBreakpoint": 0,
-  "git.autofetch": false,
+  "git.autofetch": true,
   "git.autoRepositoryDetection": "subFolders",
   "git.confirmSync": false,
   "git.enableCommitSigning": true,
@@ -108,7 +108,7 @@
   "git.inputValidation": true,
   "git.mergeEditor": false,
   "github.copilot.enable": {
-    "*": true,
+    "*": false,
     "yaml": false,
     "plaintext": false,
     "markdown": false,
@@ -284,5 +284,11 @@
   "vetur.format.options.tabSize": 2,
   "vetur.format.options.useTabs": false,
   "vetur.ignoreProjectWarning": true,
-  "yaml.format.enable": false
+  "yaml.format.enable": false,
+  "editor.unicodeHighlight.includeStrings": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.lineNumbers": "relative",
+  "editor.cursorSurroundingLines": 8,
+  "editor.cursorSurroundingLinesStyle": "all"
 }
