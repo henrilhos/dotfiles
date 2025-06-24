@@ -76,7 +76,7 @@
   "window.newWindowDimensions": "maximized",
   "window.restoreWindows": "all",
   "window.zoomLevel": 1,
-  "workbench.colorTheme": "Dracula Pro",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "workbench.editor.historyBasedLanguageDetection": false,
   "workbench.editor.languageDetection": false,
   "workbench.editor.pinnedTabSizing": "compact",
@@ -290,5 +290,6 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.lineNumbers": "relative",
   "editor.cursorSurroundingLines": 8,
-  "editor.cursorSurroundingLinesStyle": "all"
+  "editor.cursorSurroundingLinesStyle": "all",
+  "workbench.iconTheme": "catppuccin-mocha"
 }
