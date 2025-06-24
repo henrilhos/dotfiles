@@ -2,34 +2,25 @@
 ### Zsh configuration
 # usage: ln -fns $(pwd)/.zshrc ~/.zshrc
 
-export ZSH="$HOME/.oh-my-zsh"
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
-
-plugins=(git)
-
 ### options
 # initial setup configured by zsh-newuser-install
 # To re-run setup: autoload -U zsh-newuser-install; zsh-newuser-install -f
 # See man zshoptions or https://zsh.sourceforge.net/Doc/Release/Options.html
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
-setopt autocd extendedglob globdots histignorespace noautomenu nullglob
+setopt prompt_subst autocd extendedglob globdots histignorespace noautomenu nullglob
 
-### keybindings: based on https://github.com/romkatv/zsh4humans
-bindkey -e
-bindkey -s '^[[1~' '^[[H'
-bindkey -s '^[[4~' '^[[F'
-bindkey -s '^[[5~' ''
-bindkey -s '^[[6~' ''
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-bindkey '^?' backward-delete-char
-bindkey '^[[3~' delete-char
-bindkey '^[[1;3C' forward-word
-bindkey '^[[1;3D' backward-word
-bindkey '^H' backward-kill-word
-bindkey '^[[3;3~' kill-word
-bindkey '^N' kill-buffer
+autoload -Uz compinit
+compinit
+
+### keybindings
+bindkey '^w' autosuggest-execute
+# bindkey '^e' autosuggest-accept
+bindkey '^u' autosuggest-toggle
+# bindkey '^L' vi-forward-word
+bindkey '^k' up-line-or-search
+bindkey '^j' down-line-or-search
+# bindkey '^I' autosuggest-accept
 
 ### homebrew
 if [[ -z $HOMEBREW_PREFIX ]]; then
@@ -58,7 +49,9 @@ if [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 
 ### exports
-if type codium &>/dev/null; then
+if type nvim &>/dev/null; then
+  editor='nvim'
+elif type codium &>/dev/null; then
   editor='codium --wait'
 elif type cursor &>/dev/null; then
   editor='cursor --wait'
@@ -71,6 +64,7 @@ elif type code-exploration &>/dev/null; then
 else
   editor='vim'
 fi
+
 TTY=$(tty)
 CURL_BIN_DIR=$HOMEBREW_PREFIX/opt/curl/bin
 CURL_CPPFLAGS=-I$HOMEBREW_PREFIX/opt/curl/include
@@ -110,11 +104,40 @@ export \
   PIPX_BIN_DIR=$LOCAL_BIN_DIR \
   PKG_CONFIG_PATH=$CURL_PKG_CONFIG_PATH
 
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
 ### aliases
 alias python='python3'
 alias tg='terragrunt'
 
-source $ZSH/oh-my-zsh.sh
+alias la=tree
+alias cat=bat
+alias ls=eza
+alias cd=z
+
+# Docker
+alias dco="docker compose"
+alias dps="docker ps"
+alias dpa="docker ps -a"
+alias dl="docker ps -l -q"
+alias dx="docker exec -it"
+
+# Dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+alias cl='clear'
+
+# eza
+alias l="eza -l --git -a"
+alias lt="eza --tree --level=2 --long --git"
+alias ltree="eza --tree --level=2 --git"
+
+# sail
+alias sail='sh vendor/bin/sail'
 
 ### prompt: https://starship.rs
 source <(starship init zsh)
@@ -132,10 +155,13 @@ autoload -Uz $HOME/.zfunc/*(:tX)
 if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
   fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
 fi
+zstyle :compinstall filename $HOME/.zshrc
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 ### syntax highlighting
-if [[ -d $HOMEBREW_PREFIX/share/zsh-syntax-highlighting ]]; then
-  . $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-elif [[ -d $HOME/.zsh/zsh-syntax-highlighting ]]; then
-  . $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh)"
+eval "$(direnv hook zsh)"
