@@ -510,10 +510,15 @@ run_brew_installs() {
 
 install_oh_my_zsh() {
   logn_no_sudo "Installing oh-my-zsh:"
-  # Install oh-my-zsh without changing the default shell or running zsh
-  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  logk
+
+  if [ -d "$HOME/.oh-my-zsh" ]; then
+    logskip "Skipping oh-my-zsh installation (already installed)."
+  else
+    # Install oh-my-zsh without changing the default shell or running zsh
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    logk
+  fi
 }
 
 # Install Homebrew
@@ -546,7 +551,8 @@ if [ "$STRAP_SUDO" -gt 0 ]; then
   brew cleanup
 fi
 
-install_oh_my_zsh
+# oh-my-zsh is not being used
+# install_oh_my_zsh
 run_dotfile_scripts scripts/strap-after-setup.sh
 
 STRAP_SUCCESS=1
