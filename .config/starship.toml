@@ -1,6 +1,6 @@
 # starship configuration: https://starship.rs/config/
+add_newline     = false
 command_timeout = 5000
-add_newline = false
 
 [battery]
 disabled = true
