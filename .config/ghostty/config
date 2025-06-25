@@ -1,0 +1,52 @@
+# ghostty +show-config --default --docs
+# ghostty +list-themes
+
+#font-family                    = Symbols Nerd Font Mono
+font-family                    = Rec Mono Linear
+font-family-bold               = Rec Mono Linear Bold
+font-family-italic             = Rec Mono Linear Italic
+font-family-bold-italic        = Rec Mono Linear Bold Italic
+
+font-feature                   = calt
+font-feature                   = liga
+font-feature                   = ss13
+
+font-size                      = 14
+window-inherit-font-size       = true
+
+# Look and Feel
+adjust-cursor-thickness        = 3
+adjust-underline-position      = 3
+bold-is-bright                 = true
+cursor-invert-fg-bg            = true
+cursor-opacity                 = 0.8
+link-url                       = true
+mouse-hide-while-typing        = true
+#theme                          = dracula_pro
+window-vsync                   = true
+
+# Other
+clipboard-paste-protection     = true
+clipboard-trim-trailing-spaces = true
+copy-on-select                 = true
+macos-auto-secure-input        = true
+macos-secure-input-indication  = true
+quit-after-last-window-closed  = true
+scrollback-limit               = 4200
+shell-integration              = fish
+shell-integration-features     = cursor,sudo,title
+confirm-close-surface          = false
+
+# Key bindings
+#keybind                        = ctrl+h=goto_split:left
+#keybind                        = ctrl+j=goto_split:bottom
+#keybind                        = ctrl+k=goto_split:top
+#keybind                        = ctrl+l=goto_split:right
+#keybind                        = ctrl+shift+h=new_split:left
+#keybind                        = ctrl+shift+j=new_split:down
+#keybind                        = ctrl+shift+k=new_split:up
+#keybind                        = ctrl+shift+l=new_split:right
+#keybind                        = super+shift+enter=new_split:auto
+#keybind                        = super+shift+i=inspector:toggle
+keybind                        = super+shift+r=reload_config
+#keybind                        = super+t=new_tab
