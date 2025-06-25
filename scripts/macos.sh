@@ -29,7 +29,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Set menu bar clock format
 defaults write com.apple.menuextra.clock IsAnalog -bool false
-# defaults write com.apple.menuextra.clock DateFormat -string "EEE MMM d h:mm a"
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm"
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "America/Sao_Paulo" >/dev/null
