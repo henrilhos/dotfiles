@@ -22,7 +22,7 @@ cursor-invert-fg-bg            = true
 cursor-opacity                 = 0.8
 link-url                       = true
 mouse-hide-while-typing        = true
-theme                          = catppuccin-mocha
+theme                          = catppuccin-mocha.conf
 window-vsync                   = true
 
 # Other
