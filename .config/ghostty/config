@@ -22,7 +22,7 @@ cursor-invert-fg-bg            = true
 cursor-opacity                 = 0.8
 link-url                       = true
 mouse-hide-while-typing        = true
-#theme                          = dracula_pro
+theme                          = catppuccin-mocha
 window-vsync                   = true
 
 # Other
@@ -33,7 +33,7 @@ macos-auto-secure-input        = true
 macos-secure-input-indication  = true
 quit-after-last-window-closed  = true
 scrollback-limit               = 4200
-shell-integration              = fish
+shell-integration              = zsh
 shell-integration-features     = cursor,sudo,title
 confirm-close-surface          = false
 
