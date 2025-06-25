@@ -36,12 +36,12 @@ STRAP_DEBUG=${STRAP_DEBUG:-0}
 STRAP_INTERACTIVE=${STRAP_INTERACTIVE:-0}
 STDIN_FILE_DESCRIPTOR=0
 [ -t "$STDIN_FILE_DESCRIPTOR" ] && STRAP_INTERACTIVE=1
-STRAP_GIT_NAME=${STRAP_GIT_NAME:?Variable not set}
-STRAP_GIT_EMAIL=${STRAP_GIT_EMAIL:?Variable not set}
-STRAP_GITHUB_USER=${STRAP_GITHUB_USER:="henrilhos"}
-DEFAULT_DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
-STRAP_DOTFILES_URL=${STRAP_DOTFILES_URL:="$DEFAULT_DOTFILES_URL"}
-STRAP_DOTFILES_BRANCH=${STRAP_DOTFILES_BRANCH:="main"}
+GIT_NAME=${GIT_NAME:?Variable not set}
+GIT_EMAIL=${GIT_EMAIL:?Variable not set}
+GIT_USERNAME=${GIT_USERNAME:="henrilhos"}
+DEFAULT_DOTFILES_URL="https://github.com/$GIT_USERNAME/dotfiles"
+DOTFILES_URL=${DOTFILES_URL:="$DEFAULT_DOTFILES_URL"}
+DOTFILES_BRANCH=${DOTFILES_BRANCH:="main"}
 STRAP_SUCCESS=""
 STRAP_SUDO=0
 
@@ -217,9 +217,9 @@ if [ "$MACOS" -gt 0 ] && [ "$STRAP_ADMIN" -gt 0 ]; then
     /Library/Preferences/com.apple.alf globalstate -int 1
   sudo_askpass launchctl load \
     /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2>/dev/null
-  if [ -n "$STRAP_GIT_NAME" ] && [ -n "$STRAP_GIT_EMAIL" ]; then
+  if [ -n "$GIT_NAME" ] && [ -n "$GIT_EMAIL" ]; then
     FOUND="Found this computer? Please contact"
-    LOGIN_TEXT=$(escape "$FOUND $STRAP_GIT_NAME at $STRAP_GIT_EMAIL.")
+    LOGIN_TEXT=$(escape "$FOUND $GIT_NAME at $GIT_EMAIL.")
     echo "$LOGIN_TEXT" | grep -q '[()]' && LOGIN_TEXT="'$LOGIN_TEXT'"
     sudo_askpass defaults write \
       /Library/Preferences/com.apple.loginwindow LoginwindowText "$LOGIN_TEXT"
@@ -337,23 +337,23 @@ configure_git() {
       git config --global core.excludesfile "$HOME/.gitignore_global"
     fi
   fi
-  if [ -n "$STRAP_GIT_NAME" ] && ! git config --global user.name >/dev/null; then
-    git config --global user.name "$STRAP_GIT_NAME"
+  if [ -n "$GIT_NAME" ] && ! git config --global user.name >/dev/null; then
+    git config --global user.name "$GIT_NAME"
   fi
-  if [ -n "$STRAP_GIT_EMAIL" ] && ! git config --global user.email >/dev/null; then
-    git config --global user.email "$STRAP_GIT_EMAIL"
+  if [ -n "$GIT_EMAIL" ] && ! git config --global user.email >/dev/null; then
+    git config --global user.email "$GIT_EMAIL"
   fi
-  if [ -n "$STRAP_GITHUB_USER" ] &&
-    [ "$(git config --global github.user)" != "$STRAP_GITHUB_USER" ]; then
-    git config --global github.user "$STRAP_GITHUB_USER"
+  if [ -n "$GIT_USERNAME" ] &&
+    [ "$(git config --global github.user)" != "$GIT_USERNAME" ]; then
+    git config --global github.user "$GIT_USERNAME"
   fi
   # Set up GitHub HTTPS credentials
   # shellcheck disable=SC2086
-  if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then
+  if [ -n "$GIT_USERNAME" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then
     PROTOCOL="protocol=https\\nhost=github.com"
     printf "%s\\n" "$PROTOCOL" | git credential reject
     printf "%s\\nusername=%s\\npassword=%s\\n" \
-      "$PROTOCOL" "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" |
+      "$PROTOCOL" "$GIT_USERNAME" "$STRAP_GITHUB_TOKEN" |
       git credential approve
   else
     logskip "Skipping Git credential setup."
@@ -367,13 +367,13 @@ configure_git
 # Set up dotfiles
 # shellcheck disable=SC2086
 if [ ! -d "$HOME/.dotfiles" ]; then
-  if [ -z "$STRAP_DOTFILES_URL" ] || [ -z "$STRAP_DOTFILES_BRANCH" ]; then
-    abort "Please set STRAP_DOTFILES_URL and STRAP_DOTFILES_BRANCH."
+  if [ -z "$DOTFILES_URL" ] || [ -z "$DOTFILES_BRANCH" ]; then
+    abort "Please set DOTFILES_URL and DOTFILES_BRANCH."
   fi
-  log_no_sudo "Cloning $STRAP_DOTFILES_URL to $HOME/.dotfiles."
-  git clone $Q "$STRAP_DOTFILES_URL" "$HOME/.dotfiles"
+  log_no_sudo "Cloning $DOTFILES_URL to $HOME/.dotfiles."
+  git clone $Q "$DOTFILES_URL" "$HOME/.dotfiles"
 fi
-strap_dotfiles_branch_name="${STRAP_DOTFILES_BRANCH##*/}"
+strap_dotfiles_branch_name="${DOTFILES_BRANCH##*/}"
 log_no_sudo "Checking out $strap_dotfiles_branch_name in $HOME/.dotfiles."
 # shellcheck disable=SC2086
 (
@@ -482,9 +482,9 @@ run_brew_installs() {
     brew bundle check || brew bundle
     logk
   else
-    [ -z "$STRAP_DOTFILES_BRANCH" ] && STRAP_DOTFILES_BRANCH=HEAD
-    git_branch="${STRAP_DOTFILES_BRANCH##*/}"
-    github_user="${STRAP_GITHUB_USER:-br3ndonland}"
+    [ -z "$DOTFILES_BRANCH" ] && DOTFILES_BRANCH=HEAD
+    git_branch="${DOTFILES_BRANCH##*/}"
+    github_user="${GIT_USERNAME:-br3ndonland}"
     brewfile_domain="https://raw.githubusercontent.com"
     brewfile_path="$github_user/dotfiles/$git_branch/Brewfile"
     brewfile_url="$brewfile_domain/$brewfile_path"
