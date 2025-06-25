@@ -50,7 +50,7 @@ The following environment variables can be used to configure _bootstrap.sh_, and
 - `GIT_EMAIL`: email address to use for Git configuration. Will error and exit if not set.
 - `GIT_NAME`: name to use for Git configuration. Will error and exit if not set.
 - `GITHUB_USERNAME`: username on GitHub or other remote from which dotfiles repo will be cloned. Defaults to my GitHub username, so you should set this if you're not me.
-- `STRAP_DOTFILES_URL`: URL from which the dotfiles repo will be cloned. Defaults to `https://github.com/$GITHUB_USER/dotfiles`, but any [Git-compatible URL](https://www.git-scm.com/docs/git-clone#_git_urls) can be used, so long as it is accessible at the time the script runs.
+- `DOTFILES_URL`: URL from which the dotfiles repo will be cloned. Defaults to `https://github.com/$GITHUB_USER/dotfiles`, but any [Git-compatible URL](https://www.git-scm.com/docs/git-clone#_git_urls) can be used, so long as it is accessible at the time the script runs.
 - `DOTFILES_BRANCH`: Git branch to check out after cloning dotfiles repo. Defaults to `main`.
 
 There are some additional variables for advanced usage. Consult the _[bootstrap.sh](bootstrap.sh)_ script to see all supported variables.
