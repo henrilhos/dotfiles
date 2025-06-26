@@ -1,11 +1,11 @@
 # ghostty +show-config --default --docs
 # ghostty +list-themes
 
-#font-family                    = Symbols Nerd Font Mono
 font-family                    = Rec Mono Linear
 font-family-bold               = Rec Mono Linear Bold
 font-family-italic             = Rec Mono Linear Italic
 font-family-bold-italic        = Rec Mono Linear Bold Italic
+font-family                    = Symbols Nerd Font Mono
 
 font-feature                   = calt
 font-feature                   = liga
