@@ -4,14 +4,13 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Change left_option+hjkl to arrow keys",
-                        "enabled": false,
+                        "description": "Change right_command+hjkl to arrow keys",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
-                                        "mandatory": ["left_option"],
+                                        "mandatory": ["right_command"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -22,7 +21,7 @@
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
-                                        "mandatory": ["left_option"],
+                                        "mandatory": ["right_command"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -33,7 +32,7 @@
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
-                                        "mandatory": ["left_option"],
+                                        "mandatory": ["right_command"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -44,7 +43,7 @@
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
-                                        "mandatory": ["left_option"],
+                                        "mandatory": ["right_command"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -54,15 +53,19 @@
                         ]
                     },
                     {
-                        "description": "Open terminal",
-                        "enabled": false,
                         "manipulators": [
                             {
+                                "description": "Change caps_lock to command+control+option+shift.",
                                 "from": {
-                                    "key_code": "escape",
-                                    "modifiers": { "mandatory": ["left_command"] }
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a ghostty" }],
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
@@ -86,12 +89,6 @@
             ],
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "caps_lock" },
-                    "to": [{ "key_code": "left_control" }]
-                }
-            ],
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
