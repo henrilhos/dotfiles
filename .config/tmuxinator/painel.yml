@@ -1,0 +1,14 @@
+# /Users/henrilhos/.config/tmuxinator/painel.yml
+
+name: painel
+root: ~/PX-Center/px-painel
+
+windows:
+  - editor:
+      panes:
+        - editor:
+            - nvim
+  - server:
+      panes:
+        - server:
+            - npm run dev
