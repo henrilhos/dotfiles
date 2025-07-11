@@ -1,0 +1,18 @@
+# /Users/henrilhos/.config/tmuxinator/torre.yml
+
+name: torre
+root: ~/Projects/px-torre-core
+
+windows:
+  - editor:
+      panes:
+        - editor:
+            - nvim .
+  - claude:
+      panes:
+        - claude:
+            - claude
+  - server:
+      panes:
+        - server:
+            - sail up --build
