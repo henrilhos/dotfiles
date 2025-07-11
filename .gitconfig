@@ -44,7 +44,7 @@ status = false
 
 [core]
 commentchar = ";"
-editor = code --wait
+editor = nvim -f
 
 [credential]
 helper = osxkeychain

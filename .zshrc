@@ -10,8 +10,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 setopt prompt_subst autocd extendedglob globdots histignorespace noautomenu nullglob
 
-autoload -Uz compinit
-compinit
+# autoload -Uz compinit
+# compinit
 
 ### keybindings
 bindkey '^w' autosuggest-execute
@@ -143,7 +143,7 @@ alias sail='sh vendor/bin/sail'
 source <(starship init zsh)
 
 ### mise: https://mise.jdx.dev/
-source <(mise activate zsh)
+# source <(mise activate zsh)
 
 ### functions
 # ensure .zfunc is symlinked to $HOME/.zfunc
@@ -157,6 +157,18 @@ if type brew &>/dev/null && [[ -d $HOMEBREW_PREFIX ]]; then
 fi
 zstyle :compinstall filename $HOME/.zshrc
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+### env variables
+[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
+
+### java and android studio
+. ~/.asdf/plugins/java/set-java-home.zsh
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+### bat as manpage
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
 ### syntax highlighting
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

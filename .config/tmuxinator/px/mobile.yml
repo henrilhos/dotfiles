@@ -1,0 +1,18 @@
+# /Users/henrilhos/.config/tmuxinator/mobile.yml
+
+name: mobile
+root: ~/Projects/px-mobile-motorista
+
+windows:
+  - editor:
+      panes:
+        - editor:
+            - nvim .
+  - claude:
+      panes:
+        - claude:
+            - claude
+  - server:
+      panes:
+        - server:
+            - npm run start
