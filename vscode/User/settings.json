@@ -10,7 +10,7 @@
   "editor.detectIndentation": false,
   "editor.inlineSuggest.enabled": true,
   "editor.insertSpaces": true,
-  "editor.fontFamily": "'Rec Mono Linear', 'Dank Mono', 'Fira Code', monospace",
+  "editor.fontFamily": "'Rec Mono Linear', 'Symbols Nerd Font Mono', 'Dank Mono', 'Fira Code', monospace",
   "editor.fontLigatures": true,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
@@ -163,7 +163,7 @@
   "[dockerfile]": {
     "editor.formatOnSave": false
   },
-  "eslint.enable": false,
+  "eslint.enable": true,
   "go.survey.prompt": false,
   "go.toolsManagement.autoUpdate": false,
   "go.toolsManagement.checkForUpdates": "local",
