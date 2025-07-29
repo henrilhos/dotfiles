@@ -31,6 +31,10 @@ set --erase _asdf_shims
 
 fish_add_path $HOME/.config/bin # my custom scripts
 
+if test -f ~/.config/fish/secrets.fish
+    source ~/.config/fish/secrets.fish
+end
+
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
