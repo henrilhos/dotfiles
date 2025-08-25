@@ -1,0 +1,17 @@
+name: design system
+root: ~/Projects/px-design-system
+
+windows:
+  - editor:
+      panes:
+        - nvim .
+  - claude:
+      panes:
+        - claude
+  - server:
+      panes:
+        - server:
+            - npm run dev
+        - storybook:
+            - cd packages/docs && npm run storybook
+      layout: even-vertical

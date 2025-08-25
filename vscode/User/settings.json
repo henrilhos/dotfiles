@@ -283,5 +283,6 @@
   "editor.lineNumbers": "relative",
   "editor.cursorSurroundingLines": 8,
   "editor.cursorSurroundingLinesStyle": "all",
-  "workbench.iconTheme": "catppuccin-mocha"
+  "workbench.iconTheme": "catppuccin-mocha",
+  "editor.accessibilitySupport": "off"
 }
