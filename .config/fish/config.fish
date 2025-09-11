@@ -38,3 +38,6 @@ end
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# Created by `pipx` on 2025-09-04 22:43:16
+set PATH $PATH ~/.local/bin
