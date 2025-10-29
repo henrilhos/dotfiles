@@ -39,5 +39,14 @@ end
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
+set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
+set -Ux ANDROID_HOME $HOME/Library/Android/sdk
+
+fish_add_path $ANDROID_HOME/emulator
+fish_add_path $ANDROID_HOME/platform-tools
+
 # Created by `pipx` on 2025-09-04 22:43:16
 set PATH $PATH ~/.local/bin
+
+# opencode
+fish_add_path /Users/henrilhos/.opencode/bin

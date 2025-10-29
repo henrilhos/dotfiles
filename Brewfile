@@ -47,6 +47,7 @@ brew "jq"
 brew "lazydocker"
 brew "lazygit"
 # brew "libfido2"
+brew "luarocks"
 # brew "macos-trash" if OS.mac?
 brew "mas" if OS.mac?
 brew "media-info"
@@ -149,6 +150,7 @@ cask "visual-studio-code"
 cask "zen"
 # cask "zoom"
 # cask "zotero"
+cask "zulu@17"
 
 # mas "1password", id: 1333542190
 mas "1password for safari", id: 1569813296

@@ -30,14 +30,14 @@ This guide explains how to create pull requests using GitHub CLI in our project.
 
    ```bash
    # Basic command structure
-   gh pr create --title "feat(scope): Your descriptive title" --body "Your PR description" --base main --assignee @me --reviewer tchiteu,rayllandersotero,AbraoDaniel,edufigueiropx,Radke-PX,gustavoittner --draft
+   gh pr create --title "feat(scope): Your descriptive title" --body "Your PR description" --base main --assignee @me --reviewer AbraoDaniel,tchiteu --draft
    ```
 
    For more complex PR descriptions with proper formatting, use the `--body-file` option with the exact PR template structure:
 
    ```bash
    # Create PR with proper template structure
-   gh pr create --title "feat(scope): Your descriptive title" --body-file <(echo -e "## Issue\n\n- resolve:\n\n## Why is this change needed?\nYour description here.\n\n## What would you like reviewers to focus on?\n- Point 1\n- Point 2\n\n## Testing Verification\nHow you tested these changes.\n\n## What was done\npr_agent:summary\n\n## Detailed Changes\npr_agent:walkthrough\n\n## Additional Notes\nAny additional notes.") --base main --assignee @me --reviewer tchiteu,rayllandersotero,AbraoDaniel,edufigueiropx,Radke-PX,gustavoittner --draft
+   gh pr create --title "feat(scope): Your descriptive title" --body-file <(echo -e "## Issue\n\n- resolve:\n\n## Why is this change needed?\nYour description here.\n\n## What would you like reviewers to focus on?\n- Point 1\n- Point 2\n\n## Testing Verification\nHow you tested these changes.\n\n## What was done\npr_agent:summary\n\n## Detailed Changes\npr_agent:walkthrough\n\n## Additional Notes\nAny additional notes.") --base main --assignee @me --reviewer AbraoDaniel,tchiteu --draft
    ```
 
 ## Best Practices
