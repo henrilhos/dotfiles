@@ -15,6 +15,6 @@ windows:
   - server:
       panes:
         - server:
-            - npm run dev
+            - npm install && npm run dev
         -  # empty pane
       layout: main-vertical
