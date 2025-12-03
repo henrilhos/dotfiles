@@ -25,6 +25,7 @@ end
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
+# Android
 set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
 set -Ux ANDROID_HOME $HOME/Library/Android/sdk
 

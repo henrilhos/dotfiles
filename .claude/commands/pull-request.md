@@ -43,12 +43,14 @@ This guide explains how to create pull requests using GitHub CLI in our project.
 ## Best Practices
 
 1. **PR Title Format**: Use conventional commit format
+
    - Examples:
      - `feat(supabase): Add staging remote configuration`
      - `fix(auth): Fix login redirect issue`
      - `docs(readme): Update installation instructions`
 
 2. **Description Template**: Always use our PR template structure from @.github/pull_request_template.md:
+
    - 📋 Escopo
      - Descreva brevemente o que está sendo alterado neste PR
    - ⚠️ Problemas Conhecidos
@@ -63,6 +65,7 @@ This guide explains how to create pull requests using GitHub CLI in our project.
      - Identifique áreas/sistemas que podem ser impactados por estas mudanças
 
 3. **Template Accuracy**: Ensure your PR description precisely follows the template structure:
+
    - Keep all section headers exactly as they appear in the template
    - Don't add custom sections that aren't in the template
    - Write the PR description in Brazilian Portuguese
