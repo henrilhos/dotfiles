@@ -1,0 +1,20 @@
+# /Users/henrilhos/.config/tmuxinator/painel.yml
+
+name: falcon
+root: ~/Projects/px-falcon
+
+windows:
+  - editor:
+      panes:
+        - editor:
+            - nvim .
+  - claude:
+      panes:
+        - claude:
+            - claude
+  - server:
+      panes:
+        - server:
+            - export GITHUB_TOKEN=$(gh auth token) && npm install && npm run dev
+        -  # empty pane
+      layout: main-vertical
