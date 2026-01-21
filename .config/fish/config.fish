@@ -15,20 +15,6 @@ set -U fish_key_binding fish_vi_key_bindings
 set -Ux EDITOR nvim # 'neovim/neovim' text editor
 set -Ux FZF_DEFAULT_COMMAND "fd -H -E '.git'"
 
-# ASDF configuration code
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-set --erase _asdf_shims
-
 fish_add_path $HOME/.config/bin # my custom scripts
 
 if test -f ~/.config/fish/secrets.fish
@@ -50,3 +36,7 @@ set PATH $PATH ~/.local/bin
 
 # opencode
 fish_add_path /Users/henrilhos/.opencode/bin
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
