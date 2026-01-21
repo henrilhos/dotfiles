@@ -284,5 +284,9 @@
   "editor.cursorSurroundingLines": 8,
   "editor.cursorSurroundingLinesStyle": "all",
   "workbench.iconTheme": "catppuccin-mocha",
-  "editor.accessibilitySupport": "off"
+  "editor.accessibilitySupport": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "claudeCode.preferredLocation": "panel",
+  "vim.highlightedyank.enable": true,
+  "vim.useSystemClipboard": true
 }
