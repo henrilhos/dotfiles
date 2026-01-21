@@ -1,0 +1,14 @@
+# /Users/henrilhos/.config/tmuxinator/obsidian.yml
+
+name: obsidian
+root: ~/Library/Mobile Documents/iCloud~md~obsidian/Documents/notes
+
+windows:
+  - editor:
+    panes:
+      - editor:
+          - nvim .
+  - claude:
+    panes:
+      - claude:
+          - claude

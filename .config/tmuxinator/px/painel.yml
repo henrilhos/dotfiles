@@ -1,4 +1,4 @@
-# /Users/henrilhos/.config/tmuxinator/painel.yml
+# /Users/henrilhos/.config/tmuxinator/px/painel.yml
 
 name: painel
 root: ~/Projects/px-painel
@@ -15,6 +15,6 @@ windows:
   - server:
       panes:
         - server:
-            - npm install && npm run dev
+            - export GITHUB_TOKEN=$(gh auth token) && npm install && npm run dev
         -  # empty pane
       layout: main-vertical
