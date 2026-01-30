@@ -1,12 +1,20 @@
-# Create well-formatted commits with conventional commit messages.
+---
+allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*), Bash(git log:*)
+argument-hint: [message] | --no-verify | --amend
+description: Create well-formatted commits with conventional commit format
+---
 
-## Usage
+# Smart Git Commit
 
-To create a commit, just type:
+Create well-formatted commit: $ARGUMENTS
 
-```
-/commit
-```
+## Current Repository State
+
+- Git status: !`git status --porcelain`
+- Current branch: !`git branch --show-current`
+- Staged changes: !`git diff --cached --stat`
+- Unstaged changes: !`git diff --stat`
+- Recent commits: !`git log --oneline -5`
 
 ## What This Command Does
 
@@ -19,7 +27,6 @@ To create a commit, just type:
 
 ## Best Practices for Commits
 
-- **Verify before committing**: Ensure code is linted, builds correctly, and documentation is updated
 - **Atomic commits**: Each commit should contain related changes that serve a single purpose
 - **Split large changes**: If changes touch multiple concerns, split them into separate commits
 - **Conventional commit format**: Use the format `<type>: <description>` where type is one of:
@@ -78,6 +85,8 @@ Example of splitting commits:
 
 ## Command Options
 
+- `--no-verify`: Skip running the pre-commit checks (lint, build, generate:docs)
+
 ## Important Notes
 
 - If specific files are already staged, the command will only commit those files
@@ -86,3 +95,4 @@ Example of splitting commits:
 - Before committing, the command will review the diff to identify if multiple commits would be more appropriate
 - If suggesting multiple commits, it will help you stage and commit the changes separately
 - Always reviews the commit diff to ensure the message matches the changes
+
