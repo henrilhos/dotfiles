@@ -1,0 +1,46 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Secrets / certificates
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+.env.*
+
+# SSH — keep config and allowed_signers, ignore private keys and machine-specific files
+dotfiles/.ssh/id_*
+!dotfiles/.ssh/id_*.pub
+dotfiles/.ssh/known_hosts
+
+# GPG — keep gpg.conf and gpg-agent.conf, ignore everything else
+dotfiles/.gnupg/private-keys-v1.d/
+dotfiles/.gnupg/secring.gpg
+dotfiles/.gnupg/trustdb.gpg
+dotfiles/.gnupg/random_seed
+dotfiles/.gnupg/*.gpg
+dotfiles/.gnupg/S.*
+
+# Tmux plugins (managed by TPM) — keep tpm itself
+dotfiles/.config/tmux/plugins/*
+!dotfiles/.config/tmux/plugins/tpm
+
+# Bootstrap artifacts
+*.log
+backups/
