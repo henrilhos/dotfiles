@@ -1,0 +1,39 @@
+# ghostty +show-config --default --docs
+# ghostty +list-themes
+
+font-family                    = Rec Mono Linear
+font-family-bold               = Rec Mono Linear Bold
+font-family-italic             = Rec Mono Linear Italic
+font-family-bold-italic        = Rec Mono Linear Bold Italic
+font-family                    = Symbols Nerd Font Mono
+
+font-feature                   = calt
+font-feature                   = liga
+font-feature                   = ss13
+
+font-size                      = 14
+window-inherit-font-size       = true
+
+# Look and Feel
+adjust-cursor-thickness        = 3
+adjust-underline-position      = 3
+bold-is-bright                 = true
+cursor-invert-fg-bg            = true
+cursor-opacity                 = 0.8
+link-url                       = true
+mouse-hide-while-typing        = true
+theme                          = dark:Catppuccin Mocha,light:Catppuccin Latte
+window-vsync                   = true
+
+# Other
+clipboard-paste-protection     = true
+clipboard-trim-trailing-spaces = true
+confirm-close-surface          = false
+copy-on-select                 = true
+macos-auto-secure-input        = true
+macos-option-as-alt            = true
+macos-secure-input-indication  = true
+quit-after-last-window-closed  = true
+scrollback-limit               = 4200
+shell-integration              = fish
+shell-integration-features     = cursor,sudo,title
