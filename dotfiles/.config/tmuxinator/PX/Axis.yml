@@ -1,0 +1,19 @@
+name: Axis
+root: ~/Code/PX-Center/Axis
+
+windows:
+  - editor:
+      panes:
+        - editor:
+            - nvim .
+  - claude:
+      panes:
+        - claude:
+            - claude
+  - server:
+      panes:
+        - server:
+            - export GITHUB_TOKEN=$(gh auth token) && npm install && npm run dev
+        - storybook:
+            - npm run storybook
+      layout: even-vertical
