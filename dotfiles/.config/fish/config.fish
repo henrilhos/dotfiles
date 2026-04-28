@@ -37,3 +37,8 @@ function auto_venv --on-variable PWD
         deactivate 2>/dev/null
     end
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+export PATH="$HOME/.local/bin:$PATH"
