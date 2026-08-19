@@ -1,3 +1,6 @@
 [tools]
-java = "zulu-17"
-node = "lts"
+java = "openjdk-17"
+node = "24"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
