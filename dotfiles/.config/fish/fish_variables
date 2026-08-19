@@ -1,11 +1,11 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export ANDROID_HOME:/Users/henrilhos/Library/Android/sdk
+SETUVAR --export ANDROID_HOME:/Users/henrique\x2ecastilhos/Library/Android/sdk
 SETUVAR --export EDITOR:nvim
 SETUVAR --export FZF_DEFAULT_COMMAND:fd\x20\x2dH\x20\x2dE\x20\x27\x2egit\x27
-SETUVAR --export MISE_OVERRIDE_TOOL_VERSIONS_FILENAMES:none
+SETUVAR --export MISE_OVERRIDE_TOOL_VERSIONS_FILENAME:none
 SETUVAR __fish_initialized:4300
-SETUVAR _fisher_catppuccin_2F_fish_files:\x7e/\x2econfig/fish/themes/Catppuccin\x20Frappe\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Macchiato\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Mocha\x2etheme
+SETUVAR _fisher_catppuccin_2F_fish_files:\x7e/\x2econfig/fish/themes/catppuccin\x2dfrappe\x2etheme\x1e\x7e/\x2econfig/fish/themes/catppuccin\x2dmacchiato\x2etheme\x1e\x7e/\x2econfig/fish/themes/catppuccin\x2dmocha\x2etheme\x1e\x7e/\x2econfig/fish/themes/static
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_laughedelic_2F_pisces_files:\x7e/\x2econfig/fish/functions/_pisces_append\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_backspace\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_bind_pair\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_complete\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_insert_identical\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_insert_left\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_insert_right\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_jump\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_lookup\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_remove\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_should_insert\x2efish\x1e\x7e/\x2econfig/fish/functions/_pisces_skip\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/pisces\x2efish
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
@@ -13,6 +13,6 @@ SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ecatppuccin/fish\x1elaughedelic/pi
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_greeting:\x1d
 SETUVAR fish_key_binding:fish_vi_key_bindings
-SETUVAR fish_user_paths:/Users/henrilhos/Library/Android/sdk/platform\x2dtools\x1e/Users/henrilhos/Library/Android/sdk/emulator\x1e/Users/henrilhos/\x2econfig/bin
+SETUVAR fish_user_paths:/opt/homebrew/opt/libpq/bin\x1e/Users/henrique\x2ecastilhos/\x2econfig/bin
 SETUVAR pisces_only_insert_at_eol:1
 SETUVAR pisces_pairs:\x28\x2c\x29\x1e\x5b\x2c\x5d\x1e\x7b\x2c\x7d\x1e\x22\x2c\x22\x1e\x27\x2c\x27
