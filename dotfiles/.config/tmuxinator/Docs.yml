@@ -1,0 +1,8 @@
+name: Docs
+root: ~/Docs
+
+windows:
+  - editor:
+      panes:
+        - claude:
+            - claude --plugin-dir /Users/henrique.castilhos/Code/claude-obsidian
