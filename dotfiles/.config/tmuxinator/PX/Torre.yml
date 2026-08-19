@@ -1,5 +1,5 @@
-name: Painel
-root: ~/Code/PX-Center/Painel
+name: Torre
+root: ~/Code/PX-Center/Torre
 
 windows:
   - editor:
@@ -13,6 +13,6 @@ windows:
   - server:
       panes:
         - server:
-            - export GITHUB_TOKEN=$(gh auth token) && mise x -- npm install && mise x -- npm run dev
+            - sail up -d && sail artisan migrate && lazydocker
         -  # empty pane
       layout: main-vertical

@@ -1,3 +1,3 @@
 alias cd z
-alias ls "eza --icons"
+alias ls "eza --icons=auto"
 alias cat bat

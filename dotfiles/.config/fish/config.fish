@@ -9,17 +9,17 @@ set -U pisces_only_insert_at_eol 1
 
 set -Ux EDITOR nvim
 set -Ux FZF_DEFAULT_COMMAND "fd -H -E '.git'"
-set -Ux MISE_OVERRIDE_TOOL_VERSIONS_FILENAMES none
+set -Ux MISE_OVERRIDE_TOOL_VERSIONS_FILENAME none
 set -Ux ANDROID_HOME $HOME/Library/Android/sdk
 
 fish_add_path $HOME/.config/bin
 fish_add_path $ANDROID_HOME/emulator
 fish_add_path $ANDROID_HOME/platform-tools
 
-fish_config theme choose "Catppuccin Mocha"
+fish_config theme choose "catppuccin-mocha"
 
 if test -f $HOME/.config/fish/secrets.fish
-    source $HOME/.config/fish/secrets.fish
+	source $HOME/.config/fish/secrets.fish
 end
 
 # Mole shell completion

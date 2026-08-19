@@ -5,15 +5,15 @@ windows:
   - editor:
       panes:
         - editor:
+            - tmux set-window-option main-pane-width 65% && tmux select-layout main-vertical
             - nvim .
-  - claude:
-      panes:
         - claude:
             - claude
+      layout: main-vertical
   - server:
       panes:
         - server:
-            - export GITHUB_TOKEN=$(gh auth token) && npm install && npm run dev
+            - export GITHUB_TOKEN=$(gh auth token) && mise x -- npm install && mise x -- npm run dev
         - storybook:
-            - npm run storybook
+            - mise x -- npm run storybook
       layout: even-vertical
