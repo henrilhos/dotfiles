@@ -1,5 +1,20 @@
 return {
   {
+    "dracula-pro-vim",
+    dir = vim.fn.stdpath("config") .. "/dracula-pro-vim",
+    name = "dracula-pro-vim",
+    lazy = false,
+    priority = 1000,
+  },
+  {
+    "henrilhos/vs2026.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = {
+      variant = "faithful",
+    },
+  },
+  {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
@@ -54,8 +69,10 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      -- colorscheme = "dracula-pro-van-helsing",
+      -- colorscheme = "catppuccin-mocha",
       -- colorscheme = "catppuccin-latte",
+      colorscheme = "vs2026",
     },
   },
 }
