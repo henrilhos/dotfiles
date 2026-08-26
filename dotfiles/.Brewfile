@@ -118,8 +118,6 @@ cask "ghostty", args: { appdir: "/Applications" }
 cask "google-chrome"
 # Keyboard shortcuts for every button on your screen
 cask "homerow", args: { appdir: "/Applications" }
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2", args: { appdir: "/Applications" }
 # Keyboard customiser
 cask "karabiner-elements"
 # Meet, chat, call, and collaborate in just one place
