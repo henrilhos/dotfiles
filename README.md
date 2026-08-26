@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal machine configuration for macOS. This branch tracks one specific setup: fish shell, Neovim (LazyVim), tmux, Ghostty, and the Homebrew packages that go with them. Other branches (`main`, `arco-linux`, `regolith`) cover different machines and operating systems and share no history with this one, so do not expect a clean merge between them.
+Personal machine configuration for macOS: fish shell, Neovim (LazyVim), tmux, Ghostty, and the Homebrew packages that go with them. `arco-linux` and `regolith` cover other machines and operating systems and share no history with this branch, so do not expect a clean merge between them.
 
 ## Layout
 
@@ -13,7 +13,7 @@ Personal machine configuration for macOS. This branch tracks one specific setup:
 
 ```sh
 GIT_EMAIL="you@example.com" GIT_NAME="Your Name" GITHUB_USER="username" \
-  /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/macos/bootstrap.sh)"
+  /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/main/bootstrap.sh)"
 ```
 
 `GIT_NAME` and `GIT_EMAIL` are required, everything else has a default:
@@ -24,7 +24,7 @@ GIT_EMAIL="you@example.com" GIT_NAME="Your Name" GITHUB_USER="username" \
 | `GIT_EMAIL`          | none, required                              | Git commit author email                                              |
 | `GIT_USERNAME`       | `henrilhos`                                 | GitHub username, also used to build `DOTFILES_URL`                   |
 | `DOTFILES_URL`       | `https://github.com/$GIT_USERNAME/dotfiles` | Where to clone this repo from                                        |
-| `DOTFILES_BRANCH`    | `main`                                      | Branch to check out, set to `macos` for this one                     |
+| `DOTFILES_BRANCH`    | `main`                                      | Branch to check out                                                  |
 | `STRAP_GITHUB_TOKEN` | unset                                       | If set, stores GitHub HTTPS credentials via `git credential approve` |
 | `STRAP_ADMIN`        | detected from group membership              | Gates the macOS security and FileVault steps                         |
 
