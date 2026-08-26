@@ -71,6 +71,10 @@ LazyVim-based config under `dotfiles/.config/nvim`. `lazy-lock.json` pins exact 
 
 Settings and the cspell custom dictionary live in `vscode/User/`. `scripts/symlink.sh` links each file individually into `~/Library/Application Support/Code/User` (`~/.config/Code/User` on Linux) rather than symlinking the whole directory, since VSCode writes other machine-local state into that same folder. Add `keybindings.json` or `snippets/` here if they ever get customized — there's nothing to track yet since this setup still runs on VSCode's defaults for both. Extensions are tracked as `vscode "..."` lines in `dotfiles/.Brewfile` (installed via `brew bundle`), not as a separate list here — that used to be a second, easily-stale source of truth.
 
+## Karabiner
+
+`dotfiles/.config/karabiner/karabiner.json` remaps `right_command+hjkl` to arrow keys and caps lock to a hyper key (command+control+option+shift). It follows the same `dotfiles/` mirroring as everything else in `.config`.
+
 ## What is not synced
 
 `.gitconfig`'s `user.email` intentionally stays a personal address rather than whatever work email happens to be set locally on a given machine. This repo is public, and a work address does not belong in it. Check `git config --global user.email` on the machine if something looks off.
