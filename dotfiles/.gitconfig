@@ -95,8 +95,8 @@ gpgsign = true
 sort = -taggerdate:iso
 
 [user]
-name = Henrique de Castilhos
-email = hello@henrique.zip
+	name = Henrique de Castilhos
+	email = hello@henrique.zip
 signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDGIa977/ftf7GB5CJq0K/nP9aDgdKOPJeHMwjY0GHYN
 [credential "https://github.com"]
 	helper = 
