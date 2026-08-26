@@ -8,6 +8,7 @@ Personal machine configuration for macOS: fish shell, Neovim (LazyVim), tmux, Gh
 - `scripts/setup/` holds one script per concern (git, Homebrew, dotfiles, macOS security, FileVault, Xcode CLT).
 - `scripts/lib/` has the shared helpers those scripts source (logging, colors, sudo prompts, validation).
 - `dotfiles/` mirrors `$HOME`. `dotfiles/.config/fish/config.fish` on disk ends up at `~/.config/fish/config.fish`, and so on.
+- `vscode/User/` holds VSCode's settings and cspell dictionary — it lives outside `dotfiles/` because VSCode's user directory isn't under `$HOME` on macOS (`~/Library/Application Support/Code/User`). `scripts/symlink.sh` links it there separately from the `dotfiles/` walk.
 
 ## Running bootstrap
 
@@ -65,6 +66,10 @@ LazyVim-based config under `dotfiles/.config/nvim`. `lazy-lock.json` pins exact 
 ## SSH and GPG
 
 `.ssh/config` includes `~/.colima/ssh_config` and `~/.orbstack/ssh/config` unconditionally. Neither `Include` errors when the target file is missing, ssh just skips it, so the same config works whether this particular machine uses Colima, OrbStack, both, or neither. Git commit signing goes through 1Password's SSH agent (`gpg.format = ssh` in `.gitconfig`, `allowedsignersfile` pointing at `.ssh/allowed_signers`). GPG itself is only there for the odd thing that still wants a real PGP key.
+
+## VSCode
+
+Settings and the cspell custom dictionary live in `vscode/User/`. `scripts/symlink.sh` links each file individually into `~/Library/Application Support/Code/User` (`~/.config/Code/User` on Linux) rather than symlinking the whole directory, since VSCode writes other machine-local state into that same folder. Add `keybindings.json` or `snippets/` here if they ever get customized — there's nothing to track yet since this setup still runs on VSCode's defaults for both. Extensions are tracked as `vscode "..."` lines in `dotfiles/.Brewfile` (installed via `brew bundle`), not as a separate list here — that used to be a second, easily-stale source of truth.
 
 ## What is not synced
 

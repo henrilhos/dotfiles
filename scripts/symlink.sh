@@ -108,7 +108,41 @@ symlink_dotfiles() {
   log_to_file "INFO: Symlinked $count dotfile(s)"
 }
 
+symlink_vscode() {
+  local vscode_dir="$SCRIPT_DIR/vscode/User"
+  local target_dir
+
+  case "$(uname -s)" in
+    Darwin) target_dir="$HOME/Library/Application Support/Code/User" ;;
+    Linux) target_dir="$HOME/.config/Code/User" ;;
+    *)
+      logwarn "symlink_vscode only supports macOS and Linux."
+      return 1
+      ;;
+  esac
+
+  if [ ! -d "$vscode_dir" ]; then
+    logwarn "VSCode config directory not found: $vscode_dir"
+    return 1
+  fi
+
+  log_no_sudo "Creating symbolic links for VSCode settings..."
+
+  local count=0
+  while IFS= read -r -d '' item; do
+    local name
+    name=$(basename "$item")
+    create_symlink "$item" "$target_dir/$name"
+    ((count++))
+  done < <(find "$vscode_dir" -mindepth 1 -maxdepth 1 -print0)
+
+  log_no_sudo "Created $count VSCode symbolic link(s)."
+  logk
+  log_to_file "INFO: Symlinked $count VSCode setting(s)"
+}
+
 # Execute if run directly
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
   symlink_dotfiles
+  symlink_vscode
 fi
