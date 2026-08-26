@@ -15,6 +15,7 @@ set -Ux ANDROID_HOME $HOME/Library/Android/sdk
 fish_add_path $HOME/.config/bin
 fish_add_path $ANDROID_HOME/emulator
 fish_add_path $ANDROID_HOME/platform-tools
+fish_add_path /opt/homebrew/opt/libpq/bin
 
 fish_config theme choose "catppuccin-mocha"
 
