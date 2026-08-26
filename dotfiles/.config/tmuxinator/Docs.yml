@@ -5,4 +5,4 @@ windows:
   - editor:
       panes:
         - claude:
-            - claude --plugin-dir /Users/henrique.castilhos/Code/claude-obsidian
+            - claude --plugin-dir ~/Code/claude-obsidian
