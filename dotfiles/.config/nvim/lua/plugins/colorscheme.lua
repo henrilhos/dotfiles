@@ -1,12 +1,5 @@
 return {
   {
-    "dracula-pro-vim",
-    dir = vim.fn.stdpath("config") .. "/dracula-pro-vim",
-    name = "dracula-pro-vim",
-    lazy = false,
-    priority = 1000,
-  },
-  {
     "henrilhos/vs2026.nvim",
     lazy = true,
     priority = 1000,
