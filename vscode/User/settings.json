@@ -2,5 +2,8 @@
   "editor.accessibilitySupport": "off",
   "editor.minimap.enabled": false,
   "git.confirmSync": false,
-  "agents.voice.language": "pt"
+  "agents.voice.language": "pt",
+  "cSpell.enabledFileTypes": {
+    "markdown": true
+  },"cSpell.language": "en,pt,pt_BR",
 }
