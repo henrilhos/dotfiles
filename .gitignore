@@ -48,3 +48,6 @@ dotfiles/.config/fish/fish_variables
 # Bootstrap artifacts
 *.log
 backups/
+
+# gh — keep config.yml, ignore machine/account state (hosts.yml holds auth tokens)
+dotfiles/.config/gh/hosts.yml
