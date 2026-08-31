@@ -18,10 +18,10 @@ fish_add_path $ANDROID_HOME/emulator
 fish_add_path $ANDROID_HOME/platform-tools
 fish_add_path /opt/homebrew/opt/libpq/bin
 
-fish_config theme choose "catppuccin-mocha"
+fish_config theme choose catppuccin-mocha
 
 if test -f $HOME/.config/fish/secrets.fish
-	source $HOME/.config/fish/secrets.fish
+    source $HOME/.config/fish/secrets.fish
 end
 
 # Mole shell completion
