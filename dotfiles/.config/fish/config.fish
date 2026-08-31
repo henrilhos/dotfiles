@@ -11,6 +11,7 @@ set -Ux EDITOR nvim
 set -Ux FZF_DEFAULT_COMMAND "fd -H -E '.git'"
 set -Ux MISE_OVERRIDE_TOOL_VERSIONS_FILENAME none
 set -Ux ANDROID_HOME $HOME/Library/Android/sdk
+set -Ux HUSKY 0
 
 fish_add_path $HOME/.config/bin
 fish_add_path $ANDROID_HOME/emulator
@@ -43,3 +44,5 @@ end
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+fish_add_path (brew --prefix php@8.3)/bin
