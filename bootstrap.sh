@@ -34,7 +34,19 @@ if [ "$DIR" != "$HOME/.dotfiles" ]; then
   ln -sfn "$DIR" "$HOME/.dotfiles"
 fi
 
-echo "==> Step 4: move pre-existing dotfiles out of the way"
+echo "==> Step 4: preserve machine-local state that lives beside generated config"
+# gh writes its OAuth token to ~/.config/gh/hosts.yml, right next to the
+# config.yml home-manager generates. Step 5 unlinks ~/.config/gh, so stash the
+# token first and put it back afterwards, otherwise the switch silently logs
+# you out of gh.
+GH_HOSTS_BACKUP=""
+if [ -f "$HOME/.config/gh/hosts.yml" ]; then
+  GH_HOSTS_BACKUP="$(mktemp -t gh-hosts)"
+  cp "$HOME/.config/gh/hosts.yml" "$GH_HOSTS_BACKUP"
+  echo "    stashed gh auth token"
+fi
+
+echo "==> Step 5: move pre-existing dotfiles out of the way"
 # home-manager writes symlinks and will not clobber anything already sitting at
 # those paths. This clears out what the old bash setup linked there: symlinks
 # are removed, real files get a .before-nix suffix rather than aborting the run.
@@ -65,7 +77,7 @@ for path in \
   fi
 done
 
-echo "==> Step 5: first darwin-rebuild switch"
+echo "==> Step 6: first darwin-rebuild switch"
 # darwin-rebuild does not exist yet, so run it straight from the flake this
 # once. The tool comes from the nix-darwin-26.05 branch; the system it builds
 # is still pinned by this repo's flake.lock.
@@ -76,6 +88,14 @@ NIX_BIN="$(command -v nix)"
 sudo "$NIX_BIN" "${NIX_FLAGS[@]}" \
   run github:nix-darwin/nix-darwin/nix-darwin-26.05#darwin-rebuild -- \
   switch --flake "$HOME/.dotfiles#$HOST"
+
+if [ -n "$GH_HOSTS_BACKUP" ]; then
+  mkdir -p "$HOME/.config/gh"
+  cp "$GH_HOSTS_BACKUP" "$HOME/.config/gh/hosts.yml"
+  chmod 600 "$HOME/.config/gh/hosts.yml"
+  rm -f "$GH_HOSTS_BACKUP"
+  echo "==> Restored gh auth token"
+fi
 
 echo
 echo "==> Done."
