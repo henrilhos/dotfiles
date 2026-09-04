@@ -44,17 +44,13 @@
 
       # Terminal
       sesh
-      tmuxinator
-      yazi
 
       # Languages and toolchains. mise (modules/home/mise.nix) still owns node
       # and java; these are the ones that were pinned by Homebrew.
       php83
       php83Packages.composer
-      cocoapods
       watchman
       tree-sitter
-      markdownlint-cli
       k6
 
       # Build dependencies that were explicit in the Brewfile
@@ -66,10 +62,6 @@
       pkg-config
       re2c
 
-      # Misc
-      gnumeric
-      rtk
-      claude-code
     ]
     ++ [
       # The sesh picker, previously dotfiles/.config/bin/sesh_start.
@@ -99,6 +91,12 @@
         '';
       })
     ];
+
+  # markdownlint-cli2's config. The binary itself is a Homebrew formula (see
+  # modules/darwin/homebrew.nix) but the config still belongs here.
+  home.file.".markdownlint-cli2.yaml".source = (pkgs.formats.yaml { }).generate "markdownlint-cli2.yaml" {
+    config.MD013 = false; # no line-length limit
+  };
 
   fonts.fontconfig.enable = true;
 

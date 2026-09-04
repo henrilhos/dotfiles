@@ -53,6 +53,7 @@ echo "==> Step 5: move pre-existing dotfiles out of the way"
 for path in \
   "$HOME/.gitconfig" \
   "$HOME/.Brewfile" \
+  "$HOME/.markdownlint-cli2.yaml" \
   "$HOME/.config/bin" \
   "$HOME/.config/fish" \
   "$HOME/.config/gh" \

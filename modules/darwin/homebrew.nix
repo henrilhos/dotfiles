@@ -35,6 +35,16 @@
     brews = [
       "mole" # nixpkgs `mole` is meta.broken
       "fwojciec/tap/j4c" # not packaged in nixpkgs
+
+      # Homebrew wins on these: every one is both smaller and newer than the
+      # nixpkgs build. Sizes are the nixpkgs closure, versions are
+      # nixpkgs -> brew at the time of the move.
+      "cocoapods" # 863 MB, ruby closure; 1.16.2 -> 1.17.0
+      "gnumeric" # 1593 MB, drags in the whole GTK stack; 1.12.60 -> 1.12.61
+      "markdownlint-cli" # 1556 MB of node closure for a linter; 0.48.0 -> 0.49.1
+      "rtk" # 159 MB; 0.41.0 -> 0.47.0, and it moves fast
+      "tmuxinator" # 804 MB, ruby closure; 3.3.7 -> 3.4.1
+      "yazi" # 384 MB; 26.5.6 -> 26.9.1
     ];
 
     casks = [
@@ -43,6 +53,9 @@
       "ghostty"
 
       # Editors and dev tools
+      # claude-code ships near-daily; nixpkgs was 13 patches behind (2.1.223
+      # against 2.1.236) and cost 344 MB of node closure.
+      "claude-code"
       "visual-studio-code"
       "datagrip"
       "bruno"
