@@ -128,9 +128,9 @@ One ordering constraint survives the port and is worth knowing before editing
 `modules/home/tmux.nix`: `status-right` has to be assigned *after* catppuccin loads (it defines the
 `@catppuccin_status_*` variables) but *before* tmux-cpu and tmux-battery load, because those two work
 by text-replacing their placeholders inside the current `status-right` value. home-manager emits each
-plugin's `extraConfig` directly before that plugin's `run-shell`, so `status-right` is attached to
-the `cpu` entry. Moving it into the module's top-level `extraConfig` silently breaks the CPU and
-battery modules.
+plugin's `extraConfig` directly before that plugin's `run-shell`, and the module-level `extraConfig`
+after the whole plugin block — so `status-right` is attached to the `cpu` entry. Moving it into
+`extraConfig` silently breaks the CPU and battery modules.
 
 ## Signing
 

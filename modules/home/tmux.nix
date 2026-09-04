@@ -21,6 +21,11 @@ in
     mouse = true;
     terminal = "tmux-256color";
 
+    # The old tmux.conf never set this, but tmux infers vi from $EDITOR, and
+    # EDITOR is nvim. home-manager writes mode-keys explicitly and defaults to
+    # emacs, so leaving it out would quietly change copy-mode bindings.
+    keyMode = "vi";
+
     extraConfig = ''
       unbind r
       bind r source-file ~/.config/tmux/tmux.conf
@@ -66,12 +71,15 @@ in
       )\""
     '';
 
-    # Order matters, and home-manager emits each entry's extraConfig directly
-    # before that plugin's run-shell. That is the whole reason status-right is
-    # attached to `cpu` rather than set in extraConfig above: it has to be
-    # assigned *after* catppuccin defines @catppuccin_status_*, but *before*
-    # tmux-cpu and tmux-battery load, because those two work by text-replacing
-    # their placeholders inside the current status-right value.
+    # Order matters here. home-manager emits the plugins as one block, each
+    # entry's extraConfig directly before that plugin's run-shell, and puts the
+    # module-level extraConfig above *after* the whole block.
+    #
+    # That is why status-right is attached to `cpu` rather than set in
+    # extraConfig: it has to be assigned *after* catppuccin defines
+    # @catppuccin_status_*, but *before* tmux-cpu and tmux-battery load,
+    # because those two work by text-replacing their placeholders inside the
+    # current status-right value. Moving it out of here breaks both silently.
     plugins = with pkgs.tmuxPlugins; [
       sensible
       vim-tmux-navigator

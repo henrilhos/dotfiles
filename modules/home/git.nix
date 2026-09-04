@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.git = {
     enable = true;
@@ -70,19 +70,10 @@
         editor = "nvim -f";
       };
 
-      credential = {
-        helper = "osxkeychain";
-        # The empty first entry resets any inherited helper so gh is the only
-        # one consulted for these two hosts.
-        "https://github.com".helper = [
-          ""
-          "!${pkgs.gh}/bin/gh auth git-credential"
-        ];
-        "https://gist.github.com".helper = [
-          ""
-          "!${pkgs.gh}/bin/gh auth git-credential"
-        ];
-      };
+      # The per-host gh helpers for github.com and gist.github.com come from
+      # programs.gh.gitCredentialHelper, which is on by default — declaring them
+      # here too emits each one twice.
+      credential.helper = "osxkeychain";
 
       filter.lfs = {
         clean = "git-lfs clean -- %f";
