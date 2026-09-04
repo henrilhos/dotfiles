@@ -1,80 +1,150 @@
 # dotfiles
 
-Personal machine configuration for macOS: fish shell, Neovim (LazyVim), tmux, Ghostty, and the Homebrew packages that go with them. `arco-linux` and `regolith` cover other machines and operating systems and share no history with this branch, so do not expect a clean merge between them.
+Personal macOS configuration, built with [nix-darwin](https://github.com/nix-darwin/nix-darwin) and
+[home-manager](https://github.com/nix-community/home-manager): fish, Neovim (LazyVim), tmux, Ghostty,
+and the packages that go with them. `arco-linux` and `regolith` cover other machines and share no
+history with this branch, so do not expect a clean merge between them.
+
+The machine's state is a build artifact of this repo. `./rebuild.sh` reconciles `$HOME` and the
+system with whatever the `.nix` files here say, and `sudo darwin-rebuild --rollback` undoes it.
 
 ## Layout
 
-- `bootstrap.sh` runs the whole setup on a fresh machine.
-- `scripts/setup/` holds one script per concern (git, Homebrew, dotfiles, macOS security, FileVault, Xcode CLT).
-- `scripts/lib/` has the shared helpers those scripts source (logging, colors, sudo prompts, validation).
-- `dotfiles/` mirrors `$HOME`. `dotfiles/.config/fish/config.fish` on disk ends up at `~/.config/fish/config.fish`, and so on.
-- `vscode/User/` holds VSCode's settings and cspell dictionary — it lives outside `dotfiles/` because VSCode's user directory isn't under `$HOME` on macOS (`~/Library/Application Support/Code/User`). `scripts/symlink.sh` links it there separately from the `dotfiles/` walk.
+- `flake.nix` — inputs, pins, and the single `darwinConfigurations."Henriques-MacBook-Pro"` output.
+- `modules/darwin/` — system-level: macOS defaults, fonts, Touch ID sudo, Homebrew.
+- `modules/home/` — user-level, one file per tool. `default.nix` holds the package list and the
+  imports; everything else configures one program.
+- `modules/home/themes/` — colour palettes as data. `dark2026.nix` feeds both Ghostty and tmux;
+  `catppuccin-mocha.nix` feeds fish.
+- `config/` — the two things that are deliberately *not* generated. See below.
+- `bootstrap.sh` — fresh machine, run once.
+- `rebuild.sh` — everything after that.
 
-## Running bootstrap
+## Migration in progress
 
-```sh
-GIT_EMAIL="you@example.com" GIT_NAME="Your Name" GITHUB_USER="username" \
-  /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/main/bootstrap.sh)"
-```
+`dotfiles/`, `scripts/` and `vscode/User/settings.json` are the old bash setup and are still here on
+purpose: `$HOME` is currently symlinked into them, so deleting them before the first
+`darwin-rebuild switch` breaks the live shell, git and editor config. `./bootstrap.sh` clears those
+symlinks as part of the cutover. Delete the three once a switch has succeeded.
 
-`GIT_NAME` and `GIT_EMAIL` are required, everything else has a default:
-
-| Variable             | Default                                     | Purpose                                                              |
-| -------------------- | ------------------------------------------- | -------------------------------------------------------------------- |
-| `GIT_NAME`           | none, required                              | Git commit author name                                               |
-| `GIT_EMAIL`          | none, required                              | Git commit author email                                              |
-| `GIT_USERNAME`       | `henrilhos`                                 | GitHub username, also used to build `DOTFILES_URL`                   |
-| `DOTFILES_URL`       | `https://github.com/$GIT_USERNAME/dotfiles` | Where to clone this repo from                                        |
-| `DOTFILES_BRANCH`    | `main`                                      | Branch to check out                                                  |
-| `STRAP_GITHUB_TOKEN` | unset                                       | If set, stores GitHub HTTPS credentials via `git credential approve` |
-| `STRAP_ADMIN`        | detected from group membership              | Gates the macOS security and FileVault steps                         |
-
-The script is idempotent. Re-running it after editing a dotfile just relinks and reinstalls what changed.
-
-Admin-only steps (security defaults, FileVault) run only when the account is in the `admin` group and `STRAP_CI` is unset, so a CI run or a non-admin account skips them automatically instead of failing.
-
-## How the symlinks work
-
-`scripts/symlink.sh` walks `dotfiles/` one level deep. It links top-level files (`.gitconfig`, `.Brewfile`) straight to `$HOME`, and for top-level directories (`.config`, `.ssh`, `.gnupg`) it links their immediate children individually, so `dotfiles/.config/nvim` becomes one symlink at `~/.config/nvim`, not a tree of per-file links.
-
-In practice, on this machine none of that ran. The files under `dotfiles/` are plain copies kept in sync by hand (or by Claude, when asked). If you bootstrap a brand new Mac from this branch the symlinks will actually get created; on a machine that already existed before this repo did, expect to reconcile drift occasionally with a diff against `$HOME`.
-
-## Homebrew
-
-`.Brewfile` lists taps, formulae, casks, VS Code extensions, and the odd global npm package. `scripts/setup/homebrew.sh` prefers `$HOME/.Brewfile` if one exists and falls back to the copy inside the repo, which is what actually happens here.
-
-To regenerate it after installing or removing something:
+## Daily use
 
 ```sh
-brew bundle dump --file=dotfiles/.Brewfile --describe --force
+# edit any .nix file, then
+./rebuild.sh
 ```
 
-PHP's dependency chain (`libpng`, `krb5`, `libxml2`, `openssl@3`, and a handful of others) shows up as "installed on request" in Homebrew's own bookkeeping, not just as a transitive dependency. `brew bundle dump` will happily list every one of those as a top-level formula. That is real, current state, not noise, so the Brewfile is longer than the "I use six tools" mental model suggests.
+Before applying, it's worth building first — this touches nothing:
+
+```sh
+nix build '.#darwinConfigurations."Henriques-MacBook-Pro".system'
+```
+
+Updating pins:
+
+```sh
+nix flake update            # all inputs
+nix flake update nixpkgs    # just one
+```
+
+`nr`, `nu` and `nq` are fish abbreviations for rebuild, update, and opening this repo in Neovim.
+
+## Fresh machine
+
+```sh
+git clone https://github.com/henrilhos/dotfiles ~/.dotfiles
+cd ~/.dotfiles && ./bootstrap.sh
+```
+
+`bootstrap.sh` installs Nix if missing, moves the installer's `/etc/nix/nix.conf` aside so nix-darwin
+can own it, backs up any pre-existing dotfiles it would otherwise refuse to overwrite, then runs the
+first `darwin-rebuild switch` straight from the flake (`darwin-rebuild` doesn't exist yet at that
+point).
+
+Two things Nix can't do:
+
+- grant Karabiner-Elements its input-monitoring permission
+- sign in to 1Password and turn on its SSH agent, which git commit signing depends on
+
+## What is generated and what is not
+
+Almost everything is generated into the Nix store and symlinked read-only into place — editing
+`~/.config/fish/config.fish` directly will not survive a rebuild, and there is no longer a copy of it
+in this repo to edit. Change `modules/home/fish.nix` instead.
+
+Two exceptions, both under `config/`, linked with `mkOutOfStoreSymlink` so they stay writable:
+
+- `config/nvim/` — LazyVim writes `lazy-lock.json` and `lazyvim.json` in place. A store copy would
+  break `:Lazy sync`. Update plugins from inside Neovim; the lockfile change lands back in this repo.
+- `config/vscode/cspell.json` — the spell-checker extension appends to it when you pick "add word to
+  dictionary".
+
+## Packages
+
+Nixpkgs owns the CLI. Homebrew is down to GUI casks plus three things nixpkgs can't provide on
+`aarch64-darwin`, each for a checked reason:
+
+| Item | Why it stays Homebrew |
+| --- | --- |
+| `ghostty` | nixpkgs' `ghostty` has no darwin build |
+| `mole` | nixpkgs' `mole` is marked `meta.broken` |
+| `j4c` | not packaged in nixpkgs |
+
+Ghostty's *configuration* is still declarative (`modules/home/ghostty.nix`) — only the binary comes
+from the cask.
+
+`homebrew.onActivation.cleanup` is `"none"`, not `"zap"`. Zap uninstalls anything not listed in
+`modules/darwin/homebrew.nix`, which is the right end state but not while packages are still moving
+out of Homebrew. Flip it once the cask list is confirmed complete.
+
+The old `.Brewfile` listed PHP's dependency chain (`libpng`, `freetype`, `gettext`, `icu4c`, `gd`,
+`krb5`, `libzip`, `jpeg`, `libedit`, `libiconv`, `zlib`) as top-level formulae because
+`brew bundle dump` promotes anything "installed on request". Those are gone: under Nix they are
+closure dependencies of `php83` and never get named.
+
+Two VS Code extensions — cspell's bundled-dictionaries and Portuguese-Brazilian packs — have no
+nixpkgs attribute and stay marketplace installs. The other three are pinned in
+`modules/home/vscode.nix`.
 
 ## Fish
 
-`config.fish` sets `EDITOR`, `FZF_DEFAULT_COMMAND`, `ANDROID_HOME`, vi key bindings, and the pisces bracket-pairing config as universal variables on every launch. `~/.config/fish/fish_variables` is fish's own snapshot of that state plus fisher's plugin bookkeeping, and it is deliberately not tracked here. It bakes in the local username in absolute paths, so a copy taken on one Mac breaks quietly on another. `fish_plugins` is the real source of truth for which fisher plugins are installed; `fish_variables` regenerates itself the moment fish starts.
+`fisher` is gone. Plugins are pinned as flake inputs (`fzf-fish`, `pisces`) and installed by
+home-manager, so the ~30 vendored function files that used to be committed here no longer exist.
+`fishPlugins.fzf-fish` isn't used because nixpkgs marks it broken; the plugin source is taken
+directly instead.
 
-## Terminal and theme
+The Catppuccin Mocha colours are set as shell-local variables from
+`modules/home/themes/catppuccin-mocha.nix` rather than through `fish_config theme choose`, which
+writes into the untracked `fish_variables`.
 
-Ghostty and tmux both point at a `dark2026` theme file (`dotfiles/.config/ghostty/themes/dark2026.conf` and `dotfiles/.config/tmux/dark2026_tmux.conf`). The active theme line in each config is the one without a `#` in front of it, the commented-out lines below it are past themes kept around in case I want to switch back.
+`~/.config/fish/secrets.fish` is sourced if present and is deliberately never tracked.
 
-## Neovim
+## tmux
 
-LazyVim-based config under `dotfiles/.config/nvim`. `lazy-lock.json` pins exact plugin commits, update it with `:Lazy update` or `:Lazy sync` inside Neovim rather than editing it by hand.
+TPM is gone along with the 5.8 MB of vendored plugins. `programs.tmux.plugins` pulls them from
+nixpkgs instead.
 
-## SSH and GPG
+One ordering constraint survives the port and is worth knowing before editing
+`modules/home/tmux.nix`: `status-right` has to be assigned *after* catppuccin loads (it defines the
+`@catppuccin_status_*` variables) but *before* tmux-cpu and tmux-battery load, because those two work
+by text-replacing their placeholders inside the current `status-right` value. home-manager emits each
+plugin's `extraConfig` directly before that plugin's `run-shell`, so `status-right` is attached to
+the `cpu` entry. Moving it into the module's top-level `extraConfig` silently breaks the CPU and
+battery modules.
 
-`.ssh/config` includes `~/.colima/ssh_config` and `~/.orbstack/ssh/config` unconditionally. Neither `Include` errors when the target file is missing, ssh just skips it, so the same config works whether this particular machine uses Colima, OrbStack, both, or neither. Git commit signing goes through 1Password's SSH agent (`gpg.format = ssh` in `.gitconfig`, `allowedsignersfile` pointing at `.ssh/allowed_signers`). GPG itself is only there for the odd thing that still wants a real PGP key.
+## Signing
 
-## VSCode
+Commits are signed with SSH through 1Password's agent (`gpg.format = ssh`, `op-ssh-sign`), not GPG.
+`~/.ssh/allowed_signers` is generated from `modules/home/git.nix`. GPG is configured
+(`modules/home/gpg.nix`) only for the occasional thing that insists on a real PGP key.
 
-Settings and the cspell custom dictionary live in `vscode/User/`. `scripts/symlink.sh` links each file individually into `~/Library/Application Support/Code/User` (`~/.config/Code/User` on Linux) rather than symlinking the whole directory, since VSCode writes other machine-local state into that same folder. Add `keybindings.json` or `snippets/` here if they ever get customized — there's nothing to track yet since this setup still runs on VSCode's defaults for both. Extensions are tracked as `vscode "..."` lines in `dotfiles/.Brewfile` (installed via `brew bundle`), not as a separate list here — that used to be a second, easily-stale source of truth.
+`user.email` is deliberately the personal address, not whatever work email is set locally — this repo
+is public.
 
-## Karabiner
+## Rollback
 
-`dotfiles/.config/karabiner/karabiner.json` remaps `right_command+hjkl` to arrow keys and caps lock to a hyper key (command+control+option+shift). It follows the same `dotfiles/` mirroring as everything else in `.config`.
+```sh
+sudo darwin-rebuild --rollback
+```
 
-## What is not synced
-
-`.gitconfig`'s `user.email` intentionally stays a personal address rather than whatever work email happens to be set locally on a given machine. This repo is public, and a work address does not belong in it. Check `git config --global user.email` on the machine if something looks off.
+Older generations are under `/nix/var/nix/profiles/`.
