@@ -4,7 +4,7 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-HOST="Henriques-MacBook-Pro"
+HOST="tardis"
 NIX_FLAGS=(--extra-experimental-features 'nix-command flakes')
 
 echo "==> Step 1: Nix"

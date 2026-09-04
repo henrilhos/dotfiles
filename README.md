@@ -10,7 +10,7 @@ system with whatever the `.nix` files here say, and `sudo darwin-rebuild --rollb
 
 ## Layout
 
-- `flake.nix` — inputs, pins, and the single `darwinConfigurations."Henriques-MacBook-Pro"` output.
+- `flake.nix` — inputs, pins, and the single `darwinConfigurations.tardis` output.
 - `modules/darwin/` — system-level: macOS defaults, fonts, Touch ID sudo, Homebrew.
 - `modules/home/` — user-level, one file per tool. `default.nix` holds the package list and the
   imports; everything else configures one program.
@@ -37,7 +37,7 @@ symlinks as part of the cutover. Delete the three once a switch has succeeded.
 Before applying, it's worth building first — this touches nothing:
 
 ```sh
-nix build '.#darwinConfigurations."Henriques-MacBook-Pro".system'
+nix build '.#darwinConfigurations.tardis.system'
 ```
 
 Updating pins:

@@ -3,7 +3,7 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-HOST="Henriques-MacBook-Pro"
+HOST="tardis"
 
 if [ "$DIR" != "$HOME/.dotfiles" ]; then
   ln -sfn "$DIR" "$HOME/.dotfiles"

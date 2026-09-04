@@ -45,7 +45,7 @@
     let
       system = "aarch64-darwin";
       user = "henrilhos";
-      hostname = "Henriques-MacBook-Pro";
+      hostname = "tardis";
 
       # Escape hatch for anything the 26.05 release branch has not caught up on.
       unstable = import inputs.nixpkgs-unstable {
