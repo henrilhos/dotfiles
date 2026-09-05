@@ -12,6 +12,7 @@
     ~/.config/starship.toml: configs/starship/starship.toml
     ~/.config/nvim: configs/nvim
     ~/.config/ghostty/config: configs/ghostty/config
+    ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
 
 - shell:
   - command: git submodule sync --recursive && git submodule update --init --recursive

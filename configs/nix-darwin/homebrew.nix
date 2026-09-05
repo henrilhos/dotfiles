@@ -26,10 +26,12 @@
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
     casks = [
-      "ghostty"
-      "claude-code"
+      "ghostty" # terminal emulator
+      "claude-code" # Claude Code CLI
+      "arc" # browser
       "font-recursive-code" # main terminal/editor font
       "font-symbols-only-nerd-font" # icon glyphs (bufferline, statusline, etc.) layered on top
+      "karabiner-elements" # keyboard remapping (configs/karabiner/karabiner.json)
     ];
   };
 }
