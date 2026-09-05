@@ -1,3 +1,6 @@
 [submodule "submodules/dotbot"]
 	path = submodules/dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "submodules/dracula-pro-ghostty"]
+	path = submodules/dracula-pro-ghostty
+	url = git@github.com:dracula-pro/ghostty.git
