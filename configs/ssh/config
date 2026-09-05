@@ -1,0 +1,12 @@
+# ~/.ssh/config — managed by ~/dotfiles (configs/ssh/config)
+#
+# Route every SSH connection through 1Password's SSH agent instead of
+# ~/.ssh/id_*, so keys stay in 1Password's vault (biometric/Touch ID
+# unlock) rather than as unencrypted files on disk.
+#
+# Requires enabling it once inside the 1Password app itself (no CLI/
+# nix-darwin equivalent — it's an app-internal toggle):
+#   1Password > Settings > Developer > "Use the SSH agent"
+
+Host *
+  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
