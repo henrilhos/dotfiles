@@ -31,7 +31,6 @@
       "sesh"
       "starship"
       "tmux"
-      "tmuxinator"
       "zoxide"
     ];
 
