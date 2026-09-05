@@ -39,9 +39,25 @@ command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 # runtime versions, no dynamic env vars to track.
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh --shims)"
 
-# Open sesh's fzf picker straight from zsh (outside tmux, it just attaches
-# to/creates the session — no need to already be in one).
-command -v sesh >/dev/null 2>&1 && alias sc='sesh connect "$(sesh list --icons | fzf --ansi --height 40% --reverse --border-label " sesh " --border --prompt "⚡  ")"'
+# Alt-s opens sesh's fzf picker straight from zsh (outside tmux, connecting
+# just attaches to/creates the session — no need to already be in one).
+# https://github.com/joshmedeski/sesh#zsh-keybind
+if command -v sesh >/dev/null 2>&1; then
+  function sesh-sessions() {
+    {
+      exec </dev/tty
+      exec <&1
+      local session
+      session=$(sesh list --icons | fzf --ansi --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+      zle reset-prompt >/dev/null 2>&1 || true
+      [[ -z "$session" ]] && return
+      sesh connect "$session"
+    }
+  }
+  zle -N sesh-sessions
+  bindkey -M emacs '\es' sesh-sessions
+  bindkey -M viins '\es' sesh-sessions
+fi
 
 # Ghost suggestion from history as you type.
 [[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
