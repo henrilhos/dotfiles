@@ -16,9 +16,13 @@
     taps = [ ];
 
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
-    brews = [ ];
+    brews = [
+      "neovim" # provides the `nvim` command
+    ];
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
-    casks = [ ];
+    casks = [
+      "ghostty"
+    ];
   };
 }
