@@ -38,6 +38,7 @@
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
     casks = [
       "1password"
+      "1password-cli"
       "arc"
       "claude-code"
       "font-recursive-code"
