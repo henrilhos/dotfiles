@@ -29,3 +29,7 @@ command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd cd)"
 command -v fzf >/dev/null 2>&1 && eval "$(fzf --zsh)"
 command -v bat >/dev/null 2>&1 && alias cat='bat'
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
+# Open sesh's fzf picker straight from zsh (outside tmux, it just attaches
+# to/creates the session — no need to already be in one).
+command -v sesh >/dev/null 2>&1 && alias sc='sesh connect "$(sesh list --icons | fzf --ansi --height 40% --reverse --border-label " sesh " --border --prompt "⚡  ")"'
