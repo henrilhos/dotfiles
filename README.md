@@ -66,6 +66,9 @@ manage declaratively — done once by hand on a fresh machine:
   run `./install` again (Karabiner rewrites the file in place on launch,
   which breaks the dotbot symlink) and fully quit/relaunch the app to pick
   up the change.
+- **Docker (via Colima)** — Colima isn't a background service, so start
+  the VM once per login (or per reboot) with `colima start`; `docker` and
+  `docker compose`/`docker buildx` won't work until it's up.
 
 ## Day to day
 
