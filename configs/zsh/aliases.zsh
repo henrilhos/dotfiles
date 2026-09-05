@@ -33,7 +33,11 @@ if command -v fzf >/dev/null 2>&1; then
 fi
 command -v bat >/dev/null 2>&1 && alias cat='bat'
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
-command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
+# --shims instead of the full activate hook: a one-time PATH prepend
+# instead of a precmd hook that re-runs `mise hook-env` on every prompt
+# (measured ~12ms/prompt) — worth it since config.toml only pins plain
+# runtime versions, no dynamic env vars to track.
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh --shims)"
 
 # Open sesh's fzf picker straight from zsh (outside tmux, it just attaches
 # to/creates the session — no need to already be in one).
