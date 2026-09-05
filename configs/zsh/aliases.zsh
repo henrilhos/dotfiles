@@ -7,5 +7,13 @@
 
 alias ll='ls -lah'
 alias gs='git status'
+alias gc='git commit'
+alias ga='git add'
+alias gp='git push'
+alias gco='git checkout'
+alias c='clear'
+alias ..='cd ..'
+alias reload='source ~/.zshrc'
 
 command -v nvim >/dev/null 2>&1 && alias vim='nvim'
+command -v lazygit >/dev/null 2>&1 && alias lg='lazygit'
