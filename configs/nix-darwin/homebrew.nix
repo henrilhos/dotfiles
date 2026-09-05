@@ -6,11 +6,11 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      # "none" = don't remove anything not listed below. Once the lists
-      # below are the real source of truth for every brew/cask you use,
-      # you can switch this to "uninstall" (or "zap") to make brew state
-      # fully declarative.
-      cleanup = "none";
+      # "zap" = brew/cask state is now fully declarative: anything installed
+      # but not listed in `brews`/`casks` below gets removed on every
+      # `darwin-rebuild switch`, including a cask's app support files and
+      # preferences (the "zap" step), not just the app itself.
+      cleanup = "zap";
     };
 
     taps = [ ];
@@ -28,7 +28,8 @@
     casks = [
       "ghostty"
       "claude-code"
-      "font-jetbrains-mono-nerd-font" # icons for LazyVim's UI (bufferline, statusline, etc.)
+      "font-recursive-code" # main terminal/editor font
+      "font-symbols-only-nerd-font" # icon glyphs (bufferline, statusline, etc.) layered on top
     ];
   };
 }

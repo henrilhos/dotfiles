@@ -1,0 +1,14 @@
+# ~/.config/ghostty/config — managed by ~/dotfiles (configs/ghostty/config)
+# Full option reference: https://ghostty.org/docs/config/reference
+
+# Repeated `font-family` entries form a fallback chain: Ghostty renders each
+# glyph with the first font in the list that has it. Rec Mono Linear (the
+# "Linear" style of Recursive Code) covers normal text; Symbols Nerd Font
+# Mono fills in the icon glyphs (used by starship, LazyVim's
+# bufferline/statusline, etc.) that Recursive doesn't have. Confirmed via
+# `ghostty +list-fonts`; Recursive also ships Casual/Semicasual/Duotone
+# styles if you want a different feel later.
+font-family = "Rec Mono Linear"
+font-family = "Symbols Nerd Font Mono"
+
+font-size = 14
