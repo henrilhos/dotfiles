@@ -38,6 +38,9 @@
     # Finder: show hidden (dotfile) files.
     finder.AppleShowAllFiles = true;
 
+    # Screenshots go straight to the clipboard instead of saving a file.
+    screencapture.target = "clipboard";
+
     dock = {
       # Automatically hide and show the dock.
       autohide = true;
