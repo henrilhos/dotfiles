@@ -19,12 +19,16 @@
     brews = [
       "neovim" # provides the `nvim` command
       "starship" # shell prompt
+      "ripgrep" # required by LazyVim (telescope grep, live grep, etc.)
+      "fd" # required by LazyVim (telescope file finding)
+      "lazygit" # LazyVim's built-in git UI (<leader>gg)
     ];
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
     casks = [
       "ghostty"
       "claude-code"
+      "font-jetbrains-mono-nerd-font" # icons for LazyVim's UI (bufferline, statusline, etc.)
     ];
   };
 }

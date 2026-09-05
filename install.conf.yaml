@@ -10,6 +10,7 @@
     ~/.gitconfig: configs/git/gitconfig
     ~/.config/nix-darwin: configs/nix-darwin
     ~/.config/starship.toml: configs/starship/starship.toml
+    ~/.config/nvim: configs/nvim
 
 - shell:
   - command: git submodule sync --recursive && git submodule update --init --recursive
