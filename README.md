@@ -20,9 +20,9 @@ because it looked good in someone else's repo.
   [Dracula PRO](https://draculatheme.com/pro) colorscheme.
 - **[Ghostty](https://ghostty.org/)** — terminal, themed with the same
   Dracula PRO palette.
-- **Dracula** — `bat`, `git-delta`, `lazygit`, and `btop` use the free
-  [Dracula theme](https://draculatheme.com/); `starship` uses the private
-  Dracula PRO theme (another submodule, same pattern as Ghostty).
+- **Dracula** (free) — `bat`, `git-delta`, `lazygit`, and `btop` all use the
+  standard [Dracula theme](https://draculatheme.com/) for consistency with
+  the PRO-themed apps above.
 - **[Karabiner-Elements](https://karabiner-elements.pqrs.org/)** — remaps
   Caps Lock into a Hyper key (⌘⌃⌥⇧, tap for Escape), fixes the British
   keyboard's backtick position, and launches a few apps.
@@ -74,11 +74,9 @@ manage declaratively — done once by hand on a fresh machine:
 - `sudo darwin-rebuild switch` — apply any change under `configs/nix-darwin/`
   (Homebrew packages, macOS defaults, etc.).
 
-## Note on the Dracula PRO submodules
+## Note on the Dracula PRO submodule
 
-`submodules/dracula-pro-ghostty` and `submodules/dracula-pro-starship` point
-at private repos — Dracula PRO is a paid product. Cloning this repo works
-fine without access to them; you'll just be missing the Ghostty theme file
-(referenced via `config-file`) and `~/.config/starship.toml` (symlinked
-straight to the submodule, since starship has no include mechanism). No
-paid content is vendored into this repo itself.
+`submodules/dracula-pro-ghostty` points at a private repo — Dracula PRO is a
+paid product. Cloning this repo works fine without access to it; you'll just
+be missing that one file `configs/ghostty/config` references via
+`config-file`. No paid content is vendored into this repo itself.

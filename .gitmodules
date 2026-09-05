@@ -4,6 +4,3 @@
 [submodule "submodules/dracula-pro-ghostty"]
 	path = submodules/dracula-pro-ghostty
 	url = git@github.com:dracula-pro/ghostty.git
-[submodule "submodules/dracula-pro-starship"]
-	path = submodules/dracula-pro-starship
-	url = git@github.com:dracula-pro/starship.git

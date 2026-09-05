@@ -15,7 +15,7 @@
     ~/.config/git/ignore: configs/git/gitignore
     ~/.config/git/allowed_signers: configs/git/allowed_signers
     ~/.config/nix-darwin: configs/nix-darwin
-    ~/.config/starship.toml: submodules/dracula-pro-starship/starship/starship.toml
+    ~/.config/starship.toml: configs/starship/starship.toml
     ~/.config/nvim: configs/nvim
     ~/.config/ghostty/config: configs/ghostty/config
     ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
