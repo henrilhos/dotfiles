@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "${BASEDIR}"
+
+python3 "${BASEDIR}/submodules/dotbot/bin/dotbot" -d "${BASEDIR}" -c "install.conf.yaml" "${@}"

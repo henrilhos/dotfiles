@@ -1,0 +1,15 @@
+# ~/.zshrc — managed by ~/dotfiles (configs/zsh/zshrc)
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+
+# Basic prompt (replace with starship later if you want)
+PROMPT='%F{cyan}%~%f %# '
+
+# Aliases
+alias ll='ls -lah'
+alias gs='git status'

@@ -1,0 +1,12 @@
+[user]
+	name = Henrique
+	email = henriquedecastilhos@gmail.com
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[core]
+	editor = nano

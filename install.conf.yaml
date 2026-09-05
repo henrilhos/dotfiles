@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      backup: true
+
+- link:
+    ~/.zshrc: configs/zsh/zshrc
+    ~/.gitconfig: configs/git/gitconfig
+
+- shell:
+  - command: git submodule sync --recursive && git submodule update --init --recursive
+    stdout: true
+    stderr: true
