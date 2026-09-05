@@ -9,11 +9,13 @@
     ~/.zprofile: configs/zsh/zprofile
     ~/.gitconfig: configs/git/gitconfig
     ~/.config/git/ignore: configs/git/gitignore
+    ~/.config/git/allowed_signers: configs/git/allowed_signers
     ~/.config/nix-darwin: configs/nix-darwin
     ~/.config/starship.toml: configs/starship/starship.toml
     ~/.config/nvim: configs/nvim
     ~/.config/ghostty/config: configs/ghostty/config
     ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
+    ~/.ssh/config: configs/ssh/config
 
 - shell:
   - command: git submodule sync --recursive && git submodule update --init --recursive
