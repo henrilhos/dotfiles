@@ -29,6 +29,8 @@
       "neovim"
       "ripgrep"
       "starship"
+      "tmux"
+      "tmuxinator"
       "zoxide"
     ];
 
