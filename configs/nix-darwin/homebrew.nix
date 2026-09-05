@@ -17,9 +17,12 @@
 
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
+      "bat"
+      "direnv"
       "eza"
       "fd"
       "fzf"
+      "git-delta"
       "lazygit"
       "neovim"
       "ripgrep"

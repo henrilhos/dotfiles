@@ -12,6 +12,7 @@ alias ga='git add'
 alias gp='git push'
 alias gco='git checkout'
 alias c='clear'
+alias e='exit'
 alias ..='cd ..'
 alias reload='source ~/.zshrc'
 
@@ -26,3 +27,5 @@ fi
 
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd cd)"
 command -v fzf >/dev/null 2>&1 && eval "$(fzf --zsh)"
+command -v bat >/dev/null 2>&1 && alias cat='bat'
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"

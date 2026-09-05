@@ -9,4 +9,11 @@
 	rebase = false
 
 [core]
-	editor = vim
+	editor = nvim
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
