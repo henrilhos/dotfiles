@@ -16,6 +16,7 @@
         modules = [
           ./configuration.nix
           ./homebrew.nix
+          ./macos.nix
           { system.primaryUser = "henrilhos"; }
         ];
       };
