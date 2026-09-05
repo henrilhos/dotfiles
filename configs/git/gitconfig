@@ -23,6 +23,9 @@
 [include]
 	path = ~/dotfiles/configs/git/dracula-delta.gitconfig
 
+[includeIf "gitdir:~/work/"]
+	path = ~/dotfiles/configs/git/work.gitconfig
+
 [gpg]
 	format = ssh
 
