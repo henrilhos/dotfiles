@@ -13,7 +13,7 @@ font-family = "Symbols Nerd Font Mono"
 
 font-size = 14
 
-# Dracula PRO (Van Helsing variant). Kept out of this repo as a git
+# Dracula PRO (default variant). Kept out of this repo as a git
 # submodule (submodules/dracula-pro-ghostty) since it's paid/private
 # content — `config-file` just includes the palette values from there.
-config-file = ~/dotfiles/submodules/dracula-pro-ghostty/van-helsing
+config-file = ~/dotfiles/submodules/dracula-pro-ghostty/pro
