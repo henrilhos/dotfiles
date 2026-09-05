@@ -42,6 +42,7 @@
       "ghostty"
       "karabiner-elements"
       "raycast"
+      "rectangle"
       "spotify"
     ];
   };

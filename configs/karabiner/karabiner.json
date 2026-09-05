@@ -37,6 +37,35 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "description": "Hyper key app launchers",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
+                                },
+                                "to": [ { "shell_command": "open -a 'Arc'" } ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
+                                },
+                                "to": [ { "shell_command": "open -a 'Ghostty'" } ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
+                                },
+                                "to": [ { "shell_command": "open -a 'Spotify'" } ]
+                            }
+                        ]
                     }
                 ]
             },

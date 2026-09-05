@@ -77,6 +77,36 @@
         };
       };
     };
+
+    # Rectangle window snapping, bound to the Hyper key (⌘⌃⌥⇧, see
+    # Karabiner) instead of Rectangle's own defaults. Action names and the
+    # `defaults write ... -dict-add keyCode -float X modifierFlags -float Y`
+    # format are documented at
+    # https://github.com/rxhanson/Rectangle/blob/master/TerminalCommands.md
+    # keyCode values are standard macOS virtual keycodes (H=4, J=38, K=40,
+    # L=37, M=46); modifierFlags 1966080 = cmd+ctrl+opt+shift (Hyper).
+    CustomUserPreferences."com.knollsoft.Rectangle" = {
+      maximize = {
+        keyCode = 46.0;
+        modifierFlags = 1966080.0;
+      };
+      leftHalf = {
+        keyCode = 4.0;
+        modifierFlags = 1966080.0;
+      };
+      bottomHalf = {
+        keyCode = 38.0;
+        modifierFlags = 1966080.0;
+      };
+      topHalf = {
+        keyCode = 40.0;
+        modifierFlags = 1966080.0;
+      };
+      rightHalf = {
+        keyCode = 37.0;
+        modifierFlags = 1966080.0;
+      };
+    };
   };
 
   # Allow `sudo` to be satisfied with Touch ID instead of typing a password.
