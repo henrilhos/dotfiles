@@ -7,7 +7,11 @@ SAVEHIST=10000
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 
-# Basic prompt (replace with starship later if you want)
-PROMPT='%F{cyan}%~%f %# '
-
 source ~/dotfiles/configs/zsh/aliases.zsh
+
+# Prompt
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+else
+  PROMPT='%F{cyan}%~%f %# '
+fi

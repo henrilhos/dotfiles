@@ -18,11 +18,13 @@
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
       "neovim" # provides the `nvim` command
+      "starship" # shell prompt
     ];
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
     casks = [
       "ghostty"
+      "claude-code"
     ];
   };
 }

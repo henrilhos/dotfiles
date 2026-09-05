@@ -9,6 +9,7 @@
     ~/.zprofile: configs/zsh/zprofile
     ~/.gitconfig: configs/git/gitconfig
     ~/.config/nix-darwin: configs/nix-darwin
+    ~/.config/starship.toml: configs/starship/starship.toml
 
 - shell:
   - command: git submodule sync --recursive && git submodule update --init --recursive

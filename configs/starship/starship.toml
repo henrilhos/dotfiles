@@ -1,0 +1,5 @@
+# ~/.config/starship.toml — managed by ~/dotfiles (configs/starship/starship.toml)
+# Full option reference: https://starship.rs/config/
+# Starting with defaults — customize modules here as you find what you want.
+
+add_newline = false
