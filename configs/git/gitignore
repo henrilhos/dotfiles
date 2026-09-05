@@ -1,0 +1,19 @@
+# ~/.config/git/ignore — managed by ~/dotfiles (configs/git/gitignore)
+# Global excludes, applied on top of every repo's own .gitignore. Git picks
+# this file up automatically from $XDG_CONFIG_HOME/git/ignore, no
+# core.excludesfile setting needed. Keep this to things that are never
+# wanted in ANY repo — project-specific ignores (node_modules, .env, build/)
+# still belong in each repo's own .gitignore.
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor swap/backup files (vim/neovim)
+*.swp
+*.swo
+*~
+
+# direnv
+.direnv/

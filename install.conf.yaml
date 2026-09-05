@@ -8,6 +8,7 @@
     ~/.zshrc: configs/zsh/zshrc
     ~/.zprofile: configs/zsh/zprofile
     ~/.gitconfig: configs/git/gitconfig
+    ~/.config/git/ignore: configs/git/gitignore
     ~/.config/nix-darwin: configs/nix-darwin
     ~/.config/starship.toml: configs/starship/starship.toml
     ~/.config/nvim: configs/nvim

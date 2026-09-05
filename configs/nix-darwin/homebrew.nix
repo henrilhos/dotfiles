@@ -17,21 +17,24 @@
 
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
-      "neovim" # provides the `nvim` command
-      "starship" # shell prompt
-      "ripgrep" # required by LazyVim (telescope grep, live grep, etc.)
-      "fd" # required by LazyVim (telescope file finding)
-      "lazygit" # LazyVim's built-in git UI (<leader>gg)
+      "fd"
+      "lazygit"
+      "neovim"
+      "ripgrep"
+      "starship"
     ];
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
     casks = [
-      "ghostty" # terminal emulator
-      "claude-code" # Claude Code CLI
-      "arc" # browser
-      "font-recursive-code" # main terminal/editor font
-      "font-symbols-only-nerd-font" # icon glyphs (bufferline, statusline, etc.) layered on top
-      "karabiner-elements" # keyboard remapping (configs/karabiner/karabiner.json)
+      "1password"
+      "arc"
+      "claude-code"
+      "font-recursive-code"
+      "font-symbols-only-nerd-font"
+      "ghostty"
+      "karabiner-elements"
+      "raycast"
+      "spotify"
     ];
   };
 }
