@@ -13,6 +13,11 @@ font-family = "Symbols Nerd Font Mono"
 
 font-size = 14
 
+# Right Option sends Alt/Meta (so zsh's `\eX` keybinds like sesh's Alt-s
+# work); left Option is left alone so accented chars (á, ã, ç, ...) still
+# compose normally. https://ghostty.org/docs/config/reference#macos-option-as-alt
+macos-option-as-alt = right
+
 # Dracula PRO (default variant). Kept out of this repo as a git
 # submodule (submodules/dracula-pro-ghostty) since it's paid/private
 # content — `config-file` just includes the palette values from there.
