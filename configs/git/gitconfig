@@ -1,6 +1,6 @@
 [user]
-	name = Henrique
-	email = henriquedecastilhos@gmail.com
+	name = Henrique de Castilhos
+	email = hello@henrique.zip
 
 [init]
 	defaultBranch = main
@@ -9,4 +9,4 @@
 	rebase = false
 
 [core]
-	editor = nano
+	editor = vim
