@@ -17,11 +17,14 @@
 
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
+      "eza"
       "fd"
+      "fzf"
       "lazygit"
       "neovim"
       "ripgrep"
       "starship"
+      "zoxide"
     ];
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".

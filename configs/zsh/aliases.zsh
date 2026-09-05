@@ -17,3 +17,12 @@ alias reload='source ~/.zshrc'
 
 command -v nvim >/dev/null 2>&1 && alias vim='nvim'
 command -v lazygit >/dev/null 2>&1 && alias lg='lazygit'
+
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza'
+  alias ll='eza -lah'
+  alias lt='eza --tree'
+fi
+
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd cd)"
+command -v fzf >/dev/null 2>&1 && eval "$(fzf --zsh)"
