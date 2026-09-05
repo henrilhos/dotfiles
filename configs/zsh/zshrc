@@ -10,6 +10,4 @@ setopt HIST_IGNORE_DUPS
 # Basic prompt (replace with starship later if you want)
 PROMPT='%F{cyan}%~%f %# '
 
-# Aliases
-alias ll='ls -lah'
-alias gs='git status'
+source ~/dotfiles/configs/zsh/aliases.zsh
