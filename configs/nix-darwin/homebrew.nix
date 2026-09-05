@@ -27,12 +27,15 @@
       "git-delta"
       "lazygit"
       "mise"
+      "mole"
       "neovim"
       "ripgrep"
       "sesh"
       "starship"
       "tmux"
       "zoxide"
+      "zsh-autosuggestions"
+      "zsh-syntax-highlighting"
     ];
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".

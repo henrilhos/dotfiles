@@ -42,3 +42,12 @@ command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh --shims)"
 # Open sesh's fzf picker straight from zsh (outside tmux, it just attaches
 # to/creates the session — no need to already be in one).
 command -v sesh >/dev/null 2>&1 && alias sc='sesh connect "$(sesh list --icons | fzf --ansi --height 40% --reverse --border-label " sesh " --border --prompt "⚡  ")"'
+
+# Ghost suggestion from history as you type.
+[[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Must be sourced last: it wraps zle widgets, so anything defining widgets
+# after this point won't get highlighted.
+[[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] &&
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
