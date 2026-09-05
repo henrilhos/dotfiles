@@ -23,6 +23,7 @@
       "eza"
       "fd"
       "fzf"
+      "gh"
       "git-delta"
       "lazygit"
       "neovim"
