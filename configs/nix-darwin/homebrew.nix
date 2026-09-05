@@ -58,4 +58,13 @@
       "spotify"
     ];
   };
+
+  # Start the Colima VM at login, without Docker Desktop.
+  launchd.user.agents.colima = {
+    command = "/opt/homebrew/bin/colima start";
+    serviceConfig = {
+      RunAtLoad = true;
+      EnvironmentVariables.PATH = "/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+    };
+  };
 }
