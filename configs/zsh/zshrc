@@ -11,6 +11,26 @@ setopt HIST_IGNORE_SPACE     # leading space = don't record (secrets, one-offs)
 setopt HIST_REDUCE_BLANKS
 setopt HIST_VERIFY           # expand !! etc. into the prompt instead of running immediately
 
+# ↑/↓ filter history by what's already typed on the line, not just linear recall
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
+# Completion — cache the dump and skip compinit's security audit on days it
+# hasn't changed, so it doesn't cost a stat() of every file in $fpath.
+autoload -Uz compinit
+_zcompdump=~/.zcompdump
+if [[ -n $_zcompdump(#qN.mh+24) ]]; then
+  compinit -d "$_zcompdump"
+else
+  compinit -C -d "$_zcompdump"
+fi
+unset _zcompdump
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
 source ~/dotfiles/configs/zsh/aliases.zsh
 
 # Prompt
