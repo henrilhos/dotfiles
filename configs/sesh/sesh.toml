@@ -2,11 +2,21 @@
 # Full reference: https://github.com/joshmedeski/sesh#configuration
 #
 # Named sessions here show up in `sesh connect`/the fzf popup (prefix + T,
-# or `sc` outside tmux) alongside plain tmux/zoxide results. Add a
-# [[wildcard]] block once there's an actual projects directory convention —
-# no point guessing one now.
+# or `sc` outside tmux) alongside plain tmux/zoxide results.
 
 [[session]]
 name = "dotfiles"
 path = "~/dotfiles"
 startup_command = "nvim"
+
+# Personal projects.
+[[wildcard]]
+pattern = "~/projects/*"
+startup_command = "nvim"
+icon = "🌱"
+
+# Work projects, kept in a separate directory from personal ones.
+[[wildcard]]
+pattern = "~/work/*"
+startup_command = "nvim"
+icon = "💼"
