@@ -18,6 +18,7 @@
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
       "bat"
+      "btop"
       "direnv"
       "eza"
       "fd"
