@@ -2,10 +2,14 @@
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
+HISTSIZE=50000
+SAVEHIST=50000
+setopt EXTENDED_HISTORY      # save timestamp + duration
+setopt SHARE_HISTORY         # sync across sessions as commands run — key for tmux panes
+setopt HIST_IGNORE_ALL_DUPS  # dedupe across the whole file, not just consecutive runs
+setopt HIST_IGNORE_SPACE     # leading space = don't record (secrets, one-offs)
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY           # expand !! etc. into the prompt instead of running immediately
 
 source ~/dotfiles/configs/zsh/aliases.zsh
 
