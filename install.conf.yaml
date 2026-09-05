@@ -23,6 +23,7 @@
     ~/.hushlogin: configs/shell/hushlogin
     ~/.tmux.conf: configs/tmux/tmux.conf
     ~/.config/sesh/sesh.toml: configs/sesh/sesh.toml
+    ~/.config/mise/config.toml: configs/mise/config.toml
 
 - shell:
   - command: git submodule sync --recursive && git submodule update --init --recursive

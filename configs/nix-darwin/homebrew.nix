@@ -26,6 +26,7 @@
       "gh"
       "git-delta"
       "lazygit"
+      "mise"
       "neovim"
       "ripgrep"
       "sesh"

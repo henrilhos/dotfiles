@@ -1,0 +1,6 @@
+# ~/.config/mise/config.toml — managed by ~/dotfiles (configs/mise/config.toml)
+# Global runtime versions. Per-project overrides go in that project's own
+# .mise.toml / .tool-versions, not here.
+
+[tools]
+node = "lts"
