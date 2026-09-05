@@ -17,3 +17,5 @@
 
 # direnv
 .direnv/
+
+**/.claude/settings.local.json
