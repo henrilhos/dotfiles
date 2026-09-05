@@ -16,6 +16,7 @@
     ~/.config/ghostty/config: configs/ghostty/config
     ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
     ~/.ssh/config: configs/ssh/config
+    ~/.hushlogin: configs/shell/hushlogin
 
 - shell:
   - command: git submodule sync --recursive && git submodule update --init --recursive
