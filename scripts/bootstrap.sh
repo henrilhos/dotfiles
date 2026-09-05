@@ -86,9 +86,17 @@ log "Running ./install..."
 
 # --- 6. Apply nix-darwin config, if present ---
 if [[ -f "$DOTFILES_DIR/configs/nix-darwin/flake.nix" ]]; then
+  # /etc/nix-darwin/flake.nix, if present, is what darwin-rebuild uses by
+  # default when called with no --flake — set it up once so every future
+  # `darwin-rebuild switch` needs no arguments.
+  if [[ ! -e /etc/nix-darwin ]]; then
+    log "Linking /etc/nix-darwin -> $DOTFILES_DIR/configs/nix-darwin ..."
+    sudo ln -s "$DOTFILES_DIR/configs/nix-darwin" /etc/nix-darwin
+  fi
+
   if command -v darwin-rebuild >/dev/null 2>&1; then
     log "Applying nix-darwin config (darwin-rebuild switch)..."
-    darwin-rebuild switch --flake "$DOTFILES_DIR/configs/nix-darwin"
+    darwin-rebuild switch
   else
     log "Applying nix-darwin config for the first time (nix run nix-darwin -- switch)..."
     nix run nix-darwin -- switch --flake "$DOTFILES_DIR/configs/nix-darwin"
