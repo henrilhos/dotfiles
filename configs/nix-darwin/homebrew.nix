@@ -19,7 +19,11 @@
     brews = [
       "bat"
       "btop"
+      "colima"
       "direnv"
+      "docker"
+      "docker-buildx"
+      "docker-compose"
       "eza"
       "fd"
       "fzf"
