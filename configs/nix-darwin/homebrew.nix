@@ -28,6 +28,7 @@
       "lazygit"
       "neovim"
       "ripgrep"
+      "sesh"
       "starship"
       "tmux"
       "tmuxinator"
