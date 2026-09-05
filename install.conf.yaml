@@ -8,6 +8,7 @@
     ~/.zshrc: configs/zsh/zshrc
     ~/.zprofile: configs/zsh/zprofile
     ~/.gitconfig: configs/git/gitconfig
+    ~/.config/nix-darwin: configs/nix-darwin
 
 - shell:
   - command: git submodule sync --recursive && git submodule update --init --recursive
