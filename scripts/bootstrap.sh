@@ -68,7 +68,18 @@ else
   log "Nix already installed."
 fi
 
-# --- 4. Get the dotfiles repo on disk ---
+# --- 4. Trust GitHub's SSH host key (needed before any git@github.com
+# clone — a fresh machine has no ~/.ssh/known_hosts yet, which makes SSH
+# refuse non-interactively instead of prompting) ---
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+if ! ssh-keygen -F github.com >/dev/null 2>&1; then
+  log "Adding GitHub's SSH host key to known_hosts..."
+  ssh-keyscan -t ed25519 github.com >>"$HOME/.ssh/known_hosts" 2>/dev/null
+  chmod 600 "$HOME/.ssh/known_hosts"
+fi
+
+# --- 5. Get the dotfiles repo on disk ---
 if [[ -d "$DOTFILES_DIR/.git" ]]; then
   log "Dotfiles repo already present at $DOTFILES_DIR."
 else
@@ -80,11 +91,11 @@ else
   git clone --recurse-submodules "$DOTFILES_REPO" "$DOTFILES_DIR"
 fi
 
-# --- 5. Run the dotbot installer (symlinks) ---
+# --- 6. Run the dotbot installer (symlinks) ---
 log "Running ./install..."
 (cd "$DOTFILES_DIR" && ./install)
 
-# --- 6. Apply nix-darwin config, if present ---
+# --- 7. Apply nix-darwin config, if present ---
 if [[ -f "$DOTFILES_DIR/configs/nix-darwin/flake.nix" ]]; then
   # /etc/nix-darwin/flake.nix, if present, is what darwin-rebuild uses by
   # default when called with no --flake — set it up once so every future
