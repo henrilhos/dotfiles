@@ -112,6 +112,14 @@
     };
   };
 
-  # Allow `sudo` to be satisfied with Touch ID instead of typing a password.
-  security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local = {
+    # Allow `sudo` to be satisfied with Touch ID instead of typing a password.
+    touchIdAuth = true;
+
+    # Without this, Touch ID for sudo silently doesn't work inside tmux
+    # (or screen) — pam_tid checks it's talking to the same bootstrap
+    # session as the login window, which tmux's detached server breaks.
+    # pam_reattach fixes that by reattaching to the session first.
+    reattach = true;
+  };
 }
