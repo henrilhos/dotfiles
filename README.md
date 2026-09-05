@@ -20,6 +20,9 @@ because it looked good in someone else's repo.
   [Dracula PRO](https://draculatheme.com/pro) colorscheme.
 - **[Ghostty](https://ghostty.org/)** — terminal, themed with the same
   Dracula PRO palette.
+- **Dracula** (free) — `bat`, `git-delta`, `lazygit`, and `btop` all use the
+  standard [Dracula theme](https://draculatheme.com/) for consistency with
+  the PRO-themed apps above.
 - **[Karabiner-Elements](https://karabiner-elements.pqrs.org/)** — remaps
   Caps Lock into a Hyper key (⌘⌃⌥⇧, tap for Escape), fixes the British
   keyboard's backtick position, and launches a few apps.

@@ -18,6 +18,10 @@
 
 [delta]
 	navigate = true
+	features = dracula
+
+[include]
+	path = ~/dotfiles/configs/git/dracula-delta.gitconfig
 
 [gpg]
 	format = ssh
