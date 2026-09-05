@@ -26,7 +26,11 @@ if command -v eza >/dev/null 2>&1; then
 fi
 
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh --cmd cd)"
-command -v fzf >/dev/null 2>&1 && eval "$(fzf --zsh)"
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --zsh)"
+  # Dracula theme: https://github.com/dracula/fzf
+  export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+fi
 command -v bat >/dev/null 2>&1 && alias cat='bat'
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
