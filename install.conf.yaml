@@ -4,6 +4,10 @@
       relink: true
       backup: true
 
+- create:
+    - ~/projects
+    - ~/work
+
 - link:
     ~/.zshrc: configs/zsh/zshrc
     ~/.zprofile: configs/zsh/zprofile
