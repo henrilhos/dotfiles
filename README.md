@@ -45,6 +45,25 @@ run `./install`, then `darwin-rebuild switch`.
 If the repo is already cloned, just run `./scripts/bootstrap.sh` directly —
 every step checks whether it's already done first, so it's safe to re-run.
 
+## Manual steps (no scriptable equivalent)
+
+A few settings are app-internal toggles or plist domains too opaque to
+manage declaratively — done once by hand on a fresh machine:
+
+- **Input source** — System Settings → Keyboard → Input Sources → add
+  *U.S. International*. (HIToolbox's input-source list has no stable
+  scriptable format.)
+- **1Password → Settings → Developer → "Use the SSH agent"** — required
+  for `configs/ssh/config`'s `IdentityAgent` to work.
+- **1Password → Settings → Developer → "Integrate with 1Password CLI"** —
+  required for `op` (see [`docs/1password-cli.md`](docs/1password-cli.md))
+  to authenticate via Touch ID instead of `op signin`.
+- **Karabiner-Elements** — after editing
+  [`configs/karabiner/karabiner.json`](configs/karabiner/karabiner.json),
+  run `./install` again (Karabiner rewrites the file in place on launch,
+  which breaks the dotbot symlink) and fully quit/relaunch the app to pick
+  up the change.
+
 ## Day to day
 
 - `./install` — re-run dotbot after adding/changing a symlink in
