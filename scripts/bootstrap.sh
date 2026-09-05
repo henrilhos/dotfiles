@@ -51,14 +51,19 @@ BREW_PATH="/opt/homebrew/bin/brew"
 [[ -x "$BREW_PATH" ]] || BREW_PATH="/usr/local/bin/brew"
 eval "$("$BREW_PATH" shellenv)"
 
-# --- 3. Nix (Determinate installer) ---
+# --- 3. Nix (Determinate's native macOS pkg installer) ---
+# The curl|sh installer's encrypted-APFS-volume step can fail with
+# "Read-only file system" when FileVault is already on. The .pkg installer
+# handles that correctly and is what Determinate now recommends for macOS.
+# It also wires up /etc/zshrc and /etc/bashrc itself, so no manual sourcing
+# is needed here.
 if ! command -v nix >/dev/null 2>&1; then
-  log "Installing Nix (Determinate installer)..."
-  curl -fsSL https://install.determinate.systems/nix | sh -s -- install --no-confirm
-  # Nix sets up /etc/zshrc / /etc/bashrc to source its env; load it in this shell too.
-  if [[ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
-    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-  fi
+  log "Installing Nix (Determinate .pkg installer)..."
+  NIX_PKG="$(mktemp -t determinate-nix).pkg"
+  curl -fsSL -o "$NIX_PKG" "https://install.determinate.systems/determinate-pkg/stable/Universal"
+  sudo installer -pkg "$NIX_PKG" -target /
+  rm -f "$NIX_PKG"
+  . /etc/zshrc
 else
   log "Nix already installed."
 fi
