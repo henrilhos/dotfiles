@@ -9,29 +9,30 @@
     - ~/work
 
 - link:
-    ~/.zshrc: configs/zsh/zshrc
-    ~/.zprofile: configs/zsh/zprofile
-    ~/.gitconfig: configs/git/gitconfig
-    ~/.config/git/ignore: configs/git/gitignore
-    ~/.config/git/allowed_signers: configs/git/allowed_signers
-    ~/.config/nix-darwin: configs/nix-darwin
-    ~/.config/starship.toml: configs/starship/starship.toml
-    ~/.config/nvim: configs/nvim
-    ~/.config/ghostty/config: configs/ghostty/config
-    ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
-    ~/.ssh/config: configs/ssh/config
-    ~/.hushlogin: configs/shell/hushlogin
-    ~/.tmux.conf: configs/tmux/tmux.conf
-    ~/.config/sesh/sesh.toml: configs/sesh/sesh.toml
-    ~/.config/mise/config.toml: configs/mise/config.toml
-    ~/work/.envrc: configs/direnv/work.envrc
+    ~/.claude/settings.json: configs/claude/settings.json
     ~/.config/bat/config: configs/bat/config
     ~/.config/bat/themes/Dracula.tmTheme: configs/bat/themes/Dracula.tmTheme
     ~/.config/btop/btop.conf: configs/btop/btop.conf
-    ~/Library/Application Support/lazygit/config.yml: configs/lazygit/config.yml
+    ~/.config/ghostty/config: configs/ghostty/config
+    ~/.config/git/allowed_signers: configs/git/allowed_signers
+    ~/.config/git/ignore: configs/git/gitignore
+    ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
+    ~/.config/mise/config.toml: configs/mise/config.toml
+    ~/.config/nix-darwin: configs/nix-darwin
+    ~/.config/nvim: configs/nvim
+    ~/.config/sesh/sesh.toml: configs/sesh/sesh.toml
+    ~/.config/starship.toml: configs/starship/starship.toml
     ~/.docker/config.json: configs/docker/config.json
+    ~/.gitconfig: configs/git/gitconfig
+    ~/.hushlogin: configs/shell/hushlogin
+    ~/.ssh/config: configs/ssh/config
+    ~/.tmux.conf: configs/tmux/tmux.conf
+    ~/.zprofile: configs/zsh/zprofile
+    ~/.zshrc: configs/zsh/zshrc
+    ~/Library/Application Support/lazygit/config.yml: configs/lazygit/config.yml
+    ~/work/.envrc: configs/direnv/work.envrc
 
 - shell:
-  - command: git submodule sync --recursive && git submodule update --init --recursive
-    stdout: true
-    stderr: true
+    - command: git submodule sync --recursive && git submodule update --init --recursive
+      stdout: true
+      stderr: true
