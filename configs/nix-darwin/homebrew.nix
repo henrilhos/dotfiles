@@ -17,6 +17,7 @@
 
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
+      "atuin"
       "bat"
       "btop"
       "colima"
@@ -38,6 +39,7 @@
       "sesh"
       "starship"
       "tmux"
+      "yazi"
       "zoxide"
       "zsh-autosuggestions"
       "zsh-syntax-highlighting"
