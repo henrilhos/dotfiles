@@ -10,6 +10,7 @@
 
 - link:
     ~/.claude/settings.json: configs/claude/settings.json
+    ~/.claude/statusline.py: configs/claude/statusline.py
     ~/.config/bat/config: configs/bat/config
     ~/.config/bat/themes/Dracula.tmTheme: configs/bat/themes/Dracula.tmTheme
     ~/.config/btop/btop.conf: configs/btop/btop.conf
