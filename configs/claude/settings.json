@@ -3,6 +3,11 @@
     "commit": "",
     "pr": ""
   },
-
-  "includeCoAuthoredBy": false
+  "includeCoAuthoredBy": false,
+  "statusLine": {
+    "type": "command",
+    "command": "python3 ~/.claude/statusline.py",
+    "padding": 0
+  },
+  "disableRemoteControl": true
 }
