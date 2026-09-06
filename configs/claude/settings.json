@@ -1,13 +1,60 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "attribution": {
     "commit": "",
     "pr": ""
   },
   "includeCoAuthoredBy": false,
+  "permissions": {
+    "deny": [
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "DesignSync",
+      "PushNotification",
+      "RemoteTrigger",
+      "ReportFindings",
+      "AskUserQuestion",
+      "EnterWorktree",
+      "ExitWorktree",
+      "ScheduleWakeup",
+      "ListMcpResourcesTool",
+      "ReadMcpResourceTool",
+      "ReadMcpResourceDirTool"
+    ]
+  },
+  "worktree": { "bgIsolation": "none" },
+  "workflowKeywordTriggerEnabled": false,
+  "feedbackDrafts": "off",
+  "feedbackSurveyRate": 0,
+  "agentPushNotifEnabled": false,
+  "inputNeededNotifEnabled": false,
+  "disableBundledSkills": true,
+  "disableRemoteControl": true,
+  "disableClaudeAiConnectors": true,
+  "disableArtifact": true,
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/block-git-rewrites.py"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/block-sleep.py"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "python3 ~/.claude/statusline.py",
     "padding": 0
   },
-  "disableRemoteControl": true
+  "autoUpdatesChannel": "stable",
+  "skipDangerousModePermissionPrompt": true,
+  "fastMode": true
 }

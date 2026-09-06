@@ -9,6 +9,7 @@
     - ~/work
 
 - link:
+    ~/.claude/hooks: configs/claude/hooks
     ~/.claude/settings.json: configs/claude/settings.json
     ~/.claude/statusline.py: configs/claude/statusline.py
     ~/.config/bat/config: configs/bat/config
