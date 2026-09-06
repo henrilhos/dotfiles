@@ -5,8 +5,8 @@
       backup: true
 
 - create:
-    - ~/projects
-    - ~/work
+    - ~/Code
+    - ~/Work
 
 - link:
     ~/.bash_profile: configs/bash/bash_profile
@@ -34,7 +34,7 @@
     ~/.tmux.conf: configs/tmux/tmux.conf
     ~/.zshrc: configs/zsh/zshrc
     ~/Library/Application Support/lazygit/config.yml: configs/lazygit/config.yml
-    ~/work/.envrc: configs/direnv/work.envrc
+    ~/Work/.envrc: configs/direnv/work.envrc
     ~/dotfiles/submodules/oh-my-zsh/themes/mytheme.zsh-theme: configs/zsh/mytheme.zsh-theme
 
 - shell:
