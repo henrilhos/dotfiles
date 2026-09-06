@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   system.defaults = {
     # Trackpad: tap to click instead of needing to press down.
@@ -44,9 +44,6 @@
     dock = {
       # Automatically hide and show the dock.
       autohide = true;
-
-      # Clear all pinned/default icons
-      persistent-apps = [ ];
 
       # Icon size, in pixels. The default is 64.
       tilesize = 24;
@@ -111,6 +108,26 @@
       };
     };
   };
+
+  # Clear macOS's default Dock icons (Launchpad, Mail, Maps, etc.) once, on
+  # first bootstrap only — unlike `system.defaults.dock.persistent-apps`,
+  # this doesn't re-run on every `darwin-rebuild switch`, so icons you
+  # deliberately add to the Dock afterward stick around.
+  system.activationScripts.postActivation.text =
+    let
+      user = config.system.primaryUser;
+      marker = "/Users/${user}/.local/state/dotfiles/dock-bootstrapped";
+    in
+    ''
+      if [ ! -e "${marker}" ]; then
+        echo "Clearing default Dock icons (first run only)..."
+        sudo -u ${user} /usr/bin/defaults write com.apple.dock persistent-apps -array
+        sudo -u ${user} /usr/bin/defaults write com.apple.dock persistent-others -array
+        sudo -u ${user} /usr/bin/mkdir -p "$(dirname "${marker}")"
+        sudo -u ${user} /usr/bin/touch "${marker}"
+        killall Dock >/dev/null 2>&1 || true
+      fi
+    '';
 
   security.pam.services.sudo_local = {
     # Allow `sudo` to be satisfied with Touch ID instead of typing a password.
