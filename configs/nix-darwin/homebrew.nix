@@ -57,6 +57,7 @@
       "raycast"
       "rectangle"
       "spotify"
+      "t3-code"
     ];
   };
 
