@@ -17,9 +17,18 @@ because it looked good in someone else's repo.
   `brews`/`casks` are the single source of truth for installed packages).
 - **[LazyVim](https://www.lazyvim.org/)** — Neovim config (`configs/nvim/`),
   stock starter template plus a private
-  [Dracula PRO](https://draculatheme.com/pro) colorscheme.
+  [Dracula PRO](https://draculatheme.com/pro) colorscheme, toggled to its
+  Alucard (light) variant by
+  [dark-notify](https://github.com/cormacrelf/dark-notify) when macOS
+  switches Appearance.
 - **[Ghostty](https://ghostty.org/)** — terminal, themed with the same
-  Dracula PRO palette.
+  Dracula PRO / Alucard palettes, switching automatically with macOS
+  Appearance via its native light/dark `theme` support.
+- **[tmux](https://github.com/tmux/tmux)** — terminal multiplexer
+  (`configs/tmux/`), status line themed the same way via
+  [tmux-dark-notify](https://github.com/erikw/tmux-dark-notify) (installed
+  through [TPM](https://github.com/tmux-plugins/tpm), which bootstraps
+  itself on first run).
 - **Dracula** (free) — `bat`, `git-delta`, `lazygit`, and `btop` all use the
   standard [Dracula theme](https://draculatheme.com/) for consistency with
   the PRO-themed apps above.

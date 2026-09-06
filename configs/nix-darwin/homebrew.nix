@@ -13,13 +13,14 @@
       cleanup = "zap";
     };
 
-    taps = [ ];
+    taps = [ "cormacrelf/tap" ];
 
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
       "bat"
       "btop"
       "colima"
+      "cormacrelf/tap/dark-notify"
       "direnv"
       "docker"
       "docker-buildx"

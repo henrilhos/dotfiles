@@ -19,7 +19,11 @@ font-size = 14
 # https://ghostty.org/docs/config/reference#macos-option-as-alt
 macos-option-as-alt = true
 
-# Dracula PRO (default variant). Kept out of this repo as a git
-# submodule (submodules/dracula-pro-ghostty) since it's paid/private
-# content — `config-file` just includes the palette values from there.
-config-file = ~/dotfiles/submodules/dracula-pro-ghostty/pro
+# Dracula PRO (dark) / Alucard (light), switching automatically with the
+# macOS Appearance setting. Kept out of this repo as a git submodule
+# (submodules/dracula-pro-ghostty) since it's paid/private content — each
+# side of `theme` just points at a palette file from there.
+#
+# Unlike `config-file` above, `theme` doesn't expand `~` (confirmed with
+# `ghostty +validate-config`), so this needs an absolute path.
+theme = dark:/Users/henrilhos/dotfiles/submodules/dracula-pro-ghostty/pro,light:/Users/henrilhos/dotfiles/submodules/dracula-pro-ghostty/alucard
