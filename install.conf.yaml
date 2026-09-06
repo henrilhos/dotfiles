@@ -9,6 +9,8 @@
     - ~/work
 
 - link:
+    ~/.bash_profile: configs/bash/bash_profile
+    ~/.bashrc: configs/bash/bashrc
     ~/.claude/hooks: configs/claude/hooks
     ~/.claude/settings.json: configs/claude/settings.json
     ~/.claude/statusline.py: configs/claude/statusline.py
@@ -27,12 +29,13 @@
     ~/.docker/config.json: configs/docker/config.json
     ~/.gitconfig: configs/git/gitconfig
     ~/.hushlogin: configs/shell/hushlogin
+    ~/.oh-my-zsh: submodules/oh-my-zsh
     ~/.ssh/config: configs/ssh/config
     ~/.tmux.conf: configs/tmux/tmux.conf
-    ~/.zprofile: configs/zsh/zprofile
     ~/.zshrc: configs/zsh/zshrc
     ~/Library/Application Support/lazygit/config.yml: configs/lazygit/config.yml
     ~/work/.envrc: configs/direnv/work.envrc
+    ~/dotfiles/submodules/oh-my-zsh/themes/mytheme.zsh-theme: configs/zsh/mytheme.zsh-theme
 
 - shell:
     - command: git submodule sync --recursive && git submodule update --init --recursive

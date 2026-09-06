@@ -4,3 +4,6 @@
 [submodule "submodules/dracula-pro-ghostty"]
 	path = submodules/dracula-pro-ghostty
 	url = git@github.com:dracula-pro/ghostty.git
+[submodule "submodules/oh-my-zsh"]
+	path = submodules/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git

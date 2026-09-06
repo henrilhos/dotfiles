@@ -1,5 +1,0 @@
-# ~/.zprofile — managed by ~/dotfiles (configs/zsh/zprofile)
-# Runs once for login shells, before .zshrc. Homebrew recommends putting
-# its shellenv here so GUI apps launched from Finder/Spotlight also see it.
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
