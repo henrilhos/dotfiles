@@ -18,7 +18,6 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
 
     # -- oh-my-zsh
     # (up/down arrow history search is bound by omz/lib/key-bindings.zsh, no need to redo it)
-    [[ -z $STARSHIP_SHELL ]] && export ZSH_THEME="mytheme"
     DEFAULT_USER="henrilhos"
     export DISABLE_AUTO_UPDATE=true  # Speedup of 40%
     plugins=( git sudo docker-compose )
@@ -35,7 +34,7 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
     alias lg='lazygit'
     alias cat='bat'
 
-    # -- Prompt (starship wins over mytheme above once it initializes)
+    # -- Prompt
     if command -v starship >/dev/null 2>&1; then
       eval "$(starship init zsh)"
     else
