@@ -35,7 +35,6 @@
     ~/.zshrc: configs/zsh/zshrc
     ~/Library/Application Support/lazygit/config.yml: configs/lazygit/config.yml
     ~/Work/.envrc: configs/direnv/work.envrc
-    ~/dotfiles/submodules/oh-my-zsh/themes/mytheme.zsh-theme: configs/zsh/mytheme.zsh-theme
 
 - shell:
     - command: git submodule sync --recursive && git submodule update --init --recursive
