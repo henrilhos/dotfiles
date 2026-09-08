@@ -1,3 +1,5 @@
+Include ~/.colima/ssh_config
+
 # ~/.ssh/config — managed by ~/dotfiles (configs/ssh/config)
 #
 # Route every SSH connection through 1Password's SSH agent instead of
