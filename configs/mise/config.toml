@@ -4,4 +4,5 @@
 
 [tools]
 node = "lts"
+php = "8.3"
 python = "latest"

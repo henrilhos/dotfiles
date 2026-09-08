@@ -14,3 +14,7 @@ vim.opt.spelllang = { "en", "pt_br" } -- check spelling against English and Braz
 -- Editorconfig overrides
 -- disable insert_final_newline so editorconfig doesn't force/strip trailing newlines
 require("editorconfig").properties.insert_final_newline = function() end
+
+-- PHP LSP: intelephense (Node-based) instead of the default phpactor (PHP-based) —
+-- there's no PHP runtime on the host, projects run it inside Docker/Sail.
+vim.g.lazyvim_php_lsp = "intelephense"
