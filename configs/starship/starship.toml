@@ -5,7 +5,7 @@
 add_newline = false
 
 [time]
-disabled = false
+disabled = true
 
 [custom.bash]
 command = "echo bash"
