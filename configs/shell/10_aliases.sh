@@ -25,6 +25,7 @@ if [[ $- == *i* ]]; then
   alias cat='bat'
   alias nixswitch="sudo darwin-rebuild switch --flake ~/dotfiles/configs/nix-darwin"
   alias nixupdate="cd ~/dotfiles/configs/nix-darwin && nix flake update --extra-experimental-features nix-command --extra-experimental-features flakes && nixswitch && cd -"
+  alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
 
   nosleep() {
     sudo pmset -a disablesleep 1
