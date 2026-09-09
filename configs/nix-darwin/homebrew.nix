@@ -59,6 +59,7 @@
       "re2c"
       "readline"
       "ripgrep"
+      "rtk"
       "sesh"
       "sqlite"
       "starship"
