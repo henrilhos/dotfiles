@@ -47,6 +47,9 @@
 
       # Icon size, in pixels. The default is 64.
       tilesize = 24;
+
+      # Don't show recently used apps in the dock.
+      show-recents = false;
     };
 
     # Disable Spotlight's default hotkeys (⌘Space / ⌘⌥Space) so Raycast can
