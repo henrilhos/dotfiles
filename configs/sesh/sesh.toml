@@ -11,12 +11,12 @@ startup_command = "nvim"
 
 # Personal projects.
 [[wildcard]]
-pattern = "~/projects/*"
+pattern = "~/Projects/*"
 startup_command = "nvim"
 icon = "🌱"
 
 # Work projects, kept in a separate directory from personal ones.
 [[wildcard]]
-pattern = "~/work/*"
+pattern = "~/Work/*"
 startup_command = "nvim"
 icon = "💼"
