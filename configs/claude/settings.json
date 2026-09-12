@@ -22,7 +22,9 @@
       "ReadMcpResourceDirTool"
     ]
   },
-  "worktree": { "bgIsolation": "none" },
+  "worktree": {
+    "bgIsolation": "none"
+  },
   "workflowKeywordTriggerEnabled": false,
   "feedbackDrafts": "off",
   "feedbackSurveyRate": 0,
@@ -44,6 +46,15 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/block-sleep.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
           }
         ]
       }
