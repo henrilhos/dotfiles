@@ -78,6 +78,7 @@
       "1password-cli"
       "arc"
       "claude-code"
+      "datagrip"
       "discord"
       "font-recursive-code"
       "font-symbols-only-nerd-font"
