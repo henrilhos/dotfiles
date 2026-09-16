@@ -23,7 +23,9 @@
 [include]
 	path = ~/dotfiles/configs/git/dracula-delta.gitconfig
 
-[includeIf "gitdir:~/work/"]
+# `gitdir:` matches case-sensitively even on a case-insensitive filesystem,
+# so the pattern has to be `/i` or spelled exactly like the directory (~/Work).
+[includeIf "gitdir/i:~/work/"]
 	path = ~/dotfiles/configs/git/work.gitconfig
 
 [gpg]

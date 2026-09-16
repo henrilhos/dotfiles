@@ -1,4 +1,4 @@
-# Applied only inside ~/work/ via [includeIf "gitdir:~/work/"] in gitconfig.
+# Applied only inside ~/Work/ via [includeIf "gitdir/i:~/work/"] in gitconfig.
 
 [user]
 	email = henrique.castilhos@px.center
