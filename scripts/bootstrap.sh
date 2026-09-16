@@ -73,11 +73,21 @@ fi
 # refuse non-interactively instead of prompting) ---
 mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
-if ! ssh-keygen -F github.com >/dev/null 2>&1; then
-  log "Adding GitHub's SSH host key to known_hosts..."
-  ssh-keyscan -t ed25519 github.com >>"$HOME/.ssh/known_hosts" 2>/dev/null
-  chmod 600 "$HOME/.ssh/known_hosts"
-fi
+# Two endpoints, because the repo's ~/.ssh/config routes github.com over
+# ssh.github.com:443 but isn't linked until ./install runs further down —
+# so the clone in the next step still goes out over port 22, while every
+# later connection uses the 443 route.
+trust_host() {
+  local pattern="$1" host="$2" port="$3"
+  # -f is not optional: ssh-keygen resolves ~ from passwd, not $HOME.
+  if ! ssh-keygen -F "$pattern" -f "$HOME/.ssh/known_hosts" >/dev/null 2>&1; then
+    log "Adding $pattern to known_hosts..."
+    ssh-keyscan -t ed25519 -p "$port" "$host" >>"$HOME/.ssh/known_hosts" 2>/dev/null
+  fi
+}
+trust_host github.com github.com 22
+trust_host "[ssh.github.com]:443" ssh.github.com 443
+[[ -f "$HOME/.ssh/known_hosts" ]] && chmod 600 "$HOME/.ssh/known_hosts"
 
 # --- 5. Get the dotfiles repo on disk ---
 if [[ -d "$DOTFILES_DIR/.git" ]]; then
@@ -88,14 +98,48 @@ else
     exit 1
   fi
   log "Cloning $DOTFILES_REPO into $DOTFILES_DIR..."
-  git clone --recurse-submodules "$DOTFILES_REPO" "$DOTFILES_DIR"
+  git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
 fi
 
-# --- 6. Run the dotbot installer (symlinks) ---
+# --- 6. Submodules ---
+# Runs for a fresh clone and for a repo that was already on disk: a
+# hand-made clone, or one made before a submodule was added, has none of
+# these checked out. dotbot vendors PyYAML as a nested submodule of its
+# own, so ./install can't even start without --recursive here.
+#
+# The Dracula PRO theme is a private repo, and the SSH agent that can
+# reach it is only configured by ./install below (~/.ssh/config), so on a
+# brand new machine this step is expected to partially fail. That's not
+# fatal to everything else, so warn and carry on.
+log "Checking out submodules..."
+git -C "$DOTFILES_DIR" submodule sync --recursive
+
+# --init --recursive aborts the whole run at the first submodule it can't
+# clone, which would leave dotbot's nested PyYAML unchecked out. So take
+# the ones ./install depends on explicitly first, and let a failure here
+# be fatal — there is no installing anything without them.
+git -C "$DOTFILES_DIR" submodule update --init --recursive \
+  submodules/dotbot submodules/oh-my-zsh
+
+# Then everything else, best effort. The Dracula PRO theme is private and
+# the 1Password SSH agent that can reach it is itself set up by ./install
+# below, so on a brand new machine this pass is expected to fail; dotbot
+# retries it at the end of install.conf.yaml, once ~/.ssh/config exists.
+if ! git -C "$DOTFILES_DIR" submodule update --init --recursive; then
+  log "WARNING: some optional submodules failed to check out (expected for"
+  log "the private Dracula PRO theme on a machine without SSH access yet)."
+fi
+
+if [[ ! -f "$DOTFILES_DIR/submodules/dotbot/lib/pyyaml/lib/yaml/__init__.py" ]]; then
+  echo "dotbot's vendored PyYAML is missing — ./install cannot run." >&2
+  exit 1
+fi
+
+# --- 7. Run the dotbot installer (symlinks) ---
 log "Running ./install..."
 (cd "$DOTFILES_DIR" && ./install)
 
-# --- 7. Apply nix-darwin config, if present ---
+# --- 8. Apply nix-darwin config, if present ---
 if [[ -f "$DOTFILES_DIR/configs/nix-darwin/flake.nix" ]]; then
   # /etc/nix-darwin/flake.nix, if present, is what darwin-rebuild uses by
   # default when called with no --flake — set it up once so every future
