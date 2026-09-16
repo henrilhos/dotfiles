@@ -1,3 +1,7 @@
+# Added by OrbStack: 'orb' SSH host for Linux machines. This only works
+# if it's at the top of the file, before any Host block.
+Include ~/.orbstack/ssh/config
+
 Include ~/.colima/ssh_config
 
 # ~/.ssh/config — managed by ~/dotfiles (configs/ssh/config)
@@ -12,3 +16,12 @@ Include ~/.colima/ssh_config
 
 Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+# Reach GitHub over HTTPS rather than port 22, which corporate networks
+# tend to block. ssh.github.com:443 speaks the SSH protocol and is
+# GitHub's own supported route, so this is safe everywhere, not just on
+# a restricted network.
+Host github.com
+  Hostname ssh.github.com
+  Port 443
+  User git
