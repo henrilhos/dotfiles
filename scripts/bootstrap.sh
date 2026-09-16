@@ -63,7 +63,14 @@ if ! command -v nix >/dev/null 2>&1; then
   curl -fsSL -o "$NIX_PKG" "https://install.determinate.systems/determinate-pkg/stable/Universal"
   sudo installer -pkg "$NIX_PKG" -target /
   rm -f "$NIX_PKG"
-  . /etc/zshrc
+  # Put nix on PATH for the rest of this script. The installer writes its
+  # hook into /etc/zshrc, but sourcing that from bash dies on the zsh-only
+  # `setopt` (exit 127, fatal under set -e) — so source the profile script
+  # /etc/zshrc itself points at.
+  NIX_PROFILE=/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+  if [[ -e "$NIX_PROFILE" ]]; then
+    . "$NIX_PROFILE"
+  fi
 else
   log "Nix already installed."
 fi
