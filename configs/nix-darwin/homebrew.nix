@@ -80,6 +80,7 @@
     casks = [
       "1password"
       "1password-cli"
+      "android-commandlinetools"
       "arc"
       "claude-code"
       "datagrip"
