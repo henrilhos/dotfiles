@@ -8,6 +8,11 @@ export LESS="-R"  # Enable colors in less (avoid --mouse, breaks text selection)
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1  # Disable Claude Code auto-updater and telemetry
 export PATH="$HOME/.local/bin:$PATH"
 
+# -- Homebrew (needed below for brew --prefix)
+if [ -f "/opt/homebrew/bin/brew" ]; then
+   eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # -- Android / React Native
 export ANDROID_HOME="$(brew --prefix)/share/android-commandlinetools"
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
