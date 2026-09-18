@@ -10,6 +10,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # -- Android / React Native
 export ANDROID_HOME="$(brew --prefix)/share/android-commandlinetools"
+# Without this the newer cmdline-tools honour XDG_CONFIG_HOME and look for
+# AVDs under ~/.config/.android, while the emulator binary uses ~/.android —
+# each tool then sees a different set of AVDs.
+export ANDROID_USER_HOME="$HOME/.android"
 export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
 # Build only for the arch this Mac runs on — skips x86_64/armeabi NDK builds
 export ORG_GRADLE_PROJECT_reactNativeArchitectures=arm64-v8a
