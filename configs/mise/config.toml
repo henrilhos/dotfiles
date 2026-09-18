@@ -3,6 +3,7 @@
 # .mise.toml / .tool-versions, not here.
 
 [tools]
+java = "temurin-17"
 node = "lts"
 php = "8.3"
 python = "latest"
