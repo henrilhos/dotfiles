@@ -7,3 +7,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export LESS="-R"  # Enable colors in less (avoid --mouse, breaks text selection)
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1  # Disable Claude Code auto-updater and telemetry
 export PATH="$HOME/.local/bin:$PATH"
+
+# -- Android / React Native
+export ANDROID_HOME="$(brew --prefix)/share/android-commandlinetools"
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+# Build only for the arch this Mac runs on — skips x86_64/armeabi NDK builds
+export ORG_GRADLE_PROJECT_reactNativeArchitectures=arm64-v8a
