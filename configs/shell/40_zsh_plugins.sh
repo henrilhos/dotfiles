@@ -93,11 +93,11 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
     eval "$(direnv hook zsh)"
 
     # -- mise
-    # --shims instead of the full activate hook: a one-time PATH prepend
-    # instead of a precmd hook that re-runs `mise hook-env` on every prompt
-    # (measured ~12ms/prompt) — worth it since config.toml only pins plain
-    # runtime versions, no dynamic env vars to track.
-    eval "$(mise activate zsh --shims)"
+    # Full activate hook (not --shims): shims only prepend PATH, they never run
+    # `mise hook-env`, so env vars mise derives from config — JAVA_HOME from the
+    # java tool, anything under [env] — never reach the shell. Gradle/React
+    # Native Android builds need JAVA_HOME, so the ~12ms/prompt is the price.
+    eval "$(mise activate zsh)"
 
     # -- sesh
     # Alt-s opens sesh's fzf picker straight from zsh (outside tmux, connecting
