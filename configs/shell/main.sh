@@ -4,5 +4,4 @@
 [ -n "$ZSH_VERSION" ] && source ~/dotfiles/configs/shell/05_zsh_completions.sh
 source ~/dotfiles/configs/shell/10_aliases.sh
 source ~/dotfiles/configs/shell/20_exports.sh
-source ~/dotfiles/configs/shell/30_misc.sh
 [ -n "$ZSH_VERSION" ] && source ~/dotfiles/configs/shell/40_zsh_plugins.sh
