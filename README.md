@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal macOS setup, built incrementally rather than copied wholesale from
+Personal Apple Silicon macOS setup, built incrementally rather than copied wholesale from
 somewhere else. Every tool in here was added because it's actually used, not
 because it looked good in someone else's repo.
 
@@ -8,9 +8,8 @@ because it looked good in someone else's repo.
 
 - **[dotbot](https://github.com/anishathalye/dotbot)** — declarative symlink
   management, driven by [`install.conf.yaml`](install.conf.yaml).
-- **zsh** — shell, with a small `command -v`-guarded
-  [`aliases.zsh`](configs/zsh/aliases.zsh) instead of a heavier plugin
-  manager.
+- **zsh** — shell, with a small set of `command -v`-guarded aliases and
+  Oh My Zsh plugins.
 - **[nix-darwin](https://github.com/LnL7/nix-darwin)** — declarative macOS
   system configuration (`configs/nix-darwin/`), including **Homebrew**
   managed through its `homebrew` module (`onActivation.cleanup = "zap"`, so
