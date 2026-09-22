@@ -18,7 +18,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Caps Lock to Hyper Key (⌘⌃⌥⇧) when held, Escape when tapped alone",
+                        "description": "Caps Lock to Hyper Key (⌘⌃⌥⇧) when held, Escape when tapped alone, built-in keyboard only",
                         "manipulators": [
                             {
                                 "type": "basic",
@@ -34,6 +34,31 @@
                                 ],
                                 "to_if_alone": [
                                     { "key_code": "escape" }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "device_if",
+                                        "identifiers": [ { "is_built_in_keyboard": true } ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Non-US backslash to grave accent, built-in keyboard only",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [ { "key_code": "grave_accent_and_tilde" } ],
+                                "conditions": [
+                                    {
+                                        "type": "device_if",
+                                        "identifiers": [ { "is_built_in_keyboard": true } ]
+                                    }
                                 ]
                             }
                         ]
@@ -69,12 +94,7 @@
                     }
                 ]
             },
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "non_us_backslash" },
-                    "to": [ { "key_code": "grave_accent_and_tilde" } ]
-                }
-            ],
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "keyboard_type_v2": "ansi",
