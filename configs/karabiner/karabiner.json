@@ -89,6 +89,14 @@
                                     "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
                                 },
                                 "to": [ { "shell_command": "open -a 'Spotify'" } ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
+                                "to": [ { "shell_command": "open -b 'com.t3tools.t3code'" } ]
                             }
                         ]
                     }
