@@ -18,7 +18,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Caps Lock to Hyper Key (⌘⌃⌥⇧) when held, Escape when tapped alone",
+                        "description": "Caps Lock to Hyper Key (⌘⌃⌥⇧) when held, Escape when tapped alone, built-in keyboard only",
                         "manipulators": [
                             {
                                 "type": "basic",
@@ -34,6 +34,31 @@
                                 ],
                                 "to_if_alone": [
                                     { "key_code": "escape" }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "device_if",
+                                        "identifiers": [ { "is_built_in_keyboard": true } ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Non-US backslash to grave accent, built-in keyboard only",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [ { "key_code": "grave_accent_and_tilde" } ],
+                                "conditions": [
+                                    {
+                                        "type": "device_if",
+                                        "identifiers": [ { "is_built_in_keyboard": true } ]
+                                    }
                                 ]
                             }
                         ]
@@ -45,7 +70,7 @@
                                 "type": "basic",
                                 "from": {
                                     "key_code": "a",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
                                 },
                                 "to": [ { "shell_command": "open -a 'Arc'" } ]
                             },
@@ -53,7 +78,7 @@
                                 "type": "basic",
                                 "from": {
                                     "key_code": "s",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
                                 },
                                 "to": [ { "shell_command": "open -a 'Ghostty'" } ]
                             },
@@ -61,22 +86,33 @@
                                 "type": "basic",
                                 "from": {
                                     "key_code": "f",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
                                 },
                                 "to": [ { "shell_command": "open -a 'Spotify'" } ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["command", "control", "option", "shift"] }
+                                },
+                                "to": [ { "shell_command": "open -b 'com.t3tools.t3code'" } ]
                             }
                         ]
                     }
                 ]
             },
-            "simple_modifications": [
+            "simple_modifications": [],
+            "devices": [
                 {
-                    "from": { "key_code": "grave_accent_and_tilde" },
-                    "to": [ { "key_code": "non_us_backslash" } ]
-                },
-                {
-                    "from": { "key_code": "non_us_backslash" },
-                    "to": [ { "key_code": "grave_accent_and_tilde" } ]
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "vendor_id": 7504,
+                        "product_id": 24926
+                    },
+                    "ignore": false,
+                    "disable_built_in_keyboard_if_exists": true
                 }
             ],
             "virtual_hid_keyboard": {
