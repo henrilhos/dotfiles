@@ -83,6 +83,7 @@
       "android-commandlinetools"
       "arc"
       "claude-code"
+      "codex"
       "datagrip"
       "discord"
       "font-recursive-code"
