@@ -29,6 +29,7 @@
     ~/.config/starship.toml: configs/starship/starship.toml
     ~/.docker/config.json: configs/docker/config.json
     ~/.gitconfig: configs/git/gitconfig
+    ~/.gradle/gradle.properties: configs/gradle/gradle.properties
     ~/.hushlogin: configs/shell/hushlogin
     ~/.oh-my-zsh: submodules/oh-my-zsh
     ~/.ssh/config: configs/ssh/config
