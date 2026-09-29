@@ -1,1 +1,6 @@
---theme="Dracula"
+# Ayu Dark / Ayu Light (configs/bat/themes), following the macOS Appearance
+# setting. Custom themes only show up after `bat cache --build`, which
+# install.conf.yaml runs.
+--theme=auto:system
+--theme-dark="ayu-dark"
+--theme-light="ayu-light"

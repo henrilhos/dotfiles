@@ -18,10 +18,8 @@
 
 [delta]
 	navigate = true
-	features = dracula
-
-[include]
-	path = ~/dotfiles/configs/git/dracula-delta.gitconfig
+	# Ayu from configs/bat/themes, registered by `bat cache --build`.
+	syntax-theme = ayu-dark
 
 # `gitdir:` matches case-sensitively even on a case-insensitive filesystem,
 # so the pattern has to be `/i` or spelled exactly like the directory (~/Work).

@@ -1,8 +1,8 @@
 # dotfiles
 
 > **`henrilhos` branch:** my personal setup, which is `main` (the team
-> template) plus a few `chore(personal)` commits on top: identity, Dracula
-> PRO, 1Password, the British keyboard fix, and `~/.agents`. `main` gets
+> template) plus a few `chore(personal)` commits on top: identity, Ayu,
+> 1Password, the British keyboard fix, and `~/.agents`. `main` gets
 > merged into it, never the other way round; `git diff main henrilhos` shows
 > exactly the personal layer.
 
