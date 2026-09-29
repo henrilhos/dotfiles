@@ -167,5 +167,11 @@ else
   log "No configs/nix-darwin/flake.nix yet — skipping nix-darwin switch."
 fi
 
+# --- 9. gh extensions ---
+# ./install skipped these on a fresh machine: gh only exists once the
+# nix-darwin switch above has run the Homebrew bundle.
+log "Re-running ./install shell steps now that brew tools are on PATH..."
+(cd "$DOTFILES_DIR" && ./install --only shell)
+
 log ""
 log "Done! Restart your terminal (or run: exec zsh) to pick up everything."

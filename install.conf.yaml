@@ -45,3 +45,8 @@
       stderr: true
     - command: "[ -d ~/.agents ] || git clone git@github.com:henrilhos/agents.git ~/.agents"
       stdout: true
+    # gh comes from Homebrew via nix-darwin, which bootstrap.sh applies
+    # after this file runs, so it re-runs `--only shell` once gh exists.
+    - command: command -v gh >/dev/null || exit 0; gh extension list | grep -q github/gh-stack || gh extension install github/gh-stack
+      stdout: true
+      stderr: true
