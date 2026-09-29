@@ -1,5 +1,11 @@
 # dotfiles
 
+> **`henrilhos` branch:** my personal setup, which is `main` (the team
+> template) plus a few `chore(personal)` commits on top: identity, Dracula
+> PRO, 1Password, the British keyboard fix, and `~/.agents`. `main` gets
+> merged into it, never the other way round; `git diff main henrilhos` shows
+> exactly the personal layer.
+
 Our Apple Silicon macOS setup, built incrementally rather than copied
 wholesale from somewhere else. Every tool in here was added because it's
 actually used, not because it looked good in someone else's repo.
@@ -62,8 +68,8 @@ Before the first run, in your fork:
 On a fresh macOS machine:
 
 ```sh
-DOTFILES_REPO=https://github.com/<you>/dotfiles.git \
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/scripts/bootstrap.sh)"
+DOTFILES_REPO=https://github.com/henrilhos/dotfiles.git DOTFILES_BRANCH=henrilhos \
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/henrilhos/scripts/bootstrap.sh)"
 ```
 
 See [`scripts/bootstrap.sh`](scripts/bootstrap.sh) for what that actually
