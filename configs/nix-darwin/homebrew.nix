@@ -82,7 +82,7 @@
       "1password-cli"
       "android-commandlinetools"
       "arc"
-      "claude-code"
+      "claude-code@latest"
       "codex"
       "datagrip"
       "discord"
