@@ -1,8 +1,12 @@
 # dotfiles
 
-Personal Apple Silicon macOS setup, built incrementally rather than copied wholesale from
-somewhere else. Every tool in here was added because it's actually used, not
-because it looked good in someone else's repo.
+Our Apple Silicon macOS setup, built incrementally rather than copied
+wholesale from somewhere else. Every tool in here was added because it's
+actually used, not because it looked good in someone else's repo.
+
+It's a template: fork or clone it, fill in the `CHANGEME`s (see
+[First steps](#first-steps)), and make it yours. There's no expectation of
+pulling updates back.
 
 ## Stack
 
@@ -15,37 +19,51 @@ because it looked good in someone else's repo.
   managed through its `homebrew` module (`onActivation.cleanup = "zap"`, so
   `brews`/`casks` are the single source of truth for installed packages).
 - **[LazyVim](https://www.lazyvim.org/)** — Neovim config (`configs/nvim/`),
-  stock starter template plus a private
-  [Dracula PRO](https://draculatheme.com/pro) colorscheme, toggled to its
-  Alucard (light) variant by
+  stock starter template plus the
+  [Ayu](https://github.com/Shatur/neovim-ayu) colorscheme, toggled to Ayu
+  Light by
   [dark-notify](https://github.com/cormacrelf/dark-notify) when macOS
   switches Appearance.
 - **[Ghostty](https://ghostty.org/)** — terminal, themed with the same
-  Dracula PRO / Alucard palettes, switching automatically with macOS
+  Ayu / Ayu Light palettes, switching automatically with macOS
   Appearance via its native light/dark `theme` support.
 - **[tmux](https://github.com/tmux/tmux)** — terminal multiplexer
   (`configs/tmux/`), status line themed the same way via
   [tmux-dark-notify](https://github.com/erikw/tmux-dark-notify) (installed
   through [TPM](https://github.com/tmux-plugins/tpm), which bootstraps
   itself on first run).
-- **Dracula** (free) — `bat`, `git-delta`, `lazygit`, and `btop` all use the
-  standard [Dracula theme](https://draculatheme.com/) for consistency with
-  the PRO-themed apps above.
+- **Ayu** — `bat` also follows macOS Appearance; `git-delta`, `lazygit`,
+  `btop`, and `fzf` can't, so they stay on Ayu Dark.
 - **[Karabiner-Elements](https://karabiner-elements.pqrs.org/)** — remaps
-  Caps Lock into a Hyper key (⌘⌃⌥⇧, tap for Escape), fixes the British
-  keyboard's backtick position, and launches a few apps.
+  Caps Lock into a Hyper key (⌘⌃⌥⇧, tap for Escape) and launches a few
+  apps.
 - **[Rectangle](https://rectangleapp.com/)** — window snapping, also bound to
   the Hyper key.
-- **1Password** — SSH agent (`configs/ssh/config`) and SSH-based commit
-  signing (`configs/git/gitconfig`, `configs/git/allowed_signers`).
+- **[Secretive](https://github.com/maxgoedjen/secretive)** — SSH agent
+  (`configs/ssh/config`) with keys in the Secure Enclave. Commit signing is
+  optional; see [`docs/secretive.md`](docs/secretive.md).
+
+## First steps
+
+Before the first run, in your fork:
+
+- [ ] `configs/git/gitconfig` — `name` and `email`.
+- [ ] `configs/git/work.gitconfig` — work `email`, used inside `~/Work/`.
+- [ ] `configs/nix-darwin/flake.nix` — the `hosts` entry: key is
+  `scutil --get LocalHostName`, `username` is `whoami`.
+- [ ] `configs/nix-darwin/homebrew.nix` — trim `brews`/`casks` to what you
+  use. **Careful:** `cleanup = "zap"` uninstalls every Homebrew package not
+  listed there, app data included, on each `darwin-rebuild switch`.
+- [ ] `configs/karabiner/karabiner.json` — the Hyper key app launchers
+  point at specific apps.
 
 ## Setup
 
 On a fresh macOS machine:
 
 ```sh
-DOTFILES_REPO=https://github.com/henrilhos/dotfiles.git \
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/main/scripts/bootstrap.sh)"
+DOTFILES_REPO=https://github.com/<you>/dotfiles.git \
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/scripts/bootstrap.sh)"
 ```
 
 See [`scripts/bootstrap.sh`](scripts/bootstrap.sh) for what that actually
@@ -64,11 +82,8 @@ manage declaratively — done once by hand on a fresh machine:
 - **Input source** — System Settings → Keyboard → Input Sources → add
   *U.S. International*. (HIToolbox's input-source list has no stable
   scriptable format.)
-- **1Password → Settings → Developer → "Use the SSH agent"** — required
-  for `configs/ssh/config`'s `IdentityAgent` to work.
-- **1Password → Settings → Developer → "Integrate with 1Password CLI"** —
-  required for `op` (see [`docs/1password-cli.md`](docs/1password-cli.md))
-  to authenticate via Touch ID instead of `op signin`.
+- **Secretive** — create an SSH key (see
+  [`docs/secretive.md`](docs/secretive.md)).
 - **Karabiner-Elements** — after editing
   [`configs/karabiner/karabiner.json`](configs/karabiner/karabiner.json),
   run `./install` again (Karabiner rewrites the file in place on launch,
@@ -81,10 +96,3 @@ manage declaratively — done once by hand on a fresh machine:
   `install.conf.yaml`.
 - `sudo darwin-rebuild switch` — apply any change under `configs/nix-darwin/`
   (Homebrew packages, macOS defaults, etc.).
-
-## Note on the Dracula PRO submodule
-
-`submodules/dracula-pro-ghostty` points at a private repo — Dracula PRO is a
-paid product. Cloning this repo works fine without access to it; you'll just
-be missing that one file `configs/ghostty/config` references via
-`config-file`. No paid content is vendored into this repo itself.

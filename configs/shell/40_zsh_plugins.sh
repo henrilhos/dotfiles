@@ -18,7 +18,7 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
 
     # -- oh-my-zsh
     # (up/down arrow history search is bound by omz/lib/key-bindings.zsh, no need to redo it)
-    DEFAULT_USER="henrilhos"
+    DEFAULT_USER="$USER"
     export DISABLE_AUTO_UPDATE=true  # Speedup of 40%
     plugins=( git sudo docker-compose )
     command -v eza >/dev/null && zstyle ':omz:lib:directories' aliases no  # Skip aliases in directories.zsh if eza
@@ -86,8 +86,8 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
 
     # -- fzf
     eval "$(fzf --zsh)"
-    # Dracula theme: https://github.com/dracula/fzf
-    export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
+    # Ayu Dark (fixed; fzf can't follow the macOS Appearance switch)
+    export FZF_DEFAULT_OPTS='--color=fg:#bfbdb6,bg:#0b0e14,hl:#ffb454 --color=fg+:#e6e1cf,bg+:#1c212b,hl+:#ffb454 --color=info:#59c2ff,prompt:#aad94c,pointer:#e6b450 --color=marker:#f07178,spinner:#d2a6ff,header:#565b66'
 
     # -- direnv
     eval "$(direnv hook zsh)"

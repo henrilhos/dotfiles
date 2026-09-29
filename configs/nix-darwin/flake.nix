@@ -18,12 +18,8 @@
       # stable name to switch by (`--flake ...#work`) for when the hostname
       # changes out from under us — MDM renames work machines.
       hosts = {
-        "Henriques-MacBook-Pro" = {
-          username = "henrilhos";
-          alias = "personal";
-        };
-        "MAC-JYRCQWVHW0" = {
-          username = "henrique.castilhos";
+        "CHANGEME-LocalHostName" = {
+          username = "CHANGEME";
           alias = "work";
         };
       };

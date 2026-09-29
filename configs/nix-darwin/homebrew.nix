@@ -78,8 +78,6 @@
 
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
     casks = [
-      "1password"
-      "1password-cli"
       "android-commandlinetools"
       "arc"
       "claude-code@latest"
@@ -95,6 +93,7 @@
       "obsidian"
       "raycast"
       "rectangle"
+      "secretive"
       "spotify"
       "t3-code"
       "visual-studio-code"

@@ -16,11 +16,9 @@
     ~/.claude/statusline.py: configs/claude/statusline.py
     ~/.colima/default/colima.yaml: configs/colima/default/colima.yaml
     ~/.config/bat/config: configs/bat/config
-    ~/.config/bat/themes/Dracula.tmTheme: configs/bat/themes/Dracula.tmTheme
+    ~/.config/bat/themes: configs/bat/themes
     ~/.config/btop/btop.conf: configs/btop/btop.conf
     ~/.config/ghostty/config: configs/ghostty/config
-    ~/.config/ghostty/themes: submodules/dracula-pro-ghostty
-    ~/.config/git/allowed_signers: configs/git/allowed_signers
     ~/.config/git/ignore: configs/git/gitignore
     ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
     ~/.config/mise/config.toml: configs/mise/config.toml
@@ -43,8 +41,12 @@
     - command: git submodule sync --recursive && git submodule update --init --recursive
       stdout: true
       stderr: true
-    - command: "[ -d ~/.agents ] || git clone https://github.com/henrilhos/agents.git ~/.agents"
+    # Registers the Ayu themes in configs/bat/themes (delta reads bat's cache
+    # too). bat comes from Homebrew, so like gh below this only works on the
+    # second `--only shell` pass in bootstrap.sh.
+    - command: command -v bat >/dev/null || exit 0; bat cache --build >/dev/null
       stdout: true
+      stderr: true
     # gh comes from Homebrew via nix-darwin, which bootstrap.sh applies
     # after this file runs, so it re-runs `--only shell` once gh exists.
     - command: command -v gh >/dev/null || exit 0; gh extension list | grep -q github/gh-stack || gh extension install github/gh-stack

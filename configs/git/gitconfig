@@ -1,7 +1,6 @@
 [user]
-	name = Henrique de Castilhos
-	email = hello@henrique.zip
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDGIa977/ftf7GB5CJq0K/nP9aDgdKOPJeHMwjY0GHYN
+	name = CHANGEME
+	email = CHANGEME
 
 [init]
 	defaultBranch = main
@@ -18,25 +17,23 @@
 
 [delta]
 	navigate = true
-	features = dracula
-
-[include]
-	path = ~/dotfiles/configs/git/dracula-delta.gitconfig
+	# Ayu from configs/bat/themes, registered by `bat cache --build`.
+	syntax-theme = ayu-dark
 
 # `gitdir:` matches case-sensitively even on a case-insensitive filesystem,
 # so the pattern has to be `/i` or spelled exactly like the directory (~/Work).
 [includeIf "gitdir/i:~/work/"]
 	path = ~/dotfiles/configs/git/work.gitconfig
 
-[gpg]
-	format = ssh
+# Commit signing with a Secretive SSH key, off by default. Setup in
+# docs/secretive.md.
+# [user]
+# 	signingkey = key::CHANGEME
+# [gpg]
+# 	format = ssh
+# [commit]
+# 	gpgsign = true
 
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-	allowedSignersFile = ~/.config/git/allowed_signers
-
-[commit]
-	gpgsign = true
 [credential "https://github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential

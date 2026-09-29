@@ -15,6 +15,7 @@
 # Options (env vars):
 #   DOTFILES_DIR   Target directory (default: ~/dotfiles)
 #   DOTFILES_REPO  Repo URL, only needed if DOTFILES_DIR doesn't exist yet
+#   DOTFILES_BRANCH  Branch to clone (default: the repo's default branch)
 #
 set -euo pipefail
 
@@ -105,7 +106,7 @@ else
     exit 1
   fi
   log "Cloning $DOTFILES_REPO into $DOTFILES_DIR..."
-  git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+  git clone ${DOTFILES_BRANCH:+--branch "$DOTFILES_BRANCH"} "$DOTFILES_REPO" "$DOTFILES_DIR"
 fi
 
 # --- 6. Submodules ---
@@ -113,29 +114,9 @@ fi
 # hand-made clone, or one made before a submodule was added, has none of
 # these checked out. dotbot vendors PyYAML as a nested submodule of its
 # own, so ./install can't even start without --recursive here.
-#
-# The Dracula PRO theme is a private repo, and the SSH agent that can
-# reach it is only configured by ./install below (~/.ssh/config), so on a
-# brand new machine this step is expected to partially fail. That's not
-# fatal to everything else, so warn and carry on.
 log "Checking out submodules..."
 git -C "$DOTFILES_DIR" submodule sync --recursive
-
-# --init --recursive aborts the whole run at the first submodule it can't
-# clone, which would leave dotbot's nested PyYAML unchecked out. So take
-# the ones ./install depends on explicitly first, and let a failure here
-# be fatal — there is no installing anything without them.
-git -C "$DOTFILES_DIR" submodule update --init --recursive \
-  submodules/dotbot submodules/oh-my-zsh
-
-# Then everything else, best effort. The Dracula PRO theme is private and
-# the 1Password SSH agent that can reach it is itself set up by ./install
-# below, so on a brand new machine this pass is expected to fail; dotbot
-# retries it at the end of install.conf.yaml, once ~/.ssh/config exists.
-if ! git -C "$DOTFILES_DIR" submodule update --init --recursive; then
-  log "WARNING: some optional submodules failed to check out (expected for"
-  log "the private Dracula PRO theme on a machine without SSH access yet)."
-fi
+git -C "$DOTFILES_DIR" submodule update --init --recursive
 
 if [[ ! -f "$DOTFILES_DIR/submodules/dotbot/lib/pyyaml/lib/yaml/__init__.py" ]]; then
   echo "dotbot's vendored PyYAML is missing — ./install cannot run." >&2
@@ -167,9 +148,9 @@ else
   log "No configs/nix-darwin/flake.nix yet — skipping nix-darwin switch."
 fi
 
-# --- 9. gh extensions ---
-# ./install skipped these on a fresh machine: gh only exists once the
-# nix-darwin switch above has run the Homebrew bundle.
+# --- 9. bat theme cache and gh extensions ---
+# ./install skipped these on a fresh machine: bat and gh only exist once
+# the nix-darwin switch above has run the Homebrew bundle.
 log "Re-running ./install shell steps now that brew tools are on PATH..."
 (cd "$DOTFILES_DIR" && ./install --only shell)
 
