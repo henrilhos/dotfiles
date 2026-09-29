@@ -22,18 +22,9 @@
       "ReadMcpResourceDirTool"
     ]
   },
-  "worktree": {
-    "bgIsolation": "none"
-  },
-  "workflowKeywordTriggerEnabled": false,
-  "feedbackDrafts": "off",
-  "feedbackSurveyRate": 0,
-  "agentPushNotifEnabled": false,
-  "inputNeededNotifEnabled": false,
-  "disableBundledSkills": true,
-  "disableRemoteControl": true,
+  "model": "opus",
   "disableClaudeAiConnectors": true,
-  "disableArtifact": true,
+  "disableBundledSkills": true,
   "hooks": {
     "PreToolUse": [
       {
@@ -60,12 +51,26 @@
       }
     ]
   },
+  "worktree": {
+    "bgIsolation": "none"
+  },
+  "disableRemoteControl": true,
+  "disableArtifact": true,
+  "workflowKeywordTriggerEnabled": false,
   "statusLine": {
     "type": "command",
     "command": "python3 ~/.claude/statusline.py",
     "padding": 0
   },
+  "enabledPlugins": {
+    "swift-lsp@claude-plugins-official": true,
+    "figma@claude-plugins-official": true
+  },
+  "feedbackSurveyRate": 0,
+  "feedbackDrafts": "off",
+  "fastMode": true,
   "autoUpdatesChannel": "stable",
   "skipDangerousModePermissionPrompt": true,
-  "fastMode": true
+  "inputNeededNotifEnabled": false,
+  "agentPushNotifEnabled": false
 }
