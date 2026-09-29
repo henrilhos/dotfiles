@@ -43,6 +43,8 @@
     - command: git submodule sync --recursive && git submodule update --init --recursive
       stdout: true
       stderr: true
+    - command: "[ -d ~/.agents ] || git clone https://github.com/henrilhos/agents.git ~/.agents"
+      stdout: true
     # Registers the Ayu themes in configs/bat/themes (delta reads bat's cache
     # too). bat comes from Homebrew, so like gh below this only works on the
     # second `--only shell` pass in bootstrap.sh.
