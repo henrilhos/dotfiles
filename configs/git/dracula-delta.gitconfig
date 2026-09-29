@@ -1,0 +1,57 @@
+# Dracula theme for Delta
+# https://github.com/dracula/delta
+#
+# Include this file in your gitconfig:
+#
+# [include]
+#     path = /PATH/TO/delta/dracula.gitconfig
+#
+# Then activate the theme:
+#
+# [delta]
+#     features = dracula
+
+[delta "dracula"]
+    # author: https://github.com/lanjelin
+    dark = true
+    right-arrow = >
+    syntax-theme = Dracula
+    # -- decorations
+    file-style = "#F8F8F2"
+    file-added-label = [+]
+    file-copied-label = [==]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [->]
+    file-decoration-style = "#BD93F9" overline
+    hunk-header-style = file line-number syntax
+    hunk-header-decoration-style = "#BD93F9" box
+    hunk-header-file-style = "#FF79C6"
+    hunk-header-line-number-style = "#BD93F9" bold
+    # --git
+    blame-separator-format = "┊{n:>3}┊"
+    blame-separator-style = "#BD93F9"
+    blame-palette = "#191A21 #21222C #282A36 #343746 #424450"
+    commit-style =  "#FF79C6"
+    commit-decoration-style = "#BD93F9" box
+    # -- grep
+    grep-file-style = "#FF79C6"
+    grep-line-number-style = "#BD93F9"
+    # -- diff
+    line-numbers = true
+    keep-plus-minus-markers = true
+    line-numbers-left-style = "#BD93F9"
+    line-numbers-right-style = "#BD93F9"
+    line-numbers-zero-style = "#BD93F9" italic
+    line-numbers-plus-style = "#50FA7B" bold
+    line-numbers-minus-style = "#FF5555" bold
+    line-numbers-left-format = "{nm:>1}┊"
+    line-numbers-right-format = " {np:>1}┊"
+    plus-style = syntax "#424450"
+    plus-emph-style = syntax "#4aa66a"
+    plus-empty-line-marker-style = syntax "#424450"
+    minus-style = syntax "#424450"
+    minus-emph-style = syntax "#FF5555"
+    minus-empty-line-marker-style = syntax "#424450"
+    whitespace-error-style = "#FF5555" reverse
+    zero-style = syntax

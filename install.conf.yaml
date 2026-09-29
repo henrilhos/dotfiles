@@ -16,9 +16,10 @@
     ~/.claude/statusline.py: configs/claude/statusline.py
     ~/.colima/default/colima.yaml: configs/colima/default/colima.yaml
     ~/.config/bat/config: configs/bat/config
-    ~/.config/bat/themes: configs/bat/themes
+    ~/.config/bat/themes/Dracula.tmTheme: configs/bat/themes/Dracula.tmTheme
     ~/.config/btop/btop.conf: configs/btop/btop.conf
     ~/.config/ghostty/config: configs/ghostty/config
+    ~/.config/ghostty/themes: submodules/dracula-pro-ghostty
     ~/.config/git/ignore: configs/git/gitignore
     ~/.config/karabiner/karabiner.json: configs/karabiner/karabiner.json
     ~/.config/mise/config.toml: configs/mise/config.toml

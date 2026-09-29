@@ -1,38 +1,38 @@
-# AYU DARK (fixed; lazygit can't follow the macOS Appearance switch)
+# DRACULA
 theme:
   activeBorderColor:
-    - "#E6B450"
+    - "#FF79C6"
     - bold
   inactiveBorderColor:
-    - "#565B66"
+    - "#BD93F9"
 
   searchingActiveBorderColor:
-    - "#59C2FF"
+    - "#8BE9FD"
     - bold
 
   optionsTextColor:
-    - "#565B66"
+    - "#6272A4"
 
   selectedLineBgColor:
-    - "#1B3A5B"
+    - "#6272A4"
 
   inactiveViewSelectedLineBgColor:
     - bold
 
   cherryPickedCommitFgColor:
-    - "#0B0E14"
+    - "#6272A4"
 
   cherryPickedCommitBgColor:
-    - "#95E6CB"
+    - "#8BE9FD"
 
   markedBaseCommitFgColor:
-    - "#0B0E14"
+    - "#8BE9FD"
 
   markedBaseCommitBgColor:
-    - "#FFB454"
+    - "#F1FA8C"
 
   unstagedChangesColor:
-    - "#F07178"
+    - "#FF5555"
 
   defaultFgColor:
-    - "#BFBDB6"
+    - "#F8F8F2"
