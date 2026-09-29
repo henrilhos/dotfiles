@@ -43,7 +43,7 @@
     - command: git submodule sync --recursive && git submodule update --init --recursive
       stdout: true
       stderr: true
-    - command: "[ -d ~/.agents ] || git clone git@github.com:henrilhos/agents.git ~/.agents"
+    - command: "[ -d ~/.agents ] || git clone https://github.com/henrilhos/agents.git ~/.agents"
       stdout: true
     # gh comes from Homebrew via nix-darwin, which bootstrap.sh applies
     # after this file runs, so it re-runs `--only shell` once gh exists.

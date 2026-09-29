@@ -44,7 +44,7 @@ because it looked good in someone else's repo.
 On a fresh macOS machine:
 
 ```sh
-DOTFILES_REPO=git@github.com:henrilhos/dotfiles.git \
+DOTFILES_REPO=https://github.com/henrilhos/dotfiles.git \
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/main/scripts/bootstrap.sh)"
 ```
 

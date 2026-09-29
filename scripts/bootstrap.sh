@@ -6,7 +6,7 @@
 # checks whether it's already done first.
 #
 # Usage (on a brand new machine, no clone yet):
-#   DOTFILES_REPO=git@github.com:<you>/dotfiles.git \
+#   DOTFILES_REPO=https://github.com/<you>/dotfiles.git \
 #     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/scripts/bootstrap.sh)"
 #
 # Usage (repo already cloned locally, e.g. right now):
@@ -82,7 +82,7 @@ mkdir -p "$HOME/.ssh"
 chmod 700 "$HOME/.ssh"
 # Two endpoints, because the repo's ~/.ssh/config routes github.com over
 # ssh.github.com:443 but isn't linked until ./install runs further down —
-# so the clone in the next step still goes out over port 22, while every
+# so the submodule step below still goes out over port 22, while every
 # later connection uses the 443 route.
 trust_host() {
   local pattern="$1" host="$2" port="$3"
