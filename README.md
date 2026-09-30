@@ -40,7 +40,7 @@ On a fresh macOS machine:
 
 ```sh
 DOTFILES_REPO=https://github.com/<you>/dotfiles.git \
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/scripts/bootstrap.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/public/scripts/bootstrap.sh)"
 ```
 
 See [`scripts/bootstrap.sh`](scripts/bootstrap.sh) for what that actually

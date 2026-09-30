@@ -7,7 +7,7 @@
 #
 # Usage (on a brand new machine, no clone yet):
 #   DOTFILES_REPO=https://github.com/<you>/dotfiles.git \
-#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/scripts/bootstrap.sh)"
+#     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/public/scripts/bootstrap.sh)"
 #
 # Usage (repo already cloned locally, e.g. right now):
 #   ~/dotfiles/scripts/bootstrap.sh
