@@ -11,9 +11,7 @@
 - link:
     ~/.bash_profile: configs/bash/bash_profile
     ~/.bashrc: configs/bash/bashrc
-    ~/.claude/hooks: configs/claude/hooks
     ~/.claude/settings.json: configs/claude/settings.json
-    ~/.claude/statusline.py: configs/claude/statusline.py
     ~/.colima/default/colima.yaml: configs/colima/default/colima.yaml
     ~/.config/bat/config: configs/bat/config
     ~/.config/bat/themes: configs/bat/themes
@@ -22,8 +20,6 @@
     ~/.config/git/ignore: configs/git/gitignore
     ~/.config/mise/config.toml: configs/mise/config.toml
     ~/.config/nix-darwin: configs/nix-darwin
-    ~/.config/nvim: configs/nvim
-    ~/.config/sesh/sesh.toml: configs/sesh/sesh.toml
     ~/.config/starship.toml: configs/starship/starship.toml
     ~/.docker/config.json: configs/docker/config.json
     ~/.gitconfig: configs/git/gitconfig
@@ -31,9 +27,7 @@
     ~/.hushlogin: configs/shell/hushlogin
     ~/.oh-my-zsh: submodules/oh-my-zsh
     ~/.ssh/config: configs/ssh/config
-    ~/.tmux.conf: configs/tmux/tmux.conf
     ~/.zshrc: configs/zsh/zshrc
-    ~/Library/Application Support/lazygit/config.yml: configs/lazygit/config.yml
     ~/Work/.envrc: configs/direnv/work.envrc
 
 - shell:

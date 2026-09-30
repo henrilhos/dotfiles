@@ -7,7 +7,7 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
     HISTSIZE=50000
     SAVEHIST=50000
     setopt EXTENDED_HISTORY      # save timestamp + duration
-    setopt SHARE_HISTORY         # sync across sessions as commands run — key for tmux panes
+    setopt SHARE_HISTORY         # sync across sessions as commands run
     setopt HIST_IGNORE_ALL_DUPS  # dedupe across the whole file, not just consecutive runs
     setopt HIST_IGNORE_SPACE     # leading space = don't record (secrets, one-offs)
     setopt HIST_REDUCE_BLANKS
@@ -30,8 +30,6 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
     alias ll='eza -lah'
     alias ls='eza'
     alias lt='eza --tree'
-    alias vim='nvim'
-    alias lg='lazygit'
     alias cat='bat'
 
     # -- Prompt
@@ -86,7 +84,7 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
 
     # -- fzf
     eval "$(fzf --zsh)"
-    # Ayu Dark (fixed; fzf can't follow the macOS Appearance switch)
+    # Ayu Dark
     export FZF_DEFAULT_OPTS='--color=fg:#bfbdb6,bg:#0b0e14,hl:#ffb454 --color=fg+:#e6e1cf,bg+:#1c212b,hl+:#ffb454 --color=info:#59c2ff,prompt:#aad94c,pointer:#e6b450 --color=marker:#f07178,spinner:#d2a6ff,header:#565b66'
 
     # -- direnv
@@ -98,25 +96,6 @@ if [[ ($- == *i*) && -n "$ZSH_VERSION" ]]; then
     # java tool, anything under [env] — never reach the shell. Gradle/React
     # Native Android builds need JAVA_HOME, so the ~12ms/prompt is the price.
     eval "$(mise activate zsh)"
-
-    # -- sesh
-    # Alt-s opens sesh's fzf picker straight from zsh (outside tmux, connecting
-    # just attaches to/creates the session — no need to already be in one).
-    # https://github.com/joshmedeski/sesh#zsh-keybind
-    function sesh-sessions() {
-        {
-            exec </dev/tty
-            exec <&1
-            local session
-            session=$(sesh list --icons | fzf --ansi --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-            zle reset-prompt >/dev/null 2>&1 || true
-            [[ -z "$session" ]] && return
-            sesh connect "$session"
-        }
-    }
-    zle -N sesh-sessions
-    bindkey -M emacs '\es' sesh-sessions
-    bindkey -M viins '\es' sesh-sessions
 
     # -- fix Atuin [Ctrl-r] key binding (after omz's key-bindings.zsh and fzf's own eval)
     eval "$(atuin init zsh)"

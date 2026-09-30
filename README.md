@@ -18,22 +18,9 @@ pulling updates back.
   system configuration (`configs/nix-darwin/`), including **Homebrew**
   managed through its `homebrew` module (`onActivation.cleanup = "zap"`, so
   `brews`/`casks` are the single source of truth for installed packages).
-- **[LazyVim](https://www.lazyvim.org/)** — Neovim config (`configs/nvim/`),
-  stock starter template plus the
-  [Ayu](https://github.com/Shatur/neovim-ayu) colorscheme, toggled to Ayu
-  Light by
-  [dark-notify](https://github.com/cormacrelf/dark-notify) when macOS
-  switches Appearance.
-- **[Ghostty](https://ghostty.org/)** — terminal, themed with the same
-  Ayu / Ayu Light palettes, switching automatically with macOS
-  Appearance via its native light/dark `theme` support.
-- **[tmux](https://github.com/tmux/tmux)** — terminal multiplexer
-  (`configs/tmux/`), status line themed the same way via
-  [tmux-dark-notify](https://github.com/erikw/tmux-dark-notify) (installed
-  through [TPM](https://github.com/tmux-plugins/tpm), which bootstraps
-  itself on first run).
-- **Ayu** — `bat` also follows macOS Appearance; `git-delta`, `lazygit`,
-  `btop`, and `fzf` can't, so they stay on Ayu Dark.
+- **[Ghostty](https://ghostty.org/)** — terminal.
+- **Ayu Dark** — the one theme across Ghostty, `bat`, `git-delta`, `btop`,
+  and `fzf`.
 
 ## First steps
 
