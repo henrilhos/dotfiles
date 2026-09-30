@@ -79,12 +79,16 @@ AVD_CONFIG="$ANDROID_USER_HOME/avd/${AVD_NAME}.avd/config.ini"
 # NDK alone is ~5 GB.
 log "Installing SDK packages (no-op if already present)..."
 yes | sdkmanager --licenses >/dev/null 2>&1 || true
+# stdout carries the download progress. stderr is filtered only to drop
+# sdkmanager's 3-line "deprecated, use Android CLI" banner; real errors
+# still come through.
 sdkmanager \
   "platform-tools" \
   "emulator" \
   "build-tools;36.0.0" \
   "platforms;android-${ANDROID_API}" \
-  "$SYSTEM_IMAGE" >/dev/null
+  "$SYSTEM_IMAGE" \
+  2> >(grep --line-buffered -Ev "sdkmanager\) is deprecated|'android' binary can also|Android CLI and how to use" >&2)
 
 # --- 3. The AVD ---
 if avdmanager list avd 2>/dev/null | grep -q "Name: ${AVD_NAME}$"; then
