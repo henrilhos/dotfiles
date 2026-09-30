@@ -86,7 +86,6 @@
       "font-symbols-only-nerd-font"
       "ghostty"
       "google-chrome"
-      "teleport-connect"
       "visual-studio-code"
     ];
   };
