@@ -97,6 +97,7 @@
       "rectangle"
       "spotify"
       "t3-code"
+      "teleport-connect"
       "visual-studio-code"
     ];
   };
