@@ -50,6 +50,15 @@
 
       # Don't show recently used apps in the dock.
       show-recents = false;
+
+      # Pinned apps, in order. Enforced on every `darwin-rebuild switch`, so
+      # anything pinned by hand is removed; add it here instead.
+      persistent-apps = [
+        "/Applications/Arc.app"
+        "/Applications/Ghostty.app"
+        "/Applications/T3 Code (Alpha).app"
+        "/Applications/Spotify.app"
+      ];
     };
 
     # Disable Spotlight's default hotkeys (⌘Space / ⌘⌥Space) so Raycast can
