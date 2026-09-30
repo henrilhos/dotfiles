@@ -89,7 +89,6 @@
       "ghostty"
       "google-chrome"
       "homerow"
-      "karabiner-elements"
       "obsidian"
       "raycast"
       "rectangle"
