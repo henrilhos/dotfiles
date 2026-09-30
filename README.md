@@ -1,16 +1,15 @@
 # dotfiles
 
-> **This is my personal setup** (`henrilhos`, the default branch). Looking
-> for something to fork? Use the
-> [`main`](https://github.com/henrilhos/dotfiles/tree/main) branch: the
-> generic team template, with `CHANGEME`s instead of my identity. When
-> forking, untick "Copy the `henrilhos` branch only", or you'll get my
-> config.
+> **This is my personal setup** (`main`). Looking for something to fork?
+> Use the [`public`](https://github.com/henrilhos/dotfiles/tree/public)
+> branch: the generic team template, with `CHANGEME`s instead of my
+> identity. When forking, untick "Copy the `main` branch only", or you'll
+> get my config.
 >
-> `henrilhos` is `main` plus a few `chore(personal)` commits on top:
+> `main` is `public` plus a few `chore(personal)` commits on top:
 > identity, Ayu, 1Password, the British keyboard fix, and `~/.agents`.
-> `main` gets merged into it, never the other way round;
-> `git diff main henrilhos` shows exactly the personal layer.
+> `public` gets merged into it, never the other way round;
+> `git diff public main` shows exactly the personal layer.
 
 Our Apple Silicon macOS setup, built incrementally rather than copied
 wholesale from somewhere else. Every tool in here was added because it's
@@ -74,8 +73,8 @@ Before the first run, in your fork:
 On a fresh macOS machine:
 
 ```sh
-DOTFILES_REPO=https://github.com/henrilhos/dotfiles.git DOTFILES_BRANCH=henrilhos \
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/henrilhos/scripts/bootstrap.sh)"
+DOTFILES_REPO=https://github.com/henrilhos/dotfiles.git \
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/main/scripts/bootstrap.sh)"
 ```
 
 See [`scripts/bootstrap.sh`](scripts/bootstrap.sh) for what that actually
