@@ -9,6 +9,10 @@
 [pull]
 	rebase = false
 
+# Drop origin/* refs for branches deleted on the remote (e.g. after a PR merge).
+[fetch]
+	prune = true
+
 [core]
 	editor = nvim
 	pager = delta
