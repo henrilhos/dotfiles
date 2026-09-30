@@ -1,10 +1,16 @@
 # dotfiles
 
-> **`henrilhos` branch:** my personal setup, which is `main` (the team
-> template) plus a few `chore(personal)` commits on top: identity, Ayu,
-> 1Password, the British keyboard fix, and `~/.agents`. `main` gets
-> merged into it, never the other way round; `git diff main henrilhos` shows
-> exactly the personal layer.
+> **This is my personal setup** (`henrilhos`, the default branch). Looking
+> for something to fork? Use the
+> [`main`](https://github.com/henrilhos/dotfiles/tree/main) branch: the
+> generic team template, with `CHANGEME`s instead of my identity. When
+> forking, untick "Copy the `henrilhos` branch only", or you'll get my
+> config.
+>
+> `henrilhos` is `main` plus a few `chore(personal)` commits on top:
+> identity, Ayu, 1Password, the British keyboard fix, and `~/.agents`.
+> `main` gets merged into it, never the other way round;
+> `git diff main henrilhos` shows exactly the personal layer.
 
 Our Apple Silicon macOS setup, built incrementally rather than copied
 wholesale from somewhere else. Every tool in here was added because it's
