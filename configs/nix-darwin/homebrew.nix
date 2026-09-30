@@ -82,7 +82,7 @@
       "arc"
       "claude-code@latest"
       "codex"
-      "datagrip"
+      "dbeaver-community"
       "discord"
       "font-recursive-code"
       "font-symbols-only-nerd-font"
