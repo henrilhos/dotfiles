@@ -11,7 +11,7 @@
 > `public` gets merged into it, never the other way round;
 > `git diff public main` shows exactly the personal layer.
 
-Our Apple Silicon macOS setup, built incrementally rather than copied
+My Apple Silicon macOS setup, built incrementally rather than copied
 wholesale from somewhere else. Every tool in here was added because it's
 actually used, not because it looked good in someone else's repo.
 
@@ -54,20 +54,6 @@ pulling updates back.
   (`configs/ssh/config`) with keys in the Secure Enclave. Commit signing is
   optional; see [`docs/secretive.md`](docs/secretive.md).
 
-## First steps
-
-Before the first run, in your fork:
-
-- [ ] `configs/git/gitconfig` — `name` and `email`.
-- [ ] `configs/git/work.gitconfig` — work `email`, used inside `~/Work/`.
-- [ ] `configs/nix-darwin/flake.nix` — the `hosts` entry: key is
-  `scutil --get LocalHostName`, `username` is `whoami`.
-- [ ] `configs/nix-darwin/homebrew.nix` — trim `brews`/`casks` to what you
-  use. **Careful:** `cleanup = "zap"` uninstalls every Homebrew package not
-  listed there, app data included, on each `darwin-rebuild switch`.
-- [ ] `configs/karabiner/karabiner.json` — the Hyper key app launchers
-  point at specific apps.
-
 ## Setup
 
 On a fresh macOS machine:
@@ -91,7 +77,7 @@ A few settings are app-internal toggles or plist domains too opaque to
 manage declaratively — done once by hand on a fresh machine:
 
 - **Input source** — System Settings → Keyboard → Input Sources → add
-  *U.S. International*. (HIToolbox's input-source list has no stable
+  _U.S. International_. (HIToolbox's input-source list has no stable
   scriptable format.)
 - **Secretive** — create an SSH key (see
   [`docs/secretive.md`](docs/secretive.md)).
