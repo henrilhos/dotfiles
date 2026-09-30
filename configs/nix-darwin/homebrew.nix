@@ -81,11 +81,11 @@
       "android-commandlinetools"
       "claude-code@latest"
       "dbeaver-community"
-      "discord"
       "font-recursive-code"
       "font-symbols-only-nerd-font"
       "ghostty"
       "google-chrome"
+      "microsoft-teams"
       "visual-studio-code"
     ];
   };
