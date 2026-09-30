@@ -51,65 +51,6 @@
       # Don't show recently used apps in the dock.
       show-recents = false;
     };
-
-    # Disable Spotlight's default hotkeys (⌘Space / ⌘⌥Space) so Raycast can
-    # take over ⌘Space instead. Set the Raycast side manually in its own
-    # Settings > General — its hotkey preference uses a custom encoding
-    # that isn't safe to write via `defaults write`.
-    CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys = {
-      "64" = {
-        enabled = false;
-        value = {
-          parameters = [
-            32
-            49
-            1048576
-          ];
-          type = "standard";
-        };
-      };
-      "65" = {
-        enabled = false;
-        value = {
-          parameters = [
-            32
-            49
-            1572864
-          ];
-          type = "standard";
-        };
-      };
-    };
-
-    # Rectangle window snapping, bound to the Hyper key (⌘⌃⌥⇧, see
-    # Karabiner) instead of Rectangle's own defaults. Action names and the
-    # `defaults write ... -dict-add keyCode -float X modifierFlags -float Y`
-    # format are documented at
-    # https://github.com/rxhanson/Rectangle/blob/master/TerminalCommands.md
-    # keyCode values are standard macOS virtual keycodes (H=4, J=38, K=40,
-    # L=37, M=46); modifierFlags 1966080 = cmd+ctrl+opt+shift (Hyper).
-    CustomUserPreferences."com.knollsoft.Rectangle" = {
-      maximize = {
-        keyCode = 46.0;
-        modifierFlags = 1966080.0;
-      };
-      leftHalf = {
-        keyCode = 4.0;
-        modifierFlags = 1966080.0;
-      };
-      bottomHalf = {
-        keyCode = 38.0;
-        modifierFlags = 1966080.0;
-      };
-      topHalf = {
-        keyCode = 40.0;
-        modifierFlags = 1966080.0;
-      };
-      rightHalf = {
-        keyCode = 37.0;
-        modifierFlags = 1966080.0;
-      };
-    };
   };
 
   security.pam.services.sudo_local = {
