@@ -25,15 +25,6 @@
 [includeIf "gitdir/i:~/work/"]
 	path = ~/dotfiles/configs/git/work.gitconfig
 
-# Commit signing with a Secretive SSH key, off by default. Setup in
-# docs/secretive.md.
-# [user]
-# 	signingkey = key::CHANGEME
-# [gpg]
-# 	format = ssh
-# [commit]
-# 	gpgsign = true
-
 [credential "https://github.com"]
 	helper = 
 	helper = !/opt/homebrew/bin/gh auth git-credential

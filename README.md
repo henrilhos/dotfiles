@@ -34,9 +34,6 @@ pulling updates back.
   itself on first run).
 - **Ayu** — `bat` also follows macOS Appearance; `git-delta`, `lazygit`,
   `btop`, and `fzf` can't, so they stay on Ayu Dark.
-- **[Secretive](https://github.com/maxgoedjen/secretive)** — SSH agent
-  (`configs/ssh/config`) with keys in the Secure Enclave. Commit signing is
-  optional; see [`docs/secretive.md`](docs/secretive.md).
 
 ## First steps
 
@@ -75,8 +72,6 @@ manage declaratively — done once by hand on a fresh machine:
 - **Input source** — System Settings → Keyboard → Input Sources → add
   *U.S. International*. (HIToolbox's input-source list has no stable
   scriptable format.)
-- **Secretive** — create an SSH key (see
-  [`docs/secretive.md`](docs/secretive.md)).
 
 ## Day to day
 

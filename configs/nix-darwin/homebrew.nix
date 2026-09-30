@@ -76,7 +76,7 @@
       "zsh-syntax-highlighting"
     ];
 
-    # GUI apps. Add one line per package, e.g. "ghostty", "secretive".
+    # GUI apps. Add one line per package, e.g. "ghostty", "google-chrome".
     casks = [
       "android-commandlinetools"
       "claude-code@latest"
@@ -86,7 +86,6 @@
       "font-symbols-only-nerd-font"
       "ghostty"
       "google-chrome"
-      "secretive"
       "visual-studio-code"
     ];
   };
