@@ -13,6 +13,10 @@ font-family = "Symbols Nerd Font Mono"
 
 font-size = 14
 
+cursor-style = block
+shell-integration-features = no-cursor
+confirm-close-surface = false
+
 # Both Option keys send Alt/Meta (so zsh's `\eX` keybinds
 # work). Trade-off: Option no longer composes accented characters
 # (Option-e, Option-c, ...) in the terminal.
