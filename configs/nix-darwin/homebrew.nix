@@ -79,7 +79,6 @@
     # GUI apps. Add one line per package, e.g. "ghostty", "raycast".
     casks = [
       "android-commandlinetools"
-      "arc"
       "claude-code@latest"
       "codex"
       "dbeaver-community"
