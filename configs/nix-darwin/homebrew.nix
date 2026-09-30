@@ -91,7 +91,6 @@
       "homerow"
       "obsidian"
       "raycast"
-      "rectangle"
       "secretive"
       "spotify"
       "t3-code"

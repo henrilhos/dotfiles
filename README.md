@@ -34,8 +34,6 @@ pulling updates back.
   itself on first run).
 - **Ayu** — `bat` also follows macOS Appearance; `git-delta`, `lazygit`,
   `btop`, and `fzf` can't, so they stay on Ayu Dark.
-- **[Rectangle](https://rectangleapp.com/)** — window snapping, also bound to
-  the Hyper key.
 - **[Secretive](https://github.com/maxgoedjen/secretive)** — SSH agent
   (`configs/ssh/config`) with keys in the Secure Enclave. Commit signing is
   optional; see [`docs/secretive.md`](docs/secretive.md).
