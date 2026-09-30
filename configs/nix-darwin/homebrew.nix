@@ -13,8 +13,6 @@
       cleanup = "zap";
     };
 
-    taps = [ "cormacrelf/tap" ];
-
     # CLI tools. Add one line per package, e.g. "starship", "eza", "fzf".
     brews = [
       "atuin"
@@ -26,7 +24,6 @@
       "bzip2"
       "cocoapods"
       "colima"
-      "cormacrelf/tap/dark-notify"
       "curl"
       "direnv"
       "docker"
@@ -44,8 +41,6 @@
       "icu4c"
       "jpeg-turbo"
       "krb5"
-      "lazydocker"
-      "lazygit"
       "libedit"
       "libiconv"
       "libpng"
@@ -56,18 +51,14 @@
       "libzip"
       "mise"
       "mole"
-      "neovim"
       "oniguruma"
       "openssl@3"
       "pkgconf"
       "re2c"
       "readline"
       "ripgrep"
-      "rtk"
-      "sesh"
       "sqlite"
       "starship"
-      "tmux"
       "webp"
       "yazi"
       "zlib"

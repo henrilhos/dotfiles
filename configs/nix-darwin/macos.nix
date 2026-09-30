@@ -5,10 +5,6 @@
     trackpad.Clicking = true;
 
     NSGlobalDomain = {
-      # Scroll direction: disable "natural" (reversed) scrolling, i.e. scroll
-      # like a traditional mouse wheel.
-      "com.apple.swipescrolldirection" = false;
-
       # Appearance
       AppleInterfaceStyle = "Dark";
 
@@ -46,7 +42,7 @@
       autohide = true;
 
       # Icon size, in pixels. The default is 64.
-      tilesize = 24;
+      tilesize = 40;
 
       # Don't show recently used apps in the dock.
       show-recents = false;

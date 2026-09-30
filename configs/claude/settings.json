@@ -4,73 +4,7 @@
     "commit": "",
     "pr": ""
   },
-  "includeCoAuthoredBy": false,
-  "permissions": {
-    "deny": [
-      "EnterPlanMode",
-      "ExitPlanMode",
-      "DesignSync",
-      "PushNotification",
-      "RemoteTrigger",
-      "ReportFindings",
-      "AskUserQuestion",
-      "EnterWorktree",
-      "ExitWorktree",
-      "ScheduleWakeup",
-      "ListMcpResourcesTool",
-      "ReadMcpResourceTool",
-      "ReadMcpResourceDirTool"
-    ]
-  },
-  "model": "opus",
-  "disableClaudeAiConnectors": true,
-  "disableBundledSkills": true,
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/block-git-rewrites.py"
-          },
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/block-sleep.py"
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "rtk hook claude"
-          }
-        ]
-      }
-    ]
-  },
-  "worktree": {
-    "bgIsolation": "none"
-  },
-  "disableRemoteControl": true,
-  "disableArtifact": true,
-  "workflowKeywordTriggerEnabled": false,
-  "statusLine": {
-    "type": "command",
-    "command": "python3 ~/.claude/statusline.py",
-    "padding": 0
-  },
-  "enabledPlugins": {
-    "swift-lsp@claude-plugins-official": true,
-    "figma@claude-plugins-official": true
-  },
-  "feedbackSurveyRate": 0,
-  "feedbackDrafts": "off",
-  "fastMode": true,
-  "autoUpdatesChannel": "stable",
-  "skipDangerousModePermissionPrompt": true,
-  "inputNeededNotifEnabled": false,
-  "agentPushNotifEnabled": false
+  "env": {
+    "DISABLE_TELEMETRY": "1"
+  }
 }
