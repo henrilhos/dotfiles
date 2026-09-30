@@ -46,6 +46,19 @@ if ! xcode-select -p >/dev/null 2>&1; then
   exit 1
 fi
 
+# --- Admin rights, asked for once ---
+# Homebrew refuses to run as root, so the script runs as the user and
+# borrows sudo instead. Homebrew's installer, the .pkg casks (Teams) and
+# the Touch ID step all reuse this one prompt.
+if [[ "$EUID" -eq 0 ]]; then
+  echo "Run this script without sudo; it asks for your password itself." >&2
+  exit 1
+fi
+log "Some steps need admin rights. Enter your Mac password:"
+sudo -v
+# Keeps sudo from expiring during the long downloads; stops with the script.
+while true; do sudo -n true; sleep 50; kill -0 "$$" 2>/dev/null || exit; done &
+
 # --- 2. Homebrew ---
 if ! command -v brew >/dev/null 2>&1 && [[ ! -x /opt/homebrew/bin/brew ]]; then
   log "Installing Homebrew..."
@@ -284,7 +297,7 @@ killall Dock Finder SystemUIServer 2>/dev/null || true
 # --- 11. Touch ID for sudo ---
 # sudo_local is the file macOS leaves alone on system updates.
 if ! grep -qs pam_tid.so /etc/pam.d/sudo_local; then
-  log "Enabling Touch ID for sudo (asks for your password once)..."
+  log "Enabling Touch ID for sudo..."
   echo "auth       sufficient     pam_tid.so" | sudo tee /etc/pam.d/sudo_local >/dev/null
 fi
 
