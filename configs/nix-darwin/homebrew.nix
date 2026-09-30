@@ -80,19 +80,14 @@
     casks = [
       "android-commandlinetools"
       "claude-code@latest"
-      "codex"
       "dbeaver-community"
       "discord"
       "font-recursive-code"
       "font-symbols-only-nerd-font"
       "ghostty"
       "google-chrome"
-      "homerow"
-      "obsidian"
       "raycast"
       "secretive"
-      "spotify"
-      "t3-code"
       "visual-studio-code"
     ];
   };
