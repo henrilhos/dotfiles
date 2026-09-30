@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
   nixpkgs.hostPlatform = "aarch64-darwin"; # Apple Silicon
 
@@ -19,6 +19,12 @@
     /nix/var/nix/profiles/default/bin/nix-collect-garbage --delete-older-than 30d
     /nix/var/nix/profiles/default/bin/nix store optimise
   '';
+
+  # Only the unfree packages listed here may be built.
+  nixpkgs.config.allowUnfreePredicate = pkg: lib.getName pkg == "teleport-connect";
+
+  # Apps built by Nix; nix-darwin links them into /Applications/Nix Apps.
+  environment.systemPackages = [ (pkgs.callPackage ./teleport-connect.nix { }) ];
 
   # Let nix-darwin manage /etc/zshrc (adds Nix env sourcing, etc.).
   programs.zsh.enable = true;
