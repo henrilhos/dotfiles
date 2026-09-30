@@ -51,6 +51,19 @@ run `./install`, then `darwin-rebuild switch`.
 If the repo is already cloned, just run `./scripts/bootstrap.sh` directly —
 every step checks whether it's already done first, so it's safe to re-run.
 
+### New to the Mac?
+
+[`scripts/simple-setup.sh`](scripts/simple-setup.sh) is a lighter,
+single-file take on this setup: no Nix, no fork, no clone. It installs
+Homebrew, a short list of CLI tools, the apps (Ghostty, VS Code, Claude
+Code, DBeaver, Teams, Teleport Connect), colima + Docker, and the React
+Native toolchain with an Android emulator (the `android-avd.sh` recipe).
+It then writes a small `~/.zshrc` and applies the same macOS defaults.
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/henrilhos/dotfiles/public/scripts/simple-setup.sh)"
+```
+
 ## Manual steps (no scriptable equivalent)
 
 A few settings are app-internal toggles or plist domains too opaque to
