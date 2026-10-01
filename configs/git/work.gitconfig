@@ -2,3 +2,6 @@
 
 [user]
 	email = henrique.castilhos@px.center
+
+[fetch]
+	prune = false
