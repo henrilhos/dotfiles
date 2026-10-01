@@ -17,10 +17,12 @@
       # the right one with no `#name`. `alias` gives each host a second,
       # stable name to switch by (`--flake ...#work`) for when the hostname
       # changes out from under us — MDM renames work machines.
+      # `homelab` applies ./homelab.nix (hostname from the key).
       hosts = {
-        "Henriques-MacBook-Pro" = {
+        snoopy = {
           username = "henrilhos";
           alias = "personal";
+          homelab = true;
         };
         "MAC-JYRCQWVHW0" = {
           username = "henrique.castilhos";
@@ -29,19 +31,20 @@
       };
 
       mkDarwin =
-        host:
+        hostname: host:
         nix-darwin.lib.darwinSystem {
           modules = [
             ./configuration.nix
             ./homebrew.nix
             ./macos.nix
             { system.primaryUser = host.username; }
-          ];
+          ]
+          ++ lib.optional (host.homelab or false) (import ./homelab.nix hostname);
         };
     in
     {
       darwinConfigurations =
-        lib.mapAttrs (_hostname: mkDarwin) hosts
-        // lib.mapAttrs' (_hostname: host: lib.nameValuePair host.alias (mkDarwin host)) hosts;
+        lib.mapAttrs mkDarwin hosts
+        // lib.mapAttrs' (hostname: host: lib.nameValuePair host.alias (mkDarwin hostname host)) hosts;
     };
 }
