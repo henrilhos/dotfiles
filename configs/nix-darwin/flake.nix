@@ -17,7 +17,7 @@
       # the right one with no `#name`. `alias` gives each host a second,
       # stable name to switch by (`--flake ...#work`) for when the hostname
       # changes out from under us — MDM renames work machines.
-      # `homelab` applies ./homelab.nix (hostname from the key).
+      # `homelab` applies ./homelab.nix (hostname from the key, Tailscale).
       hosts = {
         snoopy = {
           username = "henrilhos";
