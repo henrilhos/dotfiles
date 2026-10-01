@@ -19,7 +19,7 @@
       # changes out from under us — MDM renames work machines.
       # `homelab` applies ./homelab.nix (hostname from the key, Tailscale).
       hosts = {
-        snoopy = {
+        monica = {
           username = "henrilhos";
           alias = "personal";
           homelab = true;
