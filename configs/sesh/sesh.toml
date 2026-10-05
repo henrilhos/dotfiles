@@ -9,14 +9,18 @@ name = "dotfiles"
 path = "~/dotfiles"
 startup_command = "nvim"
 
+[[session]]
+name = "cascao"
+path = "~"
+startup_command = "ssh -t cascao 'tmux new -A -s main'"
+icon = "🍋"
+
 # Personal projects.
 [[wildcard]]
-pattern = "~/Projects/*"
-startup_command = "nvim"
+pattern = "~/Code/*"
 icon = "🌱"
 
 # Work projects, kept in a separate directory from personal ones.
 [[wildcard]]
 pattern = "~/Work/*"
-startup_command = "nvim"
 icon = "💼"
