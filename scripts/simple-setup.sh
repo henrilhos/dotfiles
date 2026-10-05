@@ -68,7 +68,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 log "Installing packages..."
 brew bundle --file=- <<'EOF'
 # Shell
-brew "starship"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
@@ -155,7 +154,6 @@ alias cat='bat'
 alias gs='git status'
 alias reload='source ~/.zshrc'
 
-eval "$(starship init zsh)"  # prompt
 eval "$(zoxide init zsh)"    # `z <part of a path>` jumps to recent directories
 eval "$(fzf --zsh)"          # Ctrl-R fuzzy history, Ctrl-T fuzzy file picker
 eval "$(mise activate zsh)"  # per-project Node/Java/... versions, sets JAVA_HOME
