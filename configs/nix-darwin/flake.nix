@@ -18,15 +18,18 @@
       # stable name to switch by (`--flake ...#work`) for when the hostname
       # changes out from under us — MDM renames work machines.
       # `homelab` applies ./homelab.nix (hostname from the key, Tailscale).
+      # `personal` / `work` apply ./personal.nix / ./work.nix (machine-only apps).
       hosts = {
         monica = {
           username = "henrilhos";
           alias = "personal";
           homelab = true;
+          personal = true;
         };
         "MAC-JYRCQWVHW0" = {
           username = "henrique.castilhos";
           alias = "work";
+          work = true;
         };
       };
 
@@ -39,7 +42,9 @@
             ./macos.nix
             { system.primaryUser = host.username; }
           ]
-          ++ lib.optional (host.homelab or false) (import ./homelab.nix hostname);
+          ++ lib.optional (host.homelab or false) (import ./homelab.nix hostname)
+          ++ lib.optional (host.personal or false) ./personal.nix
+          ++ lib.optional (host.work or false) ./work.nix;
         };
     in
     {

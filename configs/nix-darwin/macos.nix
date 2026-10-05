@@ -61,35 +61,6 @@
       ];
     };
 
-    # Disable Spotlight's default hotkeys (⌘Space / ⌘⌥Space) so Raycast can
-    # take over ⌘Space instead. Set the Raycast side manually in its own
-    # Settings > General — its hotkey preference uses a custom encoding
-    # that isn't safe to write via `defaults write`.
-    CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys = {
-      "64" = {
-        enabled = false;
-        value = {
-          parameters = [
-            32
-            49
-            1048576
-          ];
-          type = "standard";
-        };
-      };
-      "65" = {
-        enabled = false;
-        value = {
-          parameters = [
-            32
-            49
-            1572864
-          ];
-          type = "standard";
-        };
-      };
-    };
-
     # Rectangle window snapping, bound to the Hyper key (⌘⌃⌥⇧, see
     # Karabiner) instead of Rectangle's own defaults. Action names and the
     # `defaults write ... -dict-add keyCode -float X modifierFlags -float Y`
