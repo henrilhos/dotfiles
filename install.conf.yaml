@@ -11,6 +11,15 @@
 - link:
     ~/.bash_profile: configs/bash/bash_profile
     ~/.bashrc: configs/bash/bashrc
+    # Second Claude Code account (CLAUDE_CONFIG_DIR, set for ~/Work in
+    # configs/direnv/work.envrc). Only declarative config is shared; login,
+    # history and plugins stay per account.
+    ~/.claude-work/CLAUDE.md: ~/.claude/CLAUDE.md
+    ~/.claude-work/RTK.md: ~/.claude/RTK.md
+    ~/.claude-work/hooks: configs/claude/hooks
+    ~/.claude-work/settings.json: configs/claude/settings.json
+    ~/.claude-work/skills: ~/.claude/skills
+    ~/.claude-work/statusline.py: configs/claude/statusline.py
     ~/.claude/hooks: configs/claude/hooks
     ~/.claude/settings.json: configs/claude/settings.json
     ~/.claude/statusline.py: configs/claude/statusline.py
