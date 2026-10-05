@@ -93,6 +93,7 @@
       "homerow"
       "karabiner-elements"
       "obsidian"
+      "prismlauncher"
       "raycast"
       "rectangle"
       "spotify"
