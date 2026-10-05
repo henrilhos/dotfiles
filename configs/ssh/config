@@ -13,6 +13,13 @@ Include ~/.colima/ssh_config
 Host *
   IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
+# cebolinha dual-boots Bazzite and Windows, each its own Tailscale node
+# with its own host key. Separate hostnames keep known_hosts entries apart.
+# Only one OS is up at a time. MagicDNS resolves the short names, so the
+# tailnet domain stays out of this public repo.
+Host cebolinha-linux cebolinha-win
+  User henrilhos
+
 # Reach GitHub over HTTPS rather than port 22, which corporate networks
 # tend to block. ssh.github.com:443 speaks the SSH protocol and is
 # GitHub's own supported route, so this is safe everywhere, not just on
