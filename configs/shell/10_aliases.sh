@@ -22,6 +22,7 @@ if [[ $- == *i* ]]; then
   alias lt='eza --tree'
   alias vim='nvim'
   alias lg='lazygit'
+  alias ld='lazydocker'
   alias cat='bat'
   alias nixswitch="sudo darwin-rebuild switch --flake ~/dotfiles/configs/nix-darwin"
   alias nixupdate="cd ~/dotfiles/configs/nix-darwin && nix flake update --extra-experimental-features nix-command --extra-experimental-features flakes && nixswitch && cd -"
