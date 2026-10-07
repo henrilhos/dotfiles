@@ -26,8 +26,8 @@
           homelab = true;
           personal = true;
         };
-        "MAC-JYRCQWVHW0" = {
-          username = "henrique.castilhos";
+        "MAC-GN2KV99X6W" = {
+          username = "admin";
           alias = "work";
           work = true;
         };
