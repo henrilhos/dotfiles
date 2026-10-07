@@ -31,8 +31,8 @@
       KeyRepeat = 2;
       InitialKeyRepeat = 15;
 
-      # Finder: always show file extensions.
-      AppleShowAllExtensions = true;
+      # Hide file extensions in Finder, Spotlight, and open/save dialogs.
+      AppleShowAllExtensions = false;
     };
 
     # Finder: show hidden (dotfile) files.
