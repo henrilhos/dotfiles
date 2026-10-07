@@ -11,6 +11,9 @@
 - link:
     ~/.bash_profile: configs/bash/bash_profile
     ~/.bashrc: configs/bash/bashrc
+    ~/.claude/hooks: configs/claude/hooks
+    ~/.claude/settings.json: configs/claude/settings.json
+    ~/.claude/statusline.py: configs/claude/statusline.py
     # Second Claude Code account (CLAUDE_CONFIG_DIR, set for ~/Work in
     # configs/direnv/work.envrc). Only declarative config is shared; login,
     # history and plugins stay per account.
@@ -20,9 +23,6 @@
     ~/.claude-work/settings.json: configs/claude/settings.json
     ~/.claude-work/skills: ~/.claude/skills
     ~/.claude-work/statusline.py: configs/claude/statusline.py
-    ~/.claude/hooks: configs/claude/hooks
-    ~/.claude/settings.json: configs/claude/settings.json
-    ~/.claude/statusline.py: configs/claude/statusline.py
     ~/.colima/default/colima.yaml: configs/colima/default/colima.yaml
     ~/.config/bat/config: configs/bat/config
     ~/.config/bat/themes: configs/bat/themes
