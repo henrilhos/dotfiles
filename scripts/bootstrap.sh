@@ -148,9 +148,10 @@ else
   log "No configs/nix-darwin/flake.nix yet — skipping nix-darwin switch."
 fi
 
-# --- 9. bat theme cache and gh extensions ---
-# ./install skipped these on a fresh machine: bat and gh only exist once
-# the nix-darwin switch above has run the Homebrew bundle.
+# --- 9. bat theme cache, gh extensions and the Android emulator ---
+# ./install skipped these on a fresh machine: bat, gh and the Android SDK
+# cask only exist once the nix-darwin switch above has run the Homebrew
+# bundle.
 log "Re-running ./install shell steps now that brew tools are on PATH..."
 (cd "$DOTFILES_DIR" && ./install --only shell)
 

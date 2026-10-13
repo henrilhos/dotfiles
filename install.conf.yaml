@@ -64,3 +64,10 @@
     - command: command -v gh >/dev/null || exit 0; gh extension list | grep -q github/gh-stack || gh extension install github/gh-stack
       stdout: true
       stderr: true
+    # Android SDK packages + the `px` emulator AVD. The SDK cask comes from
+    # Homebrew via nix-darwin, so like gh this only does anything on the
+    # second `--only shell` pass in bootstrap.sh. Skipped once the AVD
+    # exists, since sdkmanager hits the network even when nothing changes.
+    - command: '[ -x "$(brew --prefix 2>/dev/null)/share/android-commandlinetools/cmdline-tools/latest/bin/sdkmanager" ] || exit 0; [ -f ~/.android/avd/px.ini ] || scripts/android-avd.sh'
+      stdout: true
+      stderr: true
