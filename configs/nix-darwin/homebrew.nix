@@ -91,6 +91,7 @@
       "homerow"
       "karabiner-elements"
       "obsidian"
+      "raycast"
       "rectangle"
       "spotify"
       "t3-code"

@@ -6,7 +6,6 @@
     "datagrip"
     "discord"
     "prismlauncher"
-    "raycast"
   ];
 
   # Disable Spotlight's default hotkeys (⌘Space / ⌘⌥Space) so Raycast can
