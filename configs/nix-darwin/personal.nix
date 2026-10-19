@@ -7,33 +7,4 @@
     "discord"
     "prismlauncher"
   ];
-
-  # Disable Spotlight's default hotkeys (⌘Space / ⌘⌥Space) so Raycast can
-  # take over ⌘Space instead. Set the Raycast side manually in its own
-  # Settings > General — its hotkey preference uses a custom encoding
-  # that isn't safe to write via `defaults write`.
-  system.defaults.CustomUserPreferences."com.apple.symbolichotkeys".AppleSymbolicHotKeys = {
-    "64" = {
-      enabled = false;
-      value = {
-        parameters = [
-          32
-          49
-          1048576
-        ];
-        type = "standard";
-      };
-    };
-    "65" = {
-      enabled = false;
-      value = {
-        parameters = [
-          32
-          49
-          1572864
-        ];
-        type = "standard";
-      };
-    };
-  };
 }
