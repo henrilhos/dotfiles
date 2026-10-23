@@ -96,6 +96,7 @@
       "spotify"
       "t3-code"
       "visual-studio-code"
+      "zen"
     ];
   };
 

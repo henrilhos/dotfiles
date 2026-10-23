@@ -54,7 +54,7 @@
       # Pinned apps, in order. Enforced on every `darwin-rebuild switch`, so
       # anything pinned by hand is removed; add it here instead.
       persistent-apps = [
-        "/Applications/Arc.app"
+        "/Applications/Zen.app"
         "/Applications/Ghostty.app"
         "/Applications/T3 Code (Beta).app"
         "/Applications/Spotify.app"
