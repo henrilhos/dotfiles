@@ -56,7 +56,7 @@
       persistent-apps = [
         "/Applications/Arc.app"
         "/Applications/Ghostty.app"
-        "/Applications/T3 Code (Alpha).app"
+        "/Applications/T3 Code (Beta).app"
         "/Applications/Spotify.app"
       ];
     };
