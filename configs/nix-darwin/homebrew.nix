@@ -34,6 +34,7 @@
       "docker-compose"
       "eza"
       "fd"
+      "ffmpeg"
       "freetype"
       "fzf"
       "gd"
